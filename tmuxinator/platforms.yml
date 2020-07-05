@@ -1,0 +1,37 @@
+# /home/bbrisset/.config/tmuxinator/bbst-dev.yml
+
+name: platforms
+root: ~/
+windows:
+  - dev-bina:
+      panes:
+        - pane_with_multiple_commands:
+            - ssh dev-bina
+        - pane_with_multiple_commands:
+            - ssh dev-bina
+            - cd /var/log
+            - clear
+  - dev-kraken-jormun:
+      panes:
+        - pane_with_multiple_commands:
+            - ssh dev-kraken-jormun
+        - pane_with_multiple_commands:
+            - ssh dev-kraken-jormun
+            - cd /var/log
+            - clear
+  - internal-bina-jormun:
+      panes:
+        - pane_with_multiple_commands:
+            - ssh internal-bina-jormun
+        - pane_with_multiple_commands:
+            - ssh internal-bina-jormun
+            - cd /var/log
+            - clear
+  - customer-bina-jormun:
+      panes:
+        - pane_with_multiple_commands:
+            - ssh customer-bina-jormun
+        - pane_with_multiple_commands:
+            - ssh customer-bina-jormun
+            - cd /var/log
+            - clear

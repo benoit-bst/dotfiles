@@ -1,0 +1,71 @@
+export PAGER=most
+export EDITOR="/usr/bin/nvim"
+export TERM=xterm-256color
+
+# path
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/.cargo/bin              # Rust
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
+
+#----------------------
+# DIR 
+#----------------------
+alias cdd="cd $HOME/dev"
+alias cdb="cd $HOME/dev/build"
+
+#----------------------
+# OTHERS 
+#----------------------
+alias howToKraken="cat $HOME/dev/dotfiles/notes/navitia.md"
+alias cat='bat'
+alias g='git'
+alias v='nvim.appimage'
+alias vi='nvim.appimage'
+alias vim='nvim.appimage'
+alias cl="clear"
+alias cll="clear && tmux clear-history"
+alias showConnexion='cat $HOME/.kwatch'
+alias sk="~/bin/switch_keyboard"
+alias wf="nmtui"
+alias gnome-cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+
+replace(){
+    find $1 -type f -exec sed -i "s/$2/$3/g" {} \;
+}
+
+hard_nmap(){
+    sudo nmap -A -T4 -Pn -p- $1
+}
+soft_nmap(){
+    sudo nmap -sS -sU $1
+}
+
+# archive extractor
+ar_extractor ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# include navitia_profile
+if [ -f $HOME/.navitia_profile ]; then
+    . $HOME/.navitia_profile
+fi
+

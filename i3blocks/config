@@ -1,0 +1,101 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[volume]
+command=~/bin/volume
+label=🔉 
+interval=2
+color=#01A9DB
+
+[microphone]
+command=~/bin/microphone
+label=🎤 
+interval=2
+color=#01A9DE
+
+[spotify]
+label=  
+command=~/bin/spotify.py
+interval=5
+color=#74DF00
+
+[weather]
+label=🔆
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#F5A9F2
+
+[wifi]
+label=📡
+command=~/bin/wifi_signal_strength
+color=#F7BE81
+interval=5
+
+[iface]
+command=~/bin/iface
+color=#F7BE81
+interval=5
+
+[cpu]
+label=🔶
+command=~/bin/cpu_usage
+color=#F781F3
+interval=3
+
+[ram]
+label=◻️
+command=~/bin/memory
+color=#F781F3
+interval=3
+
+[disk]
+label=🔴
+command=~/bin/disk
+color=#F781F3
+interval=3
+
+[key_layout]
+command=~/bin/show_language
+color=#01A9DB
+interval=3
+
+[battery]
+command=~/bin/battery
+label=⚡
+interval=5
+color=#FFFF00
+
+[time]
+label=🕐
+command=date '+%d %b %R'
+color=#74DF00
+interval=5
+

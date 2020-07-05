@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+VIEW=$(xrandr)
+
+if $(echo $VIEW | grep -q 'DP-2-1 connected') && $(echo $VIEW | grep -q 'DP-2-2 connected');
+then
+    # laptop
+    xrandr --output eDP-1 --off
+
+    # screen 1
+    xrandr --output DP-2-1 --auto --primary
+
+    # screen 2
+    xrandr --output DP-2-2 --auto --right-of DP-2-1
+else
+    echo "Screen is not detected"
+fi

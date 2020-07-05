@@ -1,0 +1,15 @@
+.vscode
+.ackrc
+tags
+.clangd
+gatling_jormun.ini
+jormungandr.ini
+jormungandr.wsgi
+build
+build_image
+.pytest_cache
+dev_settings.py
+dev_kirin_settings.py
+dev_artemis_settings.py
+compile_commands.json
+*.bak

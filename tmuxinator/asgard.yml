@@ -1,0 +1,26 @@
+name: asgard
+root: ~/
+windows:
+  - main:
+      root: ~
+      panes:
+        - pane_with_multiple_commands:
+            - clear
+  - asgard:
+      root: ~/dev/asgard
+      panes:
+          - # 
+  - build-asgard:
+      root: ~/dev/asgard
+      layout: 83df,273x69,0,0[273x9,0,0,10,273x59,0,10,11]
+      panes:
+        - pane_with_multiple_commands:
+            - htop
+        - pane_with_multiple_commands:
+            - clear
+  - run-asgard:
+      root: ~
+      layout: a2ae,273x69,0,0{136x69,0,0,2,136x69,137,0,8}
+      panes:
+          - # 
+          - #

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+VIEW=$(xrandr)
 
 if $(echo $VIEW | grep -q 'DP-2-1 connected') && $(echo $VIEW | grep -q 'DP-2-2 connected');
 then

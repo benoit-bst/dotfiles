@@ -79,7 +79,7 @@ map <leader>L :Lines<cr>
 map <leader>t :BTags<cr>
 map <leader>T :Tags<cr>
 map <leader>s :Snippets<cr>
-map <leader>f :Windows<cr>
+map <leader>f :Buffers<cr>
 map <leader>bb :Buffers<cr>
 let g:fzf_buffers_jump = 1
 

@@ -51,3 +51,5 @@ export FZF_DEFAULT_OPTS='
 --color info:144,prompt:161,spinner:135,pointer:135,marker:118
 '
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

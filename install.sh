@@ -14,7 +14,7 @@ if which cmake > /dev/null; then
     echo "** ! packages already installed"
 else
     echo "** try to install packages"
-    sudo apt-get install -y build-essential g++ cmake curl httpie python-pip python-dbus python3-pip xdotool xautolock
+    sudo apt-get install -y build-essential g++ cmake curl httpie python-pip python-dbus python3-pip xdotool clang xautolock
 fi
 
 

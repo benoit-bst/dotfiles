@@ -1,0 +1,49 @@
+---
+
+- name: tmux | install packages
+  apt:
+    name: [tmux, vlock]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags: install 
+
+- name: tmux | install config 
+  file: 
+    src: '{{role_path}}/files/.tmux.conf'
+    path: '{{ansible_env.HOME}}/.tmux.conf'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: tmux | check .tmux dir
+  stat:
+    path: '{{ansible_env.HOME}}/.tmux'
+  register: tmux_folder
+  tags: install 
+
+- name: tmux | create .tmux dir
+  file:
+    path: '{{ansible_env.HOME}}/.tmux'
+    state: directory
+    mode: "u=rwx,g=rx,o=rx"
+  when: tmux_folder.stat.exists == false
+  tags: install 
+
+- name: tmux-fpp | clone
+  git:
+    repo: 'https://github.com/tmux-plugins/tmux-fpp.git'
+    dest: '{{ansible_env.HOME}}/.tmux/tmux-fpp'
+    force: yes
+  tags: install 
+
+- name: tmux-open | clone
+  git:
+    repo: 'https://github.com/tmux-plugins/tmux-open.git'
+    dest: '{{ansible_env.HOME}}/.tmux/tmux-open'
+    force: yes
+  tags: install 

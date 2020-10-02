@@ -1,0 +1,17 @@
+---
+
+- hosts: localhost
+  roles:
+    - { role: misc, tags: misc}
+    - { role: git, tags: git}
+    - { role: neovim, tags: neovim}
+    - { role: shell, tags: shell}
+    - { role: tmux, tags: tmux}
+    - { role: tmuxinator, tags: tmuxinator}
+    - { role: docker, tags: docker}
+    - { role: i3, tags: i3}
+    - { role: light, tags: light}
+    - { role: termite, tags: termite}
+    - { role: fzf, tags: fzf}
+    - { role: pathpicker, tags: pathpicker}
+

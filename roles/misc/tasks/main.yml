@@ -1,0 +1,105 @@
+---
+
+- name: misc | install packages
+  apt:
+    name: [build-essential, g++, cmake, curl, httpie, python-pip, python-dbus, python3-pip, xdotool, clang, xautolock, mc, ripgrep]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - install
+
+- name: bin | install
+  file: 
+    src: '{{role_path}}/files/bin/'
+    path: '{{ansible_env.HOME}}/bin'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: mount | create mount dir
+  file:
+    path: '{{ansible_env.HOME}}/mount'
+    state: directory
+    mode: "u=rwx,g=rx,o=rx"
+  tags:
+    - install
+
+- name: notes | install
+  file: 
+    src: '{{role_path}}/files/notes/'
+    path: '{{ansible_env.HOME}}/notes'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: dev/build/navitia | check directory.
+  stat:
+    path: '{{ansible_env.HOME}}/dev/build/navitia'
+  register: dev_navitia_build_folder
+  tags:
+    - install
+
+- name: dev/build/navitia | create dir
+  shell: 'mkdir -p {{ansible_env.HOME}}/dev/build/navitia/{debug,release}'
+  when: dev_navitia_build_folder.stat.exists == false
+  tags:
+    - install
+
+- name: dev/build/navitia_docker | create dir
+  shell: 'mkdir -p $HOME/dev/build/navitia_docker/{debug,release}'
+  when: dev_navitia_build_folder.stat.exists == false
+  tags:
+    - install
+
+- name: virtualenv | check directory.
+  stat:
+    path: '{{ansible_env.HOME}}/dev/virtualenv'
+  register: dev_virtualenv_folder
+  tags:
+    - install
+
+- name: virtualenv | create dir
+  shell: 'mkdir -p {{ansible_env.HOME}}/dev/virtualenv'
+  when: dev_virtualenv_folder.stat.exists == false
+  tags:
+    - install
+
+- name: run | check directory.
+  stat:
+    path: '{{ansible_env.HOME}}/dev/run'
+  register: run_folder
+  tags:
+    - install
+
+- name: run | copy file
+  copy:
+    src: '{{role_path}}/files/run/'
+    dest:  '{{ansible_env.HOME}}/dev/run'
+    force: no
+  when: run_folder.stat.exists == false
+  tags:
+    - install
+
+- name: run/kraken | create dir
+  shell: 'mkdir -p {{ansible_env.HOME}}/dev/run/kraken/{krakenDebug,krakenRelease}'
+  when: run_folder.stat.exists == false
+  tags:
+    - install
+
+- name: install python package
+  pip:
+    name:
+      - gdbgui
+      - web-pdb
+      - pre-commit
+      - virtualenv
+  tags:
+    - install
+

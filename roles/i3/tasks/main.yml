@@ -1,0 +1,42 @@
+---
+
+- name: i3 | install packages
+  apt:
+    name: [i3, i3blocks, i3blocks, feh, rofi]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - install
+
+- name: i3 | install config 
+  file: 
+    src: '{{role_path}}/files/i3/'
+    path: '{{ansible_env.HOME}}/.config/i3'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: i3blocks | install config 
+  file: 
+    src: '{{role_path}}/files/i3blocks/'
+    path: '{{ansible_env.HOME}}/.config/i3blocks'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: wallpaper | install 
+  file: 
+    src: '{{role_path}}/files/wallpaper/'
+    path: '{{ansible_env.HOME}}/.wallpaper'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config

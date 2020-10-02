@@ -1,6 +1,22 @@
-# I3 + Tmux + Zsh + Nvim
+# Personnal work flow and tools
+
+Main Tools : I3 + Tmux + Zsh + Nvim
 
 ![config_screenshot](config_screenshot.png)
+
+## Set up
+
+Full installation (user password is required)
+
+```bash
+./install
+```
+
+Only update config file
+
+``` bash
+./install update
+```
 
 # Vim keybinding
 

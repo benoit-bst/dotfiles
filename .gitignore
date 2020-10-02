@@ -1,3 +1,4 @@
 nvim.appimage
-vim/plugged
-vim/temps_dirs
+roles/neovim/files/vim/plugged
+roles/neovim/files/vim/temps_dirs
+roles/misc/files/bin/PathPicker

@@ -1,0 +1,32 @@
+---
+
+- name: git | install packages
+  apt:
+    name: git
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - install
+
+- name: git | install gitignore
+  file: 
+    src: '{{role_path}}/files/.gitignore'
+    path: '{{ansible_env.HOME}}/.gitignore'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: git | install gitconfig
+  file: 
+    src: '{{role_path}}/files/.gitconfig'
+    path: '{{ansible_env.HOME}}/.gitconfig'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config

@@ -1,0 +1,77 @@
+---
+
+- name: zsh | install packages
+  apt:
+    name: zsh
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - install
+
+- name: oh my zsh | check directory.
+  stat:
+    path: '{{ansible_env.HOME}}/.oh-my-zsh'
+  register: oh_my_zsh_folder
+  tags:
+    - install
+
+- name: oh my zsh | install
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  when: oh_my_zsh_folder.stat.exists == false
+  tags:
+    - install
+
+- name: bashrc | install
+  file: 
+    src: '{{role_path}}/files/.bashrc'
+    path: '{{ansible_env.HOME}}/.bashrc'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: zshrc | install
+  file: 
+    src: '{{role_path}}/files/.zshrc'
+    path: '{{ansible_env.HOME}}/.zshrc'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: global profile | install
+  file: 
+    src: '{{role_path}}/files/profiles/.global_profile'
+    path: '{{ansible_env.HOME}}/.global_profile'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: navitia profile | install
+  file: 
+    src: '{{role_path}}/files/profiles/.navitia_profile'
+    path: '{{ansible_env.HOME}}/.navitia_profile'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+# Following command doesn't work, because it requires a password from the user...
+#- name: zsh | active zsh by default
+#  shell: chsh -s /usr/bin/zsh
+
+- name: zsh | user  with zsh
+  user: 
+    name: '{{ansible_env.USER}}'
+    shell: /usr/bin/zsh
+  become: yes
+  tags:
+    - install

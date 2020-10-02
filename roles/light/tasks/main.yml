@@ -1,0 +1,20 @@
+---
+
+- name: light | clone
+  git:
+    repo: git@github.com:haikarainen/light.git
+    dest: '{{ansible_env.HOME}}/dev/light'
+    force: yes
+  tags:
+    - install
+
+- name: light | make
+  shell: cd {{ansible_env.HOME}}/dev/light && ./autogen.sh && ./configure && make
+  tags:
+    - install
+
+- name: light | make
+  shell: cd {{ansible_env.HOME}}/dev/light && make install
+  become: yes
+  tags:
+    - install

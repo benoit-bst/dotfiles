@@ -1,0 +1,10 @@
+---
+
+vim_paths:
+  binary_path: "{{ansible_env.HOME}}/bin"
+  vim_sources_path: '{{role_path}}/files/vim/'
+  nvim_link_path: '{{ansible_env.HOME}}/.config/nvim'
+  vim_link_path: '{{ansible_env.HOME}}/.vim'
+  vimrc_link_path: '{{ansible_env.HOME}}/.vimrc'
+
+plugged_dir: '{{role_path}}/files/vim/plugged'

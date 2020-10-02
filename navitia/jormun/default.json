@@ -1,4 +1,0 @@
-{
-    "key": "fr-idf",
-    "zmq_socket": "ipc:///tmp/default_kraken"
-}

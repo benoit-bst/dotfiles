@@ -1,0 +1,47 @@
+#!/bin/bash
+
+set -e
+
+echo "** Run set up"
+
+# **************************************
+# Install ansible
+# **************************************
+if which ansible > /dev/null; then
+    echo "** ansible already installed"
+else
+    echo "** try to install ansible"
+    sudo apt-get install -y ansible
+fi
+
+# **************************************
+# Options
+# **************************************
+tag=""
+askbecomepass=""
+
+if [[ "$1" == "update" ]]
+then
+    echo "** only update config files"
+    tag="update-config"
+else
+    echo "** full installation"
+    echo "** user password is required"
+    tag="install"
+    askbecomepass="--ask-become-pass"
+fi
+
+# **************************************
+# Run ansible
+# **************************************
+HOST_OS=$(uname)
+
+if [ "$HOST_OS" = 'Linux' ]; then
+  ansible-playbook playbooks/full_dev_env_for_laptop.yml $askbecomepass --tags $tag -v
+else
+  echo "** Unknown host OS: $HOST_OS"
+  exit 1
+fi
+
+echo "** Finish set up"
+trap - EXIT

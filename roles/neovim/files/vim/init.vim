@@ -23,10 +23,12 @@ au FocusGained,BufEnter * :checktime
 set updatetime=800
 
 " backup
-set nobackup
-set nowb
+set backup
+"set nowb
 set noswapfile
 try
+    set backupdir=~/.config/nvim/temps_dirs/backup
+    set dir=~/.config/nvim/temps_dirs/backup
     set undodir=~/.config/nvim/temps_dirs/undodir
     set undofile
 catch

@@ -1,0 +1,6 @@
+---
+
+- hosts: machine-name
+  roles:
+    - { role: tmux, tags: tmux}
+

@@ -17,18 +17,36 @@ fi
 # **************************************
 # Options
 # **************************************
-tag=""
+install_type=""
 askbecomepass=""
+exclude="remote"
+machine="laptop"
 
-if [[ "$1" == "update" ]]
+
+if [ -z "$1" ] && [ -z "$2" ]
 then
-    echo "** only update config files"
-    tag="update-config"
-else
-    echo "** full installation"
-    echo "** user password is required"
-    tag="install"
+    install_type="install"
     askbecomepass="--ask-become-pass"
+else
+    if [[ "$1" == "update" ]]
+    then
+        echo "** only update config files"
+        install_type="update-config"
+    else
+        echo "** full installation"
+        echo "** user password is required"
+        install_type="install"
+        askbecomepass="--ask-become-pass"
+    fi
+
+    if [ -z "$2" ]
+    then
+        echo "** config in local mode: use links for config files"
+    else
+        echo "** config in ssh mode: use copy for config files"
+        exclude="local"
+        machine="$2"
+    fi
 fi
 
 # **************************************
@@ -37,7 +55,7 @@ fi
 HOST_OS=$(uname)
 
 if [ "$HOST_OS" = 'Linux' ]; then
-  ansible-playbook playbooks/full_dev_env_for_laptop.yml $askbecomepass --tags $tag -v
+  ansible-playbook playbooks/"$machine".yml $askbecomepass -t $install_type --skip-tags $exclude -v
 else
   echo "** Unknown host OS: $HOST_OS"
   exit 1

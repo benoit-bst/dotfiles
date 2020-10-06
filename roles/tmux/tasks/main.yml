@@ -10,7 +10,7 @@
   when: ansible_os_family == "Debian"
   tags: install 
 
-- name: tmux | install config 
+- name: tmux | install config files (symb link) 
   file: 
     src: '{{role_path}}/files/.tmux.conf'
     path: '{{ansible_env.HOME}}/.tmux.conf'
@@ -19,6 +19,17 @@
   tags:
     - install
     - update-config
+    - local
+
+- name: tmux | install config files (copy) 
+  copy:
+    src: '{{role_path}}/files/.tmux.conf'
+    dest: '{{ansible_env.HOME}}/.tmux.conf'
+    force: yes
+  tags:
+    - install
+    - update-config
+    - remote
 
 - name: tmux | check .tmux dir
   stat:

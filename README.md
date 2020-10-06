@@ -9,13 +9,21 @@ Main Tools : I3 + Tmux + Zsh + Nvim
 Full installation (user password is required)
 
 ```bash
+# for a local install
 ./install
+
+# for a remote install
+./install install remote_name_server
 ```
 
 Only update config file
 
 ``` bash
+# for a local update
 ./install update
+
+# for a remote update
+./install update remote_name_server
 ```
 
 # Vim keybinding

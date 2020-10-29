@@ -16,7 +16,7 @@ Full installation (user password and vault password are required)
 ./install install remote_name_server
 ```
 
-Only update config file
+Only update config file (vault password is required)
 
 ``` bash
 # for a local update

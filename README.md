@@ -6,6 +6,8 @@ Main Tools : I3 + Tmux + Zsh + Nvim
 
 ## Set up
 
+Please create **vault_passwd** file at the root of the repository, with the vault password inside
+
 Full installation (user password and vault password are required)
 
 ```bash

@@ -1,6 +1,7 @@
 ---
 
 - hosts: localhost
+
   roles:
     - { role: misc, tags: misc}
     - { role: git, tags: git}
@@ -14,4 +15,5 @@
     - { role: termite, tags: termite}
     - { role: fzf, tags: fzf}
     - { role: pathpicker, tags: pathpicker}
+    - { role: ssh, tags: ssh}
 

@@ -1,0 +1,27 @@
+---
+
+- name: openssl | install packages
+  apt:
+    name: openssl
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags: install 
+
+- name: file1 | install
+  command: "{{vault_install_file1}}"  
+  become: yes
+  tags:
+    - install
+
+- name: file2 | install
+  command: "{{vault_install_file2}}"  
+  tags:
+    - install
+
+- name: file3 | install
+  command: "{{vault_install_file3}}"  
+  tags:
+    - install

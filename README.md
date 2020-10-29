@@ -6,7 +6,7 @@ Main Tools : I3 + Tmux + Zsh + Nvim
 
 ## Set up
 
-Full installation (user password is required)
+Full installation (user password and vault password are required)
 
 ```bash
 # for a local install

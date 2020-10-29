@@ -2,3 +2,4 @@ nvim.appimage
 roles/neovim/files/vim/plugged
 roles/neovim/files/vim/temps_dirs
 roles/misc/files/bin/PathPicker
+vault_passwd

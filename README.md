@@ -26,3 +26,6 @@ Only update config file
 ./install update
 ```
 
+## Doc
+
+[Key binding](https://github.com/benoit-bst/dotfiles/blob/master/keybinding.md)

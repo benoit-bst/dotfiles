@@ -1,7 +1,7 @@
 # Personnal work flow and tools
 
-All the configuration is installed with 
-[Red Hat Ansible](https://github.com/ansible/ansible) tool.
+All the configuration is installed with
+ [Red Hat Ansible](https://github.com/ansible/ansible) tool.
 
 The main configuration is composed of : I3 + Tmux + Zsh + Nvim
 
@@ -12,7 +12,7 @@ The main configuration is composed of : I3 + Tmux + Zsh + Nvim
 Please create **vault_passwd** file at the root of the repository,
  with the vault password inside
 
-Full installation.i\n
+Full installation.<br>
 It consists in installing all packages and
  configuration files (User password is required for packages installation)
 

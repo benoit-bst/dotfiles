@@ -54,7 +54,7 @@
 
 - name: nvim | create vimrc link
   file:
-    src: '{{item.vim_sources_path}}init.vim' 
+    src: '{{item.vim_sources_path}}/init.vim'
     path: '{{item.vimrc_link_path}}'
     force: yes
     state: link

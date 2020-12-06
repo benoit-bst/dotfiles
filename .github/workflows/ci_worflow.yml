@@ -14,5 +14,7 @@ jobs:
         - name: install ansible
           run: |
             apt update && apt install -y ansible 
+        - name: create vault file
+          run: echo ${{secrets.VAULT_PASSWORD}} > vault_passwd
         - name: run install
           run: ./install

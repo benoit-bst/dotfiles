@@ -17,6 +17,8 @@ jobs:
             apt install -y software-properties-common
             apt-add-repository --yes ppa:ansible/ansible
             apt install -y ansible 
+        - name: ansible version
+          run: ansible --version
         - name: ansible | install collection community.general
           run: ansible-galaxy collection install community.general
         - name: create vault file

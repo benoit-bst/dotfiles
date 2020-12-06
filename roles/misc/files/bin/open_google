@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-WID=`xdotool search --name "Google Chrome" | head -1`
-xdotool windowfocus $WID
-xdotool key ctrl+t

@@ -227,12 +227,12 @@ exec --no-startup-id xautolock -time 20 -locker 'i3lock -d -c 111111'
 # mode system
 set $screen_system Screen (e) extend, (v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
 mode "$screen_system" {
-    bindsym e exec --no-startup-id ${HOME}/bin/laptop_extend, mode "default"
-    bindsym v exec --no-startup-id ${HOME}/bin/laptop_extend_v, mode "default"
-    bindsym d exec --no-startup-id ${HOME}/bin/laptop_dock, mode "default"
-    bindsym u exec --no-startup-id ${HOME}/bin/laptop_undock, mode "default"
-    bindsym x exec --no-startup-id ${HOME}/bin/laptop_dock_xl, mode "default"
-    bindsym k exec --no-startup-id ${HOME}/bin/switch_keyboard, mode "default"
+    bindsym e exec --no-startup-id ${HOME}/bin/i3/laptop_extend, mode "default"
+    bindsym v exec --no-startup-id ${HOME}/bin/i3/laptop_extend_v, mode "default"
+    bindsym d exec --no-startup-id ${HOME}/bin/i3/laptop_dock, mode "default"
+    bindsym u exec --no-startup-id ${HOME}/bin/i3/laptop_undock, mode "default"
+    bindsym x exec --no-startup-id ${HOME}/bin/i3/laptop_dock_xl, mode "default"
+    bindsym k exec --no-startup-id ${HOME}/bin/i3/switch_keyboard, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

@@ -30,20 +30,20 @@ separator_block_width=15
 markup=none
 
 [volume]
-command=~/bin/volume
+command=~/bin/i3/volume
 label=🔉 
 interval=2
 color=#01A9DB
 
 [microphone]
-command=~/bin/microphone
+command=~/bin/i3/microphone
 label=🎤 
 interval=2
 color=#01A9DE
 
 [spotify]
 label=  
-command=~/bin/spotify.py
+command=~/bin/i3/spotify.py
 interval=5
 color=#74DF00
 
@@ -55,40 +55,40 @@ color=#F5A9F2
 
 [wifi]
 label=📡
-command=~/bin/wifi_signal_strength
+command=~/bin/i3/wifi_signal_strength
 color=#F7BE81
 interval=5
 
 [iface]
-command=~/bin/iface
+command=~/bin/i3/iface
 color=#F7BE81
 interval=5
 
 [cpu]
 label=🔶
-command=~/bin/cpu_usage
+command=~/bin/i3/cpu_usage
 color=#F781F3
 interval=3
 
 [ram]
 label=◻️
-command=~/bin/memory
+command=~/bin/i3/memory
 color=#F781F3
 interval=3
 
 [disk]
 label=🔴
-command=~/bin/disk
+command=~/bin/i3/disk
 color=#F781F3
 interval=3
 
 [key_layout]
-command=~/bin/show_language
+command=~/bin/i3/show_language
 color=#01A9DB
 interval=3
 
 [battery]
-command=~/bin/battery
+command=~/bin/i3/battery
 label=⚡
 interval=5
 color=#FFFF00

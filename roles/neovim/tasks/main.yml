@@ -41,6 +41,19 @@
   tags:
     - install
 
+- name: ~.config | check directory
+  stat:
+    path: '{{ansible_env.HOME}}/.config'
+  register: check_config_dir
+  tags:
+    - install
+
+- name: ~.config | create dir
+  shell: 'mkdir {{ansible_env.HOME}}/.config'
+  when: check_config_dir.stat.exists == false
+  tags:
+    - install
+
 - name: ~/.config/nvim | check dir
   stat:
     path: '{{ansible_env.HOME}}/.config/nvim'

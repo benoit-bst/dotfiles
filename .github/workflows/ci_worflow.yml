@@ -1,0 +1,20 @@
+name: CI workflow
+
+on:
+    pull_request:
+        types:
+            - created
+
+jobs:
+    
+    test_deploy:
+        runs-on: ubuntu-latest
+        container:
+          image: ubuntu:18.04
+        steps:
+        - uses: actions/checkout@v2
+        - name: install ansible
+          run: |
+            apt update && apt install -y ansible 
+        - name: run install
+          run: ./install

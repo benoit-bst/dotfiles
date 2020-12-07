@@ -96,7 +96,7 @@
 - name: install python package
   pip:
     name:
-      - gdbgui
+      #- gdbgui
       - web-pdb
       - pre-commit
       - virtualenv

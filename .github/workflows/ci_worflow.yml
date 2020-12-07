@@ -6,9 +6,10 @@ on:
 jobs:
     
     test_deploy:
-        runs-on: ubuntu-latest
-        container:
-          image: ubuntu:18.04
+        strategy:
+            matrix:
+                os: [ubuntu-latest]
+        runs-on: ${{ matrix.os }}
         steps:
         - uses: actions/checkout@v2
         - name: install ansible

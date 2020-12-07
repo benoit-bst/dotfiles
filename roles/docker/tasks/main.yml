@@ -1,15 +1,29 @@
 ---
 
-- name: docker | install packages
+- name: docker | gpg
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  tags:
+    - install
+
+- name: docker | add repo
+  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" 
+  tags:
+    - install
+
+- name: docker | apt update
+  shell: sudo apt update
+  tags:
+    - install
+
+- name: docker | install docker-ce
   apt:
-    name: docker.io
+    name: docker-ce
     state: present
     update_cache: yes
     cache_valid_time: 3600
   become: yes
   when: ansible_os_family == "Debian"
-  tags:
-    - install
+  tags: install
 
 - name: docker | usermod
   shell: usermod -aG docker $USER

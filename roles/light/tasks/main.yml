@@ -2,7 +2,7 @@
 
 - name: light | clone
   git:
-    repo: git@github.com:haikarainen/light.git
+    repo: https://github.com/haikarainen/light.git
     dest: '{{ansible_env.HOME}}/dev/light'
     force: yes
   tags:

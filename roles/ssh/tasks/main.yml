@@ -2,7 +2,7 @@
 
 - name: openssl | install packages
   apt:
-    name: openssl
+    name: [ssh, openssl]
     state: present
     update_cache: yes
     cache_valid_time: 3600

@@ -209,11 +209,11 @@ bindsym $mod+m move workspace to output left
 # mode system
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym l exec --no-startup-id ${HOME}/bin/i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id ${HOME}/bin/i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ${HOME}/bin/i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ${HOME}/bin/i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ${HOME}/bin/i3/i3exit reboot, mode "default"
     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape

@@ -53,11 +53,8 @@
     - install
 
 - name: termite | config
-  file: 
-    src: /usr/local/share/terminfo/x/xterm-termite
-    path: /lib/terminfo/x/xterm-termite
-    force: yes
-    state: link
+  shell: sudo ln -s /usr/local/share/terminfo/x/xterm-termite /lib/terminfo/x/xterm-termite
+  become: yes
   tags:
     - install
 

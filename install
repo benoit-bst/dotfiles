@@ -8,10 +8,12 @@ echo "** Run set up"
 # Install ansible
 # **************************************
 if which ansible > /dev/null; then
-    echo "** ansible already installed"
+    echo "** ansible installed"
 else
     echo "** try to install ansible"
-    sudo apt-get install -y ansible
+    sudo apt install -y ansible 
+    echo "** install ansible community.general"
+    ansible-galaxy collection install community.general
     echo "** !! Please create **vault_passwd** file at the root of the repository, with the vault password inside"
     exit 1
 fi

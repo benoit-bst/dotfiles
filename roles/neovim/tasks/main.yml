@@ -28,6 +28,45 @@
   tags:
     - install
 
+- name: ~/.vimrc | check file
+  stat:
+    path: '{{ansible_env.HOME}}/.vimrc'
+  register: check_vimrc_file
+  tags:
+    - install
+
+- name: remove old .vimrc
+  shell: 'rm -f {{ansible_env.HOME}}/.vimrc'
+  when: check_vimrc_file.stat.exists == true
+  tags:
+    - install
+
+- name: ~.config | check directory
+  stat:
+    path: '{{ansible_env.HOME}}/.config'
+  register: check_config_dir
+  tags:
+    - install
+
+- name: ~.config | create dir
+  shell: 'mkdir {{ansible_env.HOME}}/.config'
+  when: check_config_dir.stat.exists == false
+  tags:
+    - install
+
+- name: ~/.config/nvim | check dir
+  stat:
+    path: '{{ansible_env.HOME}}/.config/nvim'
+  register: check_nvim_dir
+  tags:
+    - install
+
+- name: remove old .config/nvim
+  shell: 'rm -rf {{ansible_env.HOME}}/.config/nvim'
+  when: check_nvim_dir.stat.exists == true
+  tags:
+    - install
+
 - name: nvim | install nvim sources
   file:
     src: '{{item.vim_sources_path}}' 
@@ -54,7 +93,7 @@
 
 - name: nvim | create vimrc link
   file:
-    src: '{{item.vim_sources_path}}init.vim' 
+    src: '{{item.vim_sources_path}}init.vim'
     path: '{{item.vimrc_link_path}}'
     force: yes
     state: link
@@ -85,6 +124,6 @@
     - install
 
 - name: install vim plugin
-  shell: vim +PlugInstall +qall
+  shell: '{{ansible_env.HOME}}/bin/nvim.appimage +PlugInstall +qall'
   tags:
     - install

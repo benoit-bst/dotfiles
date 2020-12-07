@@ -2,13 +2,26 @@
 
 - name: openssl | install packages
   apt:
-    name: openssl
+    name: [ssh, openssl]
     state: present
     update_cache: yes
     cache_valid_time: 3600
   become: yes
   when: ansible_os_family == "Debian"
   tags: install 
+
+- name: ssh | check directory
+  stat:
+    path: '{{ansible_env.HOME}}/.ssh'
+  register: ssh_dir
+  tags:
+    - install
+
+- name: ssh | create dir
+  shell: 'mkdir {{ansible_env.HOME}}/.ssh'
+  when: ssh_dir.stat.exists == false
+  tags:
+    - install
 
 - name: file1 | install
   command: "{{vault_install_file1}}"  

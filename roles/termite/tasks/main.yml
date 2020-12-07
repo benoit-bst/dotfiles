@@ -58,6 +58,8 @@
     path: /lib/terminfo/x/xterm-termite
     force: yes
     state: link
+    owner: root
+    group: root
   tags:
     - install
 

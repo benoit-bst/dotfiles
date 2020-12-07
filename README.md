@@ -1,4 +1,4 @@
-# Personnal work flow and tools
+# Personal work flow and tools
 
 All the configuration is installed with
  [Red Hat Ansible](https://github.com/ansible/ansible) tool.

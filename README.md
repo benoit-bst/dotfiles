@@ -29,3 +29,7 @@ Only update config file
 ## Doc
 
 [Key binding](https://github.com/benoit-bst/dotfiles/blob/master/keybinding.md)
+
+## Changelog
+
+[Changelog](https://github.com/benoit-bst/dotfiles/blob/master/changelog.md)

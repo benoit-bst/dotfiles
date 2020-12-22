@@ -112,6 +112,6 @@
     - install
 
 - name: install vim plugin
-  shell: '{{ansible_env.HOME}}/bin/nvim.appimage +PlugInstall +qall'
+  shell: 'nvim +PlugInstall +qall'
   tags:
     - install

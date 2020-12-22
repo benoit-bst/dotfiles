@@ -104,8 +104,6 @@
     - install
 
 - name: Snap | install termite
-  snap:
-    name: termite
-    channel: latest/candidate
+  shell: 'sudo snap install termite --candidate'
   tags:
     - install

@@ -11,7 +11,8 @@ if which ansible > /dev/null; then
     echo "** ansible installed"
 else
     echo "** try to install ansible"
-    python -m pip install --user ansible
+    sudo python get-pip.py
+    sudo python -m pip install ansible
     echo "** install ansible community.general"
     ansible-galaxy collection install community.general
     echo "** !! Please create **vault_passwd** file at the root of the repository, with the vault password inside"

@@ -15,6 +15,9 @@ jobs:
         runs-on: ${{ matrix.os }}
         steps:
         - uses: actions/checkout@v2
+        - name: remove wrong ansible version
+          run: sudo apt remove -y ansible
+          run: ./install
         - name: create vault file
           run: echo ${{secrets.VAULT_PASSWORD}} > vault_passwd
         - name: run install

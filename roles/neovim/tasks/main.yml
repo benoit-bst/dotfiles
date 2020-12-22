@@ -1,9 +1,7 @@
 ---
 
-- name: Snap | install neovim
-  snap:
-    name: nvim
-    classic: yes
+- name: Snap | install termite
+  shell: 'sudo snap install termite --classic'
   tags:
     - install
 

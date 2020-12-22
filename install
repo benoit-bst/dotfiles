@@ -11,6 +11,8 @@ if which ansible > /dev/null; then
     echo "** ansible installed"
 else
     echo "** try to install ansible"
+    pip install wheel
+    python setup.py bdist_wheel
     python -m pip install --user ansible
     echo "** install ansible community.general"
     ansible-galaxy collection install community.general

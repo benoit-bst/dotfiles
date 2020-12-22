@@ -112,6 +112,6 @@
     - install
 
 - name: install vim plugin
-  shell: 'nvim +PlugInstall +qall'
+  shell: '/snap/bin/nvim +PlugInstall +qall'
   tags:
     - install

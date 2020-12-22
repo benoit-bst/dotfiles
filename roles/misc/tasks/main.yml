@@ -103,3 +103,9 @@
   tags:
     - install
 
+- name: Snap | install termite
+  snap:
+    name: termite
+    classic: yes
+  tags:
+    - install

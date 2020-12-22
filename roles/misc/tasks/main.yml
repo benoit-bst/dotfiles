@@ -106,6 +106,6 @@
 - name: Snap | install termite
   snap:
     name: termite
-    classic: yes
+    channel: latest/candidate
   tags:
     - install

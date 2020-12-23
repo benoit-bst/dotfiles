@@ -34,3 +34,5 @@ jobs:
           run: echo ${{secrets.VAULT_PASSWORD}} > vault_passwd
         - name: run install
           run: ./install
+        - name: run update
+          run: ./install update

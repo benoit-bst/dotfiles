@@ -7,7 +7,7 @@
 All the configuration is installed with
  [Red Hat Ansible](https://github.com/ansible/ansible) tool.
 
-The main configuration is composed of : I3 + Tmux + Zsh + Nvim
+The main configuration is composed of : I3 + Tmux + Zsh + Nvim<br>
 Available for debian/ubuntu
 
 ![config_screenshot](config_screenshot.png)

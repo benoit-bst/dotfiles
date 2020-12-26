@@ -1,13 +1,63 @@
 ---
 
+# -------------------------------------
+#
+# Debian packages
+#
+# -------------------------------------
 - name: i3 | install packages
   apt:
-    name: [i3, i3blocks, i3blocks, feh, rofi]
+    pkg:
+    - i3
+    - i3blocks
+    - feh
+    - rofi
     state: present
     update_cache: yes
     cache_valid_time: 3600
   become: yes
   when: ansible_os_family == "Debian"
+  tags:
+    - install
+
+
+# -------------------------------------
+#
+# Arch packages
+#
+# -------------------------------------
+- name: i3 | install packages
+  community.general.pacman:
+    name:
+      - i3-wm
+      - i3blocks
+      - i3lock
+      - i3status
+      - feh
+      - rofi
+    state: lastest
+    update_cache: yes
+  become: yes
+  when: ansible_os_family == "Archlinux"
+  tags:
+    - install
+
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
+- name: ~.config/i3 | check directory
+  stat:
+    path: '{{ansible_env.HOME}}/.config/i3'
+  register: check_i3_dir
+  tags:
+    - install
+
+- name: ~.config/i3 | remove old dir
+  shell: 'rm -rf {{ansible_env.HOME}}/.config/i3'
+  when: check_i3_dir.stat.exists == false
   tags:
     - install
 

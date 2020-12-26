@@ -1,5 +1,10 @@
 ---
 
+# -------------------------------------
+#
+# debian packages
+#
+# -------------------------------------
 - name: zsh | install packages
   apt:
     name: zsh
@@ -24,6 +29,11 @@
   tags:
     - install
 
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: bashrc | install
   file: 
     src: '{{role_path}}/files/.bashrc'
@@ -68,7 +78,7 @@
 #- name: zsh | active zsh by default
 #  shell: chsh -s /usr/bin/zsh
 
-- name: zsh | user  with zsh
+- name: zsh | user with zsh
   user: 
     name: '{{ansible_env.USER}}'
     shell: /usr/bin/zsh

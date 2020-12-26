@@ -23,28 +23,6 @@
 
 # -------------------------------------
 #
-# Arch packages
-#
-# -------------------------------------
-- name: i3 | install packages
-  community.general.pacman:
-    name:
-      - i3-wm
-      - i3blocks
-      - i3lock
-      - i3status
-      - feh
-      - rofi
-    state: lastest
-    update_cache: yes
-  become: yes
-  when: ansible_os_family == "Archlinux"
-  tags:
-    - install
-
-
-# -------------------------------------
-#
 # Common directories and config files
 #
 # -------------------------------------

@@ -1,5 +1,10 @@
 ---
 
+# -------------------------------------
+#
+# Debian packages
+#
+# -------------------------------------
 - name: tmux | install packages
   apt:
     name: [tmux, vlock]
@@ -10,6 +15,12 @@
   when: ansible_os_family == "Debian"
   tags: install 
 
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: tmux | install config files (symb link) 
   file: 
     src: '{{role_path}}/files/.tmux.conf'

@@ -1,5 +1,10 @@
 ---
 
+# -------------------------------------
+#
+# debian packages
+#
+# -------------------------------------
 - name: openssl | install packages
   apt:
     name: [ssh, openssl]
@@ -10,6 +15,12 @@
   when: ansible_os_family == "Debian"
   tags: install 
 
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: ssh | check directory
   stat:
     path: '{{ansible_env.HOME}}/.ssh'

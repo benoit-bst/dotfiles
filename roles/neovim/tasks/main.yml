@@ -1,5 +1,10 @@
 ---
 
+# -------------------------------------
+#
+# appimages
+#
+# -------------------------------------
 - name: install neovim via AppImage ("universal" Linux package)
   get_url:
     url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -10,13 +15,11 @@
   tags:
     - install
 
-#- name: Snap | install neovim
-  #snap:
-    #name: nvim
-    #classic: yes
-  #tags:
-    #- install
-
+# -------------------------------------
+#
+# Debian packages
+#
+# -------------------------------------
 - name: neovim | install packages
   apt:
     name: [fonts-powerline, exuberant-ctags, ack-grep]
@@ -28,6 +31,11 @@
   tags:
     - install
 
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: ~/.vimrc | check file
   stat:
     path: '{{ansible_env.HOME}}/.vimrc'
@@ -123,6 +131,11 @@
   tags:
     - install
 
+# -------------------------------------
+#
+# install plugin
+#
+# -------------------------------------
 - name: install vim plugin
   shell: '{{ansible_env.HOME}}/bin/nvim.appimage +PlugInstall +qall'
   tags:

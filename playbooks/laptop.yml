@@ -3,6 +3,7 @@
 - hosts: localhost
 
   roles:
+    - { role: snap, tags: snap}
     - { role: misc, tags: misc}
     - { role: git, tags: git}
     - { role: neovim, tags: neovim}
@@ -12,7 +13,7 @@
     - { role: docker, tags: docker}
     - { role: i3, tags: i3}
     - { role: light, tags: light}
-    #- { role: termite, tags: termite}
+    - { role: termite, tags: termite}
     - { role: fzf, tags: fzf}
     - { role: pathpicker, tags: pathpicker}
     - { role: ssh, tags: ssh}

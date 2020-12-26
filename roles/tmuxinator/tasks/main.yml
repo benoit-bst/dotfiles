@@ -1,5 +1,10 @@
 ---
 
+# -------------------------------------
+#
+# Ruby packages
+#
+# -------------------------------------
 - name: tmuxinator | install ruby packages
   apt:
     name: [ruby-full]
@@ -11,6 +16,12 @@
   tags:
     - install
 
+
+# -------------------------------------
+#
+# install gem package
+#
+# -------------------------------------
 - name: tmuxinator | Install latest available version
   community.general.gem:
     name: tmuxinator
@@ -19,6 +30,12 @@
   tags:
     - install
 
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: tmuxinator | install config 
   file: 
     src: '{{role_path}}/files/tmuxinator/'

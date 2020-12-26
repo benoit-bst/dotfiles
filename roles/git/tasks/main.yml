@@ -1,5 +1,10 @@
 ---
 
+# -------------------------------------
+#
+# Debian packages
+#
+# -------------------------------------
 - name: git | install packages
   apt:
     name: git
@@ -11,6 +16,12 @@
   tags:
     - install
 
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: git | install gitignore
   file: 
     src: '{{role_path}}/files/.gitignore'

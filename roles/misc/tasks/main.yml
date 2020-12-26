@@ -1,8 +1,13 @@
 ---
 
+# -------------------------------------
+#
+# debian packages
+#
+# -------------------------------------
 - name: misc | install packages
   apt:
-    name: [build-essential, g++, cmake, curl, httpie, python-dbus, python3-pip, xdotool, clang, xautolock, mc, jq, snapd]
+    name: [build-essential, g++, cmake, curl, httpie, python-dbus, python3-pip, xdotool, clang, xautolock, mc, jq]
     state: present
     update_cache: yes
     cache_valid_time: 3600
@@ -11,6 +16,11 @@
   tags:
     - install
 
+# -------------------------------------
+#
+# install pip
+#
+# -------------------------------------
 - name: get pip
   shell: 'curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py'
   tags:
@@ -21,6 +31,21 @@
   tags:
     - install
 
+- name: install python package
+  pip:
+    name:
+      #- gdbgui
+      - web-pdb
+      - pre-commit
+      - virtualenv
+  tags:
+    - install
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
 - name: bin | install
   file: 
     src: '{{role_path}}/files/bin/'
@@ -100,20 +125,5 @@
 - name: run/kraken | create dir
   shell: 'mkdir -p {{ansible_env.HOME}}/dev/run/kraken/{krakenDebug,krakenRelease}'
   when: run_folder.stat.exists == false
-  tags:
-    - install
-
-- name: install python package
-  pip:
-    name:
-      #- gdbgui
-      - web-pdb
-      - pre-commit
-      - virtualenv
-  tags:
-    - install
-
-- name: Snap | install termite
-  shell: 'sudo snap install termite --candidate'
   tags:
     - install

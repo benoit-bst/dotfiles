@@ -47,6 +47,12 @@ command=~/bin/i3/spotify.py
 interval=5
 color=#74DF00
 
+[openvpn]
+label=VPN
+command=~/bin/i3/openconnect 
+interval=20
+color=#FFFF00
+
 [weather]
 label=🔆
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo

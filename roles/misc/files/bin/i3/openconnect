@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+PS="$(ps aux)"
+MATCH="openconnect/openconnect"
+if echo "$PS" | grep -q "$MATCH"; then
+  echo "Up";
+else
+  echo "Down";
+fi

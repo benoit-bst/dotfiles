@@ -8,7 +8,7 @@
 - name: i3 | install packages
   apt:
     pkg:
-    - vpnc-script
+    - vpnc-scripts
     state: present
     update_cache: yes
     cache_valid_time: 3600

@@ -7,7 +7,7 @@ alias cddd="cd $HOME/dev/dataset"
 #----------------------
 # VPN
 #----------------------
-alias vpn_canaltp='sudo $HOME/dev/openconnect/openconnect --protocol=gp portail-vpn.canaltp.fr'
+alias vpn_canaltp='sudo $HOME/dev/openconnect/openconnect --config=/home/bbrisset/.openconnect/kisio_openconnect portail-vpn.canaltp.fr'
 
 
 #----------------------

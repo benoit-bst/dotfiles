@@ -1,0 +1,54 @@
+---
+
+# -------------------------------------
+#
+# compile 
+#
+# -------------------------------------
+- name: openconnect | clone
+  git:
+    repo: https://github.com/openconnect/openconnect.git
+    dest: '{{ansible_env.HOME}}/dev/openconnect'
+    force: yes
+  tags:
+    - install
+
+- name: openconnect | autogen
+  command: ./autogen.sh
+  args:
+    chdir: '{{ansible_env.HOME}}/dev/openconnect'
+  tags:
+    - install
+
+- name: openconnect | configure
+  command: ./configure 
+  args:
+    chdir: '{{ansible_env.HOME}}/dev/openconnect'
+  tags:
+    - install
+
+- name: openconnect | make
+  command: make 
+  args:
+    chdir: '{{ansible_env.HOME}}/dev/openconnect'
+  tags:
+    - install
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
+- name: openconnect | check .openconnect dir
+  stat:
+    path: '{{ansible_env.HOME}}/.openconnect'
+  register: openconnect_folder
+  tags: install 
+
+- name: tmux | create .openconnect dir
+  file:
+    path: '{{ansible_env.HOME}}/.openconnect'
+    state: directory
+    mode: "u=rwx,g=rx,o=rx"
+  when: openconnect_folder.stat.exists == false
+  tags: install 

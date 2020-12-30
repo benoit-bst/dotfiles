@@ -2,6 +2,22 @@
 
 # -------------------------------------
 #
+# Debian packages
+#
+# -------------------------------------
+- name: i3 | install packages
+  apt:
+    pkg:
+    - vpnc-script
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - install
+# -------------------------------------
+#
 # compile 
 #
 # -------------------------------------

@@ -56,7 +56,7 @@ fi
 HOST_OS=$(uname)
 
 if [ "$HOST_OS" = 'Linux' ]; then
-  ansible-playbook playbooks/"$machine".yml $askbecomepass -t $install_type --skip-tags $exclude
+  ansible-playbook playbooks/"$machine".yml $askbecomepass -t $install_type --skip-tags $exclude -vvv
 else
   echo "** Unknown host OS: $HOST_OS"
   exit 1

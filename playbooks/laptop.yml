@@ -16,5 +16,6 @@
     - { role: termite, tags: termite}
     - { role: fzf, tags: fzf}
     - { role: pathpicker, tags: pathpicker}
+    - { role: openconnect, tags: openconnect}
     - { role: ssh, tags: ssh}
 

@@ -69,3 +69,18 @@ if [ -f $HOME/.navitia_profile ]; then
     . $HOME/.navitia_profile
 fi
 
+# detect ssh connection
+SESSION_TYPE='local'
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  SESSION_TYPE='remote/ssh'
+else
+  case $(ps -o comm= -p $PPID) in
+    sshd|*/sshd) SESSION_TYPE='remote/ssh';;
+  esac
+fi
+if [ "$SESSION_TYPE" = "remote/ssh" ]
+then
+  session_message="$(date -u) : ssh session detected - user : $USER  ssh tty : $SSH_TTY - ssh client : $SSH_CLIENT"
+  echo $session_message >> .ssh_session_detected
+  notify-send 'SECURITY ALERT' $session_message
+fi

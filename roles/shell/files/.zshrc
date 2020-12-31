@@ -9,7 +9,7 @@
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="afowler"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -69,7 +69,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent fzf pip docker zsh-syntax-highlighting httpie web-search tmuxinator thefuck virtualenv colored-man-pages)
+plugins=(git ssh-agent fzf pip docker zsh-syntax-highlighting httpie web-search tmuxinator virtualenv colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 

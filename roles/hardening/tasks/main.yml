@@ -1,2 +1,28 @@
 ---
-# tasks file for hardening
+
+# -------------------------------------
+#
+# debian packages
+#
+# -------------------------------------
+- name: iptables | install packages
+  apt:
+    name: [iptables, sshguard, macchanger]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags: install
+
+
+# -------------------------------------
+#
+# Common directories and config files
+#
+# -------------------------------------
+- name: iptables | install
+  command: "{{vault_install_iptables}}"
+  become: yes
+  tags:
+    - install

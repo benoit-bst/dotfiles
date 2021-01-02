@@ -94,7 +94,7 @@ noremap <F7> :set list!<cr>:set list?<cr>
 set listchars=eol:¤,trail:-
 
 "when you close file
-autocmd BufWritePre *.cpp,*.cc,*.h,*.hpp,*.c,*.py,*.go,*.rs %s/\s\+$//e
+autocmd BufWritePre *.cpp,*.cc,*.h,*.hpp,*.c,*.py,*.go,*.rs,*.yml %s/\s\+$//e
 
 " Json auto indent
 command! JsonAutoIndent :%!python -m json.tool

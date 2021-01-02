@@ -7,7 +7,7 @@
 # -------------------------------------
 - name: misc | install packages
   apt:
-    name: [build-essential, g++, cmake, curl, httpie, python-dbus, python3-pip, xdotool, clang, xautolock, mc, jq]
+    name: [build-essential, g++, cmake, curl, httpie, python3-pip, xdotool, clang, xautolock, mc, jq]
     state: present
     update_cache: yes
     cache_valid_time: 3600
@@ -27,7 +27,7 @@
     - install
 
 - name: install pip 2
-  shell: 'sudo python2 get-pip.py'
+  shell: 'sudo python3 get-pip.py'
   tags:
     - install
 
@@ -47,7 +47,7 @@
 #
 # -------------------------------------
 - name: bin | install
-  file: 
+  file:
     src: '{{role_path}}/files/bin/'
     path: '{{ansible_env.HOME}}/bin'
     force: yes
@@ -65,7 +65,7 @@
     - install
 
 - name: notes | install
-  file: 
+  file:
     src: '{{role_path}}/files/notes/'
     path: '{{ansible_env.HOME}}/notes'
     force: yes

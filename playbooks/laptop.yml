@@ -13,9 +13,9 @@
     - { role: docker, tags: docker}
     - { role: i3, tags: i3}
     - { role: light, tags: light}
-    - { role: termite, tags: termite}
+    - { role: urxvt, tags: urxvt}
+    #- { role: termite, tags: termite}
     - { role: fzf, tags: fzf}
-    - { role: pathpicker, tags: pathpicker}
     - { role: openconnect, tags: openconnect}
     - { role: ssh, tags: ssh}
 

@@ -30,8 +30,8 @@
     - install
     - update-config
 
-- name: reset config | urxvt
-  shell: xrdb ~/.Xresources
-  tags:
-    - install
-    - update-config
+#- name: reset config | urxvt
+  #shell: xrdb ~/.Xresources
+  #tags:
+    #- install
+    #- update-config

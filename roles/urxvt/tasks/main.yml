@@ -30,6 +30,19 @@
     - install
     - update-config
 
+- name: ~/.urxvt | check directory
+  stat:
+    path: '{{ansible_env.HOME}}/.urxvt'
+  register: check_urxvt_dir
+  tags:
+    - install
+
+- name: ~/.urxvt | create dir
+  shell: 'mkdir {{ansible_env.HOME}}/.urxvt'
+  when: check_urxvt_dir.stat.exists == false
+  tags:
+    - install
+
 - name: ~/.urxvt/ext | check directory
   stat:
     path: '{{ansible_env.HOME}}/.urxvt/ext'

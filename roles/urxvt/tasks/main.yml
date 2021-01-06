@@ -30,6 +30,29 @@
     - install
     - update-config
 
+- name: ~/.urxvt/ext | check directory
+  stat:
+    path: '{{ansible_env.HOME}}/.urxvt/ext'
+  register: check_urxvt_ext_dir
+  tags:
+    - install
+
+- name: ~/.urxvt/ext | remove old dir
+  shell: 'rm -rf {{ansible_env.HOME}}/.urxvt/ext'
+  when: check_urxvt_ext_dir.stat.exists == true
+  tags:
+    - install
+
+- name: ~/.urxvt/ext | install config
+  file:
+    src: '{{role_path}}/files/ext/'
+    path: '{{ansible_env.HOME}}/.urxvt/ext'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
 #- name: reset config | urxvt
   #shell: xrdb ~/.Xresources
   #tags:

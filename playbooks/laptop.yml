@@ -18,4 +18,5 @@
     - { role: fzf, tags: fzf}
     - { role: openconnect, tags: openconnect}
     - { role: ssh, tags: ssh}
+    - { role: hardening, tags: hardening}
 

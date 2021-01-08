@@ -1,0 +1,17 @@
+#!/bin/bash
+
+change_mac(){
+        # Prevent enless loop on error
+        if (( COUNT >= 10 )); then exit 0; else COUNT=$(( COUNT + 1 )); echo "Attempt: $COUNT"; fi
+        # Generate a new MAC address
+        MAC="$(echo $RANDOM | md5sum | head -c 17 | sed -r 's/(..)./\1:/g')"
+        # Change the MAC address of the target network interface
+        /sbin/ifconfig "$1" hw ether "${MAC}"
+        # Chech whether the MAC is successfully changed anf if is not call the function again
+        if [ $? -ne 0 ]; then change_mac; fi
+        # Log the change
+        echo "Interface: $1 | MAC: $MAC"
+}
+
+# Call of the function; Change 'wlp2s0' with the actual interface in use; Create a log file `/tmp/mac-changer-...`
+change_mac 'wlp2s0' > /tmp/mac-changer-wlp2s0 2>&1

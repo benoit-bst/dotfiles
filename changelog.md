@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.2
+
+- terminal: now use urxvt
+- security: add mac-changer
+- shell: change zsh theme
+- ci: add shields
+- vpn: add openconnect
+
 ## 1.0.1
 
 - use snap to install termite

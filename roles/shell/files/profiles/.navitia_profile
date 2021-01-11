@@ -31,12 +31,18 @@ navitia_unmount_prod_bina(){
 }
 
 #----------------------
+# bbst docker
+#----------------------
+alias bbst_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_bbst_navitia_dev bash'
+alias bbst_build_docker='cd /home/bbrisset/dev/dotfiles/roles/docker/files/navitia_bbst_docker && ./make_docker && cd -'
+
+#----------------------
 # navitia docker
 #----------------------
-alias navitia_docker_debian_8='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/debian8_dev bash'
-alias navitia_docker_debian_9='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/debian9_dev bash'
-alias navitia_docker_debian_10='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/debian10_dev bash'
-alias navitia_docker_ubuntu_18='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/ubuntu18_dev bash'
+alias navitia_docker_debian_8='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/run:/navitia_run -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /build navitia/debian8_dev bash'
+alias navitia_docker_debian_9='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/run:/navitia_run -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/debian9_dev bash'
+alias navitia_docker_debian_10='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/run:/navitia_run -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/debian10_dev bash'
+alias navitia_docker_ubuntu_18='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/run:/navitia_run -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /navitia navitia/ubuntu18_dev bash'
 
 #----------------------
 # Artemis

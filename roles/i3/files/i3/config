@@ -188,7 +188,7 @@ bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 2 # decrease screen brightness
 
 # background
-exec --no-startup-id feh --bg-fill ${HOME}/.wallpaper/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ${HOME}/.wallpaper/wallpaper.png
 
 # workspace with screen
 workspace 1 output "DP-2-2"

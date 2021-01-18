@@ -39,6 +39,8 @@ alias kraken_run_d='$HOME/dev/build/navitia_docker/debug/kraken/kraken $HOME/dev
 #----------------------
 alias navitia_tests_r='cd /$HOME/dev/build/navitia_docker/release && make CTEST_OUTPUT_ON_FAILURE=1 test && cd -'
 alias navitia_tests_d='cd /$HOME/dev/build/navitia_docker/debug && make CTEST_OUTPUT_ON_FAILURE=1 test && cd -'
+alias navitia_docker_tests_r='cd $HOME/dev/build/navitia_docker/release && make docker_test && cd -'
+alias navitia_docker_tests_d='cd $HOME/dev/build/navitia_docker/debug && make docker_test && cd -'
 
 #----------------------
 # Prompt
@@ -52,7 +54,7 @@ B='\[\033[0;34;1m\]'    # blue
 M='\[\033[0;35;1m\]'    # magenta
 C='\[\033[0;36;1m\]'    # cyan
 W='\[\033[0;37;1m\]'    # white
-export PS1="$C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
+export PS1="DOCKER-BBST: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
 export PAGER=most
 
 export EDITOR="/usr/bin/vim"

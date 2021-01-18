@@ -31,6 +31,12 @@ alias sk="~/bin/switch_keyboard"
 alias wf="nmtui"
 alias gnome-cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
+#----------------------
+# Rabbit-mq
+#----------------------
+alias rabbitmq_up='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose up &>/dev/null &'
+alias rabbitmq_down='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose down -v &>/dev/null &'
+
 replace(){
     find $1 -type f -exec sed -i "s/$2/$3/g" {} \;
 }

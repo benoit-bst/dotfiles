@@ -13,5 +13,6 @@ change_mac(){
         echo "Interface: $1 | MAC: $MAC"
 }
 
+/sbin/ifconfig wlp2s0 down
 # Call of the function; Change 'wlp2s0' with the actual interface in use; Create a log file `/tmp/mac-changer-...`
 change_mac 'wlp2s0' > /tmp/mac-changer-wlp2s0 2>&1

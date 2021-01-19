@@ -76,6 +76,8 @@ COPY requirements_dev.txt /home/bbrisset/requirements_dev.txt
 # python tyr requirements
 COPY requirements_tyr.txt /home/bbrisset/requirements_tyr.txt
 COPY requirements_dev_tyr.txt /home/bbrisset/requirements_dev_tyr.txt
+# python eitri requirements
+COPY requirements_eitri.txt /home/bbrisset/requirements_eitri.txt
 # python pre-commits w requirements
 COPY requirements_pre-commit.txt /requirements_pre-commit.txt
 
@@ -83,10 +85,13 @@ COPY requirements_pre-commit.txt /requirements_pre-commit.txt
 RUN pip install -r /home/bbrisset/requirements_dev.txt
 # pip tyr
 RUN pip install -r /home/bbrisset/requirements_dev_tyr.txt
+# pip eitri
+RUN pip install -r /home/bbrisset/requirements_eitri.txt
 
 # remove useless requirements
 RUN rm -f /home/bbrisset/requirements.txt /home/bbrisset/requirements_dev.txt
 RUN rm -f /home/bbrisset/requirements_tyr.txt /home/bbrisset/requirements_dev_tyr.txt
+RUN rm -f /home/bbrisset/requirements_eitri.txt
 RUN rm -f /requirements_pre-commit.txt
 
  

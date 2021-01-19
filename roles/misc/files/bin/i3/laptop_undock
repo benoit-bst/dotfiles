@@ -6,7 +6,7 @@ VIEW=$(xrandr)
 # laptop
 xrandr --output eDP-1 --auto
 
-if [ "$(xrandr | awk '!/eDP-1/' | grep -v 'DP-1 connected' | wc -l)" = "1" ];
+if [ "$(xrandr | grep 'DP-1 connected' | wc -l)" = "2" ];
 then
     xrandr --output DP-1 --off
     echo "shutdown on DP-1"

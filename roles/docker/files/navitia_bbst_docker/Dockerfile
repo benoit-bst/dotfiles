@@ -63,7 +63,9 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py
 # add bbrisset user with sudo
 RUN adduser --disabled-password --gecos '' bbrisset
 RUN usermod -aG sudo bbrisset
+RUN usermod -aG docker bbrisset
 
+RUN echo "bbrisset:root" | chpasswd
 RUN echo "root:root" | chpasswd
 
 # bash tunning

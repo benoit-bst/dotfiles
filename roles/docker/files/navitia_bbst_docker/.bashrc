@@ -43,12 +43,11 @@ alias navitia_docker_tests_r='cd $HOME/dev/build/navitia_docker/release && make 
 alias navitia_docker_tests_d='cd $HOME/dev/build/navitia_docker/debug && make docker_test && cd -'
 
 #----------------------
-# Eitry
+# Eitri
 #----------------------
 eitri_run(){
-  cd $HOME/dev/navitia/source/eitri
-  PYTHONPATH=.:../navitiacommon python2.7 eitri.py -d $1 -e $HOME/dev/build/navitia_docker/release/ed
-  cd -
+  run_eitri="cd /home/bbrisset/dev/navitia/source/eitri && PYTHONPATH=.:../navitiacommon python2.7 eitri.py -d $1 -e /home/bbrisset/dev/build/navitia_docker/release/ed"
+  echo 'root' | su -c "$run_eitri" root
 }
 
 #----------------------

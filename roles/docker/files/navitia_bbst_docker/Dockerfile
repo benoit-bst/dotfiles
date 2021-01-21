@@ -72,6 +72,9 @@ RUN echo "root:root" | chpasswd
 RUN rm -f /home/bbrisset/.bashrc 
 COPY .bashrc /home/bbrisset/.bashrc
 
+# git
+COPY .gitconfig /home/bbrisset/.gitconfig
+
 # python jormun requirements
 COPY requirements.txt /home/bbrisset/requirements.txt
 COPY requirements_dev.txt /home/bbrisset/requirements_dev.txt

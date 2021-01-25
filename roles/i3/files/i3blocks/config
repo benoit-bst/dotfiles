@@ -47,8 +47,14 @@ command=~/bin/i3/spotify.py
 interval=5
 color=#74DF00
 
-[openvpn]
-label=VPN
+[nordvpn]
+label=Nord-Vpn
+command=~/bin/i3/nordvpn
+interval=20
+color=#FFFF00
+
+[openconnect]
+label=KD-Vpn
 command=~/bin/i3/openconnect 
 interval=20
 color=#FFFF00

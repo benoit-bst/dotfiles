@@ -19,7 +19,7 @@ alias cdb="cd $HOME/dev/build"
 # OTHERS 
 #----------------------
 alias howToKraken="cat $HOME/dev/dotfiles/notes/navitia.md"
-alias cat='bat'
+alias cat='cat'
 alias g='git'
 alias v='nvim.appimage'
 alias vi='nvim.appimage'

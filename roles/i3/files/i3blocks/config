@@ -32,13 +32,13 @@ markup=none
 [volume]
 command=~/bin/i3/volume
 label=🔉 
-interval=2
+interval=4
 color=#01A9DB
 
 [microphone]
 command=~/bin/i3/microphone
 label=🎤 
-interval=2
+interval=4
 color=#01A9DE
 
 [spotify]
@@ -50,13 +50,13 @@ color=#74DF00
 [nordvpn]
 label=Nord-Vpn
 command=~/bin/i3/nordvpn
-interval=20
+interval=40
 color=#FFFF00
 
 [openconnect]
 label=KD-Vpn
 command=~/bin/i3/openconnect 
-interval=20
+interval=40
 color=#FFFF00
 
 [weather]
@@ -79,7 +79,7 @@ interval=5
 [fakemac]
 label=Fake MAC
 command=~/bin/i3/fakemac 
-interval=5
+interval=10
 color=#F7BE81
 
 [cpu]
@@ -108,7 +108,7 @@ interval=3
 [battery]
 command=~/bin/i3/battery
 label=⚡
-interval=5
+interval=10
 color=#FFFF00
 
 [time]

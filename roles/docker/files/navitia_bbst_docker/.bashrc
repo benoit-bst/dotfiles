@@ -62,7 +62,7 @@ B='\[\033[0;34;1m\]'    # blue
 M='\[\033[0;35;1m\]'    # magenta
 C='\[\033[0;36;1m\]'    # cyan
 W='\[\033[0;37;1m\]'    # white
-export PS1="DOCKER-BBST: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
+export PS1="DOCKER-NAVITIA: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
 export PAGER=most
 
 export EDITOR="/usr/bin/vim"

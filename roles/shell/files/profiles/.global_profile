@@ -32,20 +32,41 @@ alias wf="nmtui"
 alias gnome-cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 #----------------------
-# Rabbit-mq
+# Rabbit-mq docker
 #----------------------
 alias rabbitmq_up='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose up &>/dev/null &'
 alias rabbitmq_down='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose down -v &>/dev/null &'
 
+
+#----------------------
+# Replace
+#----------------------
 replace(){
     find $1 -type f -exec sed -i "s/$2/$3/g" {} \;
 }
 
+#----------------------
+# Nmap
+#----------------------
 hard_nmap(){
     sudo nmap -A -T4 -Pn -p- $1
 }
 soft_nmap(){
     sudo nmap -sS -sU $1
+}
+
+#----------------------
+# GPG
+#----------------------
+gpg_encryt ()
+{
+    gpg --output $1.data --symmetric --cipher-algo AES256 $1
+}
+
+gpg_decrypt ()
+{
+    output_name="$(echo $1 | cut --delimiter='.' -f1)"
+    gpg --output $output_name --decrypt $1
 }
 
 # archive extractor

@@ -37,6 +37,12 @@ alias bbst_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id
 alias bbst_build_docker='cd /home/bbrisset/dev/dotfiles/roles/docker/files/navitia_bbst_docker && ./make_docker && cd -'
 
 #----------------------
+# asgard docker
+#----------------------
+alias asgard_build_docker='cd /home/bbrisset/dev/dotfiles/roles/docker/files/asgard_bbst_docker && ./make_docker && cd -'
+alias asgard_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v $HOME/dev:/$HOME/dev -w $HOME docker_bbst_asgard_dev bash'
+
+#----------------------
 # navitia docker
 #----------------------
 alias navitia_docker_debian_8='docker run -it --rm --user=$(id -u):$(id -g) -v $HOME/dev/dotfiles/roles/docker/files/.bashrc:/.bashrc -v $HOME/dev/run:/navitia_run -v $HOME/dev/build/navitia_docker:/build -v $HOME/dev/navitia:/navitia -w /build navitia/debian8_dev bash'

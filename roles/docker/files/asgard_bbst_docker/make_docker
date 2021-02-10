@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "Create Asgard Bbst Docker"
+echo "- Remove old docker_bbst_navitia_dev images"
+docker rmi --force docker_bbst_asgard_dev
+echo "- Build docker images"
+docker build -t docker_bbst_asgard_dev .
+echo "Finish Docker"
+docker images

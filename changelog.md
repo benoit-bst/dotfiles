@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.3
+
+- wallpaper: fix it
+- hardening
+- pi: add pi file
+- docker: add asgard and navitia dev docker
+
 ## 1.0.2
 
 - terminal: now use urxvt

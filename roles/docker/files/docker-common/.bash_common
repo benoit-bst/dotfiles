@@ -1,0 +1,45 @@
+shopt -s cdspell
+
+#----------------------
+# export 
+#----------------------
+export PATH=$PATH:~/.local/bin
+export PAGER=most
+export EDITOR="/usr/bin/vim"
+
+#----------------------
+# alias
+#----------------------
+alias ex='exit'
+alias g='git'
+alias v='vim'
+alias vi='vim'
+alias vim='vim'
+alias cl="clear"
+
+#----------------------
+# Prompt
+#----------------------
+NONE='\[\033[0m\]'    # default coloring
+K='\[\033[0;30;1m\]'    # black
+R='\[\033[0;31;1m\]'    # red
+G='\[\033[0;32;1m\]'    # green
+Y='\[\033[0;33;1m\]'    # yellow
+B='\[\033[0;34;1m\]'    # blue
+M='\[\033[0;35;1m\]'    # magenta
+C='\[\033[0;36;1m\]'    # cyan
+W='\[\033[0;37;1m\]'    # white
+
+#-------------------- Commands Colors
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias ll='ls --color=auto -l'
+    alias l='ls --color=auto -lA'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi

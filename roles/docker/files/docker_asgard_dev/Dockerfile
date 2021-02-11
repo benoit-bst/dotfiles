@@ -62,5 +62,8 @@ COPY .bashrc /home/bbrisset/.bashrc
 # git
 COPY .gitconfig /home/bbrisset/.gitconfig
 
+# bash_common
+COPY .bash_common /home/bbrisset/.bash_common
+
 # pre-commit
 RUN pip3 install pre-commit

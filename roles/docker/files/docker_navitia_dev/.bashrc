@@ -1,10 +1,7 @@
-shopt -s cdspell
-
-#----------------------
-# path
-#----------------------
-export PATH=$PATH:~/.local/bin
-
+# include .bash_common
+if [ -f $HOME/.bash_common ]; then
+    . $HOME/.bash_common
+fi
 #----------------------
 # Custom Commands
 #----------------------
@@ -13,13 +10,6 @@ alias cdb='cd $HOME/dev/build/navitia_docker'
 alias cdd='cd $HOME/dev'
 alias cdr='cd $HOME/dev/run/kraken/docker'
 alias cddd='cd $HOME/dev/dataset'
-
-alias ex='exit'
-alias g='git'
-alias v='vim'
-alias vi='vim'
-alias vim='vim'
-alias cl="clear"
 
 #----------------------
 # Kraken
@@ -46,37 +36,8 @@ alias navitia_docker_tests_d='cd $HOME/dev/build/navitia_docker/debug && make do
 # Eitri
 #----------------------
 eitri_run(){
-  run_eitri="cd /home/bbrisset/dev/navitia/source/eitri && PYTHONPATH=.:../navitiacommon python2.7 eitri.py -d $1 -e /home/bbrisset/dev/build/navitia_docker/release/ed"
+  run_eitri="cd $HOME/dev/navitia/source/eitri && PYTHONPATH=.:../navitiacommon python2.7 eitri.py -d $1 -e $HOME/dev/build/navitia_docker/release/ed"
   echo 'root' | su -c "$run_eitri" root
 }
 
-#----------------------
-# Prompt
-#----------------------
-NONE='\[\033[0m\]'    # default coloring
-K='\[\033[0;30;1m\]'    # black
-R='\[\033[0;31;1m\]'    # red
-G='\[\033[0;32;1m\]'    # green
-Y='\[\033[0;33;1m\]'    # yellow
-B='\[\033[0;34;1m\]'    # blue
-M='\[\033[0;35;1m\]'    # magenta
-C='\[\033[0;36;1m\]'    # cyan
-W='\[\033[0;37;1m\]'    # white
 export PS1="DOCKER-NAVITIA: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
-export PAGER=most
-
-export EDITOR="/usr/bin/vim"
-
-#-------------------- Commands Colors
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias ll='ls --color=auto -l'
-    alias l='ls --color=auto -lA'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi

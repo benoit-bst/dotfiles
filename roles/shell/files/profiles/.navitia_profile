@@ -33,14 +33,14 @@ navitia_unmount_prod_bina(){
 #----------------------
 # bbst docker
 #----------------------
-alias navitia_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_bbst_navitia_dev bash'
-alias navitia_build_docker='cd /home/bbrisset/dev/dotfiles/roles/docker/files/navitia_bbst_docker && ./make_docker && cd -'
+alias navitia_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_navitia_dev bash'
+alias navitia_build_docker='cd $HOME/dev/dotfiles/roles/docker/files/docker_navitia_dev && ./make_docker && cd -'
 
 #----------------------
 # asgard docker
 #----------------------
-alias asgard_build_docker='cd /home/bbrisset/dev/dotfiles/roles/docker/files/asgard_bbst_docker && ./make_docker && cd -'
-alias asgard_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v $HOME/dev:/$HOME/dev -w $HOME docker_bbst_asgard_dev bash'
+alias asgard_build_docker='cd $HOME/dev/dotfiles/roles/docker/files/docker_asgard_dev && ./make_docker && cd -'
+alias asgard_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v $HOME/dev:/$HOME/dev -w $HOME docker_asgard_dev bash'
 
 #----------------------
 # navitia docker

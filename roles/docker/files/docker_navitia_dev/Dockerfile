@@ -75,6 +75,9 @@ COPY .bashrc /home/bbrisset/.bashrc
 # git
 COPY .gitconfig /home/bbrisset/.gitconfig
 
+# bash_common
+COPY .bash_common /home/bbrisset/.bash_common
+
 # python jormun requirements
 COPY requirements.txt /home/bbrisset/requirements.txt
 COPY requirements_dev.txt /home/bbrisset/requirements_dev.txt

@@ -67,3 +67,6 @@ COPY .bash_common /home/bbrisset/.bash_common
 
 # pre-commit
 RUN pip3 install pre-commit
+
+# python link
+RUN sudo ln -s /usr/bin/python2.7 /usr/bin/python

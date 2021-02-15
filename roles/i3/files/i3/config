@@ -199,8 +199,8 @@ workspace 5 output "eDP-1"
 workspace 6 output "eDP-1"
 workspace 7 output "eDP-1"
 workspace 8 output "eDP-1"
-workspace 9 output "eDP-1"
-workspace 10 output "eDP-1"
+workspace 9 output "DP-1"
+workspace 10 output "DP-1"
 
 for_window [class="^.*"] border pixel 3
 

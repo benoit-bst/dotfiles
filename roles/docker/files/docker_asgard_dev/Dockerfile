@@ -15,6 +15,7 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install --yes --quiet \
     cmake \
     g++ \
     gcc \
+    gdb \
     git \
     jq \
     lcov \

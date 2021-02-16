@@ -32,6 +32,7 @@ RUN	apt-get install -y \
 		cmake \
 		gcc \
 		g++ \
+        gdb \
 		libboost-all-dev \
         liblog4cplus-1.1-9 \
 		liblog4cplus-dev \

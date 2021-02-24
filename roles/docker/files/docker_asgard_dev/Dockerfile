@@ -2,12 +2,13 @@ FROM ubuntu:20.04
 
 # Now, go through and install the build dependencies
 RUN apt-get update --assume-yes
-RUN env DEBIAN_FRONTEND=noninteractive apt-get install --yes --quiet \
+RUN env DEBIAN_FRONTEND=noninteractive apt-get install --yes --quiet\
     autoconf \
     automake \
     ccache \
     clang \
     clang-tidy \
+    clang-format \
     coreutils \
     curl \
     vim \

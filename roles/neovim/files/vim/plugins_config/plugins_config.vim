@@ -18,6 +18,7 @@ Plug 'google/vim-searchindex'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'ollykel/v-vim'
+Plug 'hashivim/vim-terraform'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}

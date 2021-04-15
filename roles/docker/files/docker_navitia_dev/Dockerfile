@@ -16,11 +16,12 @@ RUN apt install -y apt-transport-https ca-certificates curl gnupg2 software-prop
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 RUN apt install -y docker-ce
 
 RUN	apt-get install -y \
 		git \
+		most \
         curl \
 		postgresql-server-dev-all \
 		python-dev \
@@ -33,6 +34,7 @@ RUN	apt-get install -y \
 		gcc \
 		g++ \
         gdb \
+        linux-perf \
 		libboost-all-dev \
         liblog4cplus-1.1-9 \
 		liblog4cplus-dev \
@@ -55,7 +57,7 @@ RUN	apt-get install -y \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # we can't use pip from system it's too old
-RUN curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py && python get-pip.py \
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && python get-pip.py \
     && pip install -U virtualenv pipenv && \
 	# install dependancies for libc
 	pip install ujson==1.33 numpy==1.9 && \

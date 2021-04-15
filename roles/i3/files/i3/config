@@ -222,7 +222,7 @@ mode "$mode_system" {
 }
 bindsym $mod+o mode "$mode_system"
 
-exec --no-startup-id xautolock -time 20 -locker 'i3lock -d -c 111111'
+exec --no-startup-id xautolock -time 40 -locker 'i3lock -d -c 111111'
 
 # mode system
 set $screen_system Screen (e) extend, (v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)

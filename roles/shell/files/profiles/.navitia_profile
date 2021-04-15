@@ -33,7 +33,7 @@ navitia_unmount_prod_bina(){
 #----------------------
 # bbst docker
 #----------------------
-alias navitia_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_navitia_dev bash'
+alias navitia_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) --cap-add SYS_ADMIN -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_navitia_dev bash'
 alias navitia_build_docker='cd $HOME/dev/dotfiles/roles/docker/files/docker_navitia_dev && ./make_docker && cd -'
 
 #----------------------

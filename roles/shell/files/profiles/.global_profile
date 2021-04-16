@@ -37,6 +37,11 @@ alias gnome-cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias rabbitmq_up='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose up &>/dev/null &'
 alias rabbitmq_down='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose down -v &>/dev/null &'
 
+#----------------------
+# Perf & flame graph
+#----------------------
+alias perf_report_fluffy='perf report --stdio --sort comm,dso'
+alias flamegraph='perf script | $HOME/dev/FlameGraph/stackcollapse-perf.pl > out.perf-folded && $HOME/dev/FlameGraph/flamegraph.pl out.perf-folded > flamegraph.svg'
 
 #----------------------
 # Replace

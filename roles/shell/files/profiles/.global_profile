@@ -38,6 +38,12 @@ alias rabbitmq_up='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-
 alias rabbitmq_down='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose down -v &>/dev/null &'
 
 #----------------------
+# Grafana docker
+#----------------------
+alias grafana_docker='docker run -d --network="host" grafana/grafana'
+alias prometheus_docker='docker run -d --network="host" -v $HOME/dev/config/prometheus:/etc/prometheus prom/prometheus'
+
+#----------------------
 # Perf & flame graph
 #----------------------
 alias perf_report_fluffy='perf report --stdio --sort comm,dso'

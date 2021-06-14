@@ -1,4 +1,4 @@
-export PATH=$PATH:~/dev/build/navitia/release/ed
+export PATH=$PATH:~/dev/build/navitia_docker/release/ed
 
 alias cddn="cd $HOME/dev/navitia"
 alias cdda="cd $HOME/dev/asgard"

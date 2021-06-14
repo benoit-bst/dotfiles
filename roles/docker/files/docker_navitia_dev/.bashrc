@@ -2,6 +2,9 @@
 if [ -f $HOME/.bash_common ]; then
     . $HOME/.bash_common
 fi
+
+export PATH=$PATH:~/dev/build/navitia_docker/release/ed
+
 #----------------------
 # Custom Commands
 #----------------------

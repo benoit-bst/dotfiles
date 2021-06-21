@@ -52,6 +52,7 @@ RUN	apt-get install -y \
         libosmpbf-dev \
         python-protobuf \
         clang-format-6.0 \
+        clang-tidy \
         libssl-dev && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

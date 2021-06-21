@@ -20,6 +20,8 @@
   tags:
     - install
 
+# Create /etc/X11/xorg.conf.d
+# Add 90-touchpad.conf inside
 
 # -------------------------------------
 #
@@ -39,8 +41,8 @@
   tags:
     - install
 
-- name: i3 | install config 
-  file: 
+- name: i3 | install config
+  file:
     src: '{{role_path}}/files/i3/'
     path: '{{ansible_env.HOME}}/.config/i3'
     force: yes
@@ -49,8 +51,8 @@
     - install
     - update-config
 
-- name: i3blocks | install config 
-  file: 
+- name: i3blocks | install config
+  file:
     src: '{{role_path}}/files/i3blocks/'
     path: '{{ansible_env.HOME}}/.config/i3blocks'
     force: yes
@@ -59,8 +61,8 @@
     - install
     - update-config
 
-- name: wallpaper | install 
-  file: 
+- name: wallpaper | install
+  file:
     src: '{{role_path}}/files/wallpaper/'
     path: '{{ansible_env.HOME}}/.wallpaper'
     force: yes

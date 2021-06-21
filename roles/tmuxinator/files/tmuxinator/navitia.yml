@@ -11,8 +11,8 @@ windows:
   - navitia:
       root: ~/dev/navitia
       panes:
-          - # 
-  - build-navitia:
+          - #
+  - docker-navitia:
       root: ~/dev/navitia
       layout: 83df,273x69,0,0[273x9,0,0,10,273x59,0,10,11]
       panes:
@@ -20,9 +20,9 @@ windows:
             - htop
         - pane_with_multiple_commands:
             - clear
-  - run-navitia:
+  - run-jormun:
       root: ~
       layout: a2ae,273x69,0,0{136x69,0,0,2,136x69,137,0,8}
       panes:
-          - # 
+          - #
           - #

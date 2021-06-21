@@ -7,7 +7,7 @@
 # -------------------------------------
 - name: misc | install packages
   apt:
-    name: [build-essential, g++, cmake, curl, httpie, python3-pip, xdotool, clang, xautolock, mc, libtool, autoconf, jq]
+    name: [build-essential, g++, cmake, curl, httpie, python3-pip, htop, xdotool, clang, xautolock, mc, libtool, autoconf, jq]
     state: present
     update_cache: yes
     cache_valid_time: 3600

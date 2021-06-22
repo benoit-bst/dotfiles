@@ -26,6 +26,10 @@ alias kraken_all_d='kraken_cmake_d && kraken_make_d'
 alias kraken_config='vim $HOME/dev/run/kraken/docker/kraken.ini'
 alias kraken_run_r='$HOME/dev/build/navitia_docker/release/kraken/kraken $HOME/dev/run/kraken/docker/kraken.ini'
 alias kraken_run_d='$HOME/dev/build/navitia_docker/debug/kraken/kraken $HOME/dev/run/kraken/docker/kraken.ini'
+alias kraken_gdb_r='cd $HOME/dev/build/navitia_docker/release/kraken &&  gdb -tui --args ./kraken $HOME/dev/run/kraken/docker/kraken.ini'
+alias kraken_gdb_d='cd $HOME/dev/build/navitia_docker/debug/kraken &&  gdb -tui --args ./kraken $HOME/dev/run/kraken/docker/kraken.ini'
+alias kraken_tidy_r='cd $HOME/dev/build/navitia_docker/release && make tidy -j4'
+alias kraken_tidy_d='cd $HOME/dev/build/navitia_docker/debug && make tidy -j4'
 
 #----------------------
 # Navitia

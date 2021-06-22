@@ -33,6 +33,7 @@ RUN	apt-get install -y \
 		cmake \
 		gcc \
 		g++ \
+        clang \
         gdb \
         linux-perf \
 		libboost-all-dev \

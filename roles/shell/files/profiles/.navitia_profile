@@ -80,8 +80,20 @@ alias kibana_run='cd $HOME/soft/kibana-4.6.0-linux-x86_64/bin && ./kibana'
 #----------------------
 alias jormun_config='cd $HOME/dev/run/jormungandr && vim default.json'
 alias jormun_virt='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate'
-alias jormun_run='cd $HOME/dev/navitia/source/jormungandr && PYTHONPATH=.:../navitiacommon JORMUNGANDR_CONFIG_FILE=$HOME/dev/navitia/source/jormungandr/jormungandr/dev_settings.py JORMUNGANDR_INSTANCES_DIR=$HOME/dev/run/jormungandr JORMUNGANDR_USE_SERPY=True FLASK_APP=jormungandr:app flask run'
-alias jormun_test='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate && cd $HOME/dev/navitia/source/jormungandr && PYTHONPATH=.:../navitiacommon KRAKEN_BUILD_DIR=$HOME/dev/build/navitia/release py.test tests && deactivate && cd -'
+alias jormun_test(){
+  if ! [[ $(pip -V) == *"jor"* ]]; then
+    source $HOME/dev/virtualenv/virtualenv-jor/bin/activate
+  fi
+  cd $HOME/dev/navitia/source/jormungandr
+  PYTHONPATH=.:../navitiacommon KRAKEN_BUILD_DIR=$HOME/dev/build/navitia/release py.test tests && deactivate && cd -
+}
+jormun_run(){
+  if ! [[ $(pip -V) == *"jor"* ]]; then
+    source $HOME/dev/virtualenv/virtualenv-jor/bin/activate
+  fi
+  cd $HOME/dev/navitia/source/jormungandr
+  PYTHONPATH=.:../navitiacommon JORMUNGANDR_CONFIG_FILE=$HOME/dev/navitia/source/jormungandr/jormungandr/dev_settings.py JORMUNGANDR_INSTANCES_DIR=$HOME/dev/run/jormungandr JORMUNGANDR_USE_SERPY=True FLASK_APP=jormungandr:app flask run
+}
 
 #----------------------
 # Eitry
@@ -89,7 +101,9 @@ alias jormun_test='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate && cd
 alias eitri_virt='source $HOME/dev/virtualenv/virtualenv-eitri/bin/activate'
 
 eitri_run(){
-  source $HOME/dev/virtualenv/virtualenv-eitri/bin/activate
+  if ! [[ $(pip -V) == *"eitri"* ]]; then
+    source $HOME/dev/virtualenv/virtualenv-eitri/bin/activate
+  fi
   cd $HOME/dev/navitia/source/eitri
   PYTHONPATH=.:../navitiacommon python2.7 eitri.py -d $1 -e $HOME/dev/build/navitia/release/ed
   deactivate

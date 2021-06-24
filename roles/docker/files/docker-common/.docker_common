@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+echo "docker common"
+
+# **************************************
+# user
+# **************************************
+RUN adduser --disabled-password --gecos '' bbrisset
+RUN usermod -aG sudo bbrisset
+RUN usermod -aG docker bbrisset
+
+RUN echo "bbrisset:root" | chpasswd
+RUN echo "root:root" | chpasswd
+
+# **************************************
+# fzf
+# **************************************
+echo "install fzf"
+git clone https://github.com/junegunn/fzf.git /home/bbrisset/.fzf
+cd /home/bbrisset/.fzf && ( echo yes ; echo yes; echo yes ) | ./install 
+cp /root/.fzf.bash /home/bbrisset/.fzf.bash
+chown -R bbrisset:bbrisset /home/bbrisset/.fzf
+chown -R bbrisset:bbrisset /home/bbrisset/.fzf.bash
+
+# **************************************
+# chown
+# **************************************
+chown -R bbrisset:bbrisset /home/bbrisset/.bashrc
+chown -R bbrisset:bbrisset /home/bbrisset/.bash_common
+chown -R bbrisset:bbrisset /home/bbrisset/.gitconfig

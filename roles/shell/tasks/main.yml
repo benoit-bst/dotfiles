@@ -35,7 +35,7 @@
 #
 # -------------------------------------
 - name: bashrc | install
-  file: 
+  file:
     src: '{{role_path}}/files/.bashrc'
     path: '{{ansible_env.HOME}}/.bashrc'
     force: yes
@@ -45,7 +45,7 @@
     - update-config
 
 - name: zshrc | install
-  file: 
+  file:
     src: '{{role_path}}/files/.zshrc'
     path: '{{ansible_env.HOME}}/.zshrc'
     force: yes
@@ -55,7 +55,7 @@
     - update-config
 
 - name: global profile | install
-  file: 
+  file:
     src: '{{role_path}}/files/profiles/.global_profile'
     path: '{{ansible_env.HOME}}/.global_profile'
     force: yes
@@ -65,7 +65,7 @@
     - update-config
 
 - name: navitia profile | install
-  file: 
+  file:
     src: '{{role_path}}/files/profiles/.navitia_profile'
     path: '{{ansible_env.HOME}}/.navitia_profile'
     force: yes
@@ -79,7 +79,7 @@
 #  shell: chsh -s /usr/bin/zsh
 
 - name: zsh | user with zsh
-  user: 
+  user:
     name: '{{ansible_env.USER}}'
     shell: /usr/bin/zsh
   become: yes

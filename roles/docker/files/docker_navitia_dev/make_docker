@@ -3,7 +3,7 @@
 echo "create navitia docker"
 
 # **************************************
-# cp utils
+# common
 # **************************************
 echo "- cp .bash_common"
 cp ../docker-common/.bash_common .
@@ -11,6 +11,12 @@ cp ../docker-common/.bash_common .
 echo "- cp .gitconfig"
 cp ../../../git/files/.gitconfig .
 
+echo "- cp .docker_common"
+cp ../docker-common/.docker_common .
+
+# **************************************
+# navitia
+# **************************************
 echo "- Copy Jormun requirements.txt"
 cp $HOME/dev/navitia/source/jormungandr/requirements_dev.txt .
 cp $HOME/dev/navitia/source/jormungandr/requirements.txt .
@@ -23,7 +29,7 @@ echo "- Copy pre-commit requirements.txt"
 cp $HOME/dev/navitia/requirements_pre-commit.txt .
 
 # **************************************
-# docker
+# build docker
 # **************************************
 echo "- Remove old docker_asgard_dev images"
 docker rmi --force docker_navitia_dev
@@ -35,13 +41,16 @@ echo "Finish Docker"
 docker images
 
 # **************************************
-# rm tmp utils
+# clean common
 # **************************************
 echo "- rm tmp .bash_common"
 rm -f .bash_common
 
 echo "- rm tmp .gitconfig"
 rm -f .gitconfig
+
+echo "- rm tmp .docker_common"
+rm -f .docker_common
 
 echo "- Remove Jormun requirements.txt"
 rm -rf requirements*

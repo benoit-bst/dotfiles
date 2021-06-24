@@ -80,7 +80,7 @@ alias kibana_run='cd $HOME/soft/kibana-4.6.0-linux-x86_64/bin && ./kibana'
 #----------------------
 alias jormun_config='cd $HOME/dev/run/jormungandr && vim default.json'
 alias jormun_virt='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate'
-alias jormun_test(){
+jormun_test(){
   if ! [[ $(pip -V) == *"jor"* ]]; then
     source $HOME/dev/virtualenv/virtualenv-jor/bin/activate
   fi

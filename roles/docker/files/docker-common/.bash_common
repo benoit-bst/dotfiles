@@ -4,6 +4,7 @@ shopt -s cdspell
 # export 
 #----------------------
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.fzf/bin
 export PAGER=most
 export EDITOR="/usr/bin/vim"
 
@@ -43,3 +44,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+export PS1="DOCKER-NAVITIA: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -65,23 +65,9 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && python ge
 	pip install ujson==1.33 numpy==1.9 && \
 	rm -rf /tmp/* /var/tmp/* ~/.cache/pip/*
 
-# add bbrisset user with sudo
-RUN adduser --disabled-password --gecos '' bbrisset
-RUN usermod -aG sudo bbrisset
-RUN usermod -aG docker bbrisset
-
-RUN echo "bbrisset:root" | chpasswd
-RUN echo "root:root" | chpasswd
-
-# bash tunning
-RUN rm -f /home/bbrisset/.bashrc 
-COPY .bashrc /home/bbrisset/.bashrc
-
-# git
-COPY .gitconfig /home/bbrisset/.gitconfig
-
-# bash_common
-COPY .bash_common /home/bbrisset/.bash_common
+#----------------------------
+# navitia
+#----------------------------
 
 # python jormun requirements
 COPY requirements.txt /home/bbrisset/requirements.txt
@@ -112,3 +98,19 @@ RUN export JORMUNGANDR_BROKER_URL='amqp://guest:guest@rabbitmq:5672//'
 RUN export KRAKEN_RABBITMQ_HOST='rabbitmq'
 RUN export NAVITIA_CHAOS_DUMP_PATH='/home/bbrisset/dev/navitia/source/tests/chaos/chaos_loading.sql.gz'
 
+#----------------------------
+# config files
+#----------------------------
+# bash
+RUN rm -f /home/bbrisset/.bashrc 
+COPY .bashrc /home/bbrisset/.bashrc
+# git
+COPY .gitconfig /home/bbrisset/.gitconfig
+# bash_common
+COPY .bash_common /home/bbrisset/.bash_common
+
+#----------------------------
+# docker common
+#----------------------------
+COPY .docker_common /tmp/.docker_common
+RUN ./tmp/.docker_common

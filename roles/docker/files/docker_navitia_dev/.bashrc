@@ -47,4 +47,3 @@ eitri_run(){
   echo 'root' | su -c "$run_eitri" root
 }
 
-export PS1="DOCKER-NAVITIA: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"

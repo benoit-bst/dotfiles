@@ -5,12 +5,12 @@ echo "docker common"
 # **************************************
 # user
 # **************************************
-RUN adduser --disabled-password --gecos '' bbrisset
-RUN usermod -aG sudo bbrisset
-RUN usermod -aG docker bbrisset
+adduser --disabled-password --gecos '' bbrisset
+usermod -aG sudo bbrisset
+usermod -aG docker bbrisset
 
-RUN echo "bbrisset:root" | chpasswd
-RUN echo "root:root" | chpasswd
+echo "bbrisset:root" | chpasswd
+echo "root:root" | chpasswd
 
 # **************************************
 # fzf

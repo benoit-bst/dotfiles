@@ -13,7 +13,7 @@
     cache_valid_time: 3600
   become: yes
   when: ansible_os_family == "Debian"
-  tags: install 
+  tags: install
 
 
 # -------------------------------------
@@ -34,18 +34,45 @@
   tags:
     - install
 
-- name: file1 | install
-  command: "{{vault_install_file1}}"  
+- name: install 1
+  command: "{{vault_install_1}}"
   become: yes
   tags:
     - install
 
-- name: file2 | install
-  command: "{{vault_install_file2}}"  
+- name: install 2
+  command: "{{vault_install_2}}"
+  become: yes
   tags:
     - install
 
-- name: file3 | install
-  command: "{{vault_install_file3}}"  
+- name: install 3
+  command: "{{vault_install_3}}"
+  become: yes
   tags:
     - install
+
+- name: install 4
+  command: "{{vault_install_4}}"
+  become: yes
+  tags:
+    - install
+
+- name: install 5
+  command: "{{vault_install_5}}"
+  become: yes
+  tags:
+    - install
+
+- name: install 6
+  command: "{{vault_install_6}}"
+  become: yes
+  tags:
+    - install
+
+- name: install 7
+  command: "{{vault_install_7}}"
+  become: yes
+  tags:
+    - install
+

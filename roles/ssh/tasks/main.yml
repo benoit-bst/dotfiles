@@ -15,6 +15,15 @@
   when: ansible_os_family == "Debian"
   tags: install
 
+# -------------------------------------
+#
+# ssh-audit
+#
+# -------------------------------------
+- name: Snap | install ssh-audit
+  shell: 'sudo snap install ssh-audit'
+  tags:
+    - install
 
 # -------------------------------------
 #

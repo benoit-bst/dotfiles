@@ -148,15 +148,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-" add extra colors (syntax files)
-let g:cpp_member_variable_highlight = 1
-let g:cpp_no_function_highlight = 1
-let g:cpp_simple_highlight = 1
-let g:cpp_named_requirements_highlight = 1
-let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:python_highlight_all=1
-
 " plugins config
 source ~/.config/nvim/plugins_config/plugins_config.vim
 

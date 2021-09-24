@@ -15,11 +15,20 @@
           "command": "ra_lsp_server",
           "filetypes": ["rust"],
           "rootPatterns": ["Cargo.toml"]
+        },
+        "cmake": {
+          "command": "cmake-language-server",
+          "filetypes": ["cmake"],
+          "rootPatterns": [
+            "build/"
+          ],
+          "initializationOptions": {
+            "buildDirectory": "build"
+          }
         }
     },
     "suggest.autoTrigger": "trigger",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false,
-    "python.linting.enabled": true,
-    "clangd.disableDiagnostics": false
+    "jedi.executable.command": "jedi-language-server",
+    "clangd.path": "/home/bbrisset/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
+    "clangd.semanticHighlighting": true
 }

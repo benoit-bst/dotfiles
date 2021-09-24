@@ -3,25 +3,34 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'vim-scripts/a.vim'
+" sources finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'RRethy/vim-illuminate'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mhinz/vim-signify'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'google/vim-searchindex'
-Plug 'honza/vim-snippets'
+" parentheses
+Plug 'junegunn/rainbow_parentheses.vim'
+" illuminate same works
+Plug 'RRethy/vim-illuminate'
+" folder bar
+Plug 'scrooloose/nerdtree'
+" comment
+Plug 'scrooloose/nerdcommenter'
+" git diff
+Plug 'mhinz/vim-signify'
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
+" zoom
 Plug 'junegunn/goyo.vim'
-Plug 'ollykel/v-vim'
+" terraform
 Plug 'hashivim/vim-terraform'
+" c++ hightlight
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 if has('nvim')
-    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 endif
 
 call plug#end()
@@ -34,11 +43,6 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
 map <F1> :NERDTreeToggle<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => a vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>A :A<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => goyo
@@ -64,9 +68,16 @@ highlight DiffDelete  cterm=bold ctermbg=160 ctermfg=15
 highlight DiffChange  cterm=bold ctermbg=172 ctermfg=15
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UltiSnips
+" => vim-lsp-cxx-highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<A-tab>"
+" add extra colors (syntax files)
+let g:cpp_member_variable_highlight = 1
+let g:cpp_no_function_highlight = 1
+let g:cpp_simple_highlight = 1
+let g:cpp_named_requirements_highlight = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:python_highlight_all=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FZF
@@ -82,7 +93,7 @@ map <leader>s :Snippets<cr>
 map <leader>f :Buffers<cr>
 map <leader>bb :Buffers<cr>
 let g:fzf_buffers_jump = 1
-
+ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => coc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,6 +111,10 @@ inoremap <silent><expr> <Tab>
 
  "use <c-space>for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" switch header/source
+map <leader>A :CocCommand clangd.switchSourceHeader<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Rainbow Parentheses
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

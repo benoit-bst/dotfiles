@@ -17,8 +17,8 @@ alias cddd='cd $HOME/dev/dataset'
 #----------------------
 # Kraken
 #----------------------
-alias kraken_cmake_r='cd $HOME/dev/build/navitia_docker/release && cmake -DCMAKE_BUILD_TYPE=RELEASE $HOME/dev/navitia/source && cd -'
-alias kraken_cmake_d='cd $HOME/dev/build/navitia_docker/debug && cmake -DCMAKE_BUILD_TYPE=DEBUG $HOME/dev/navitia/source && cd -'
+alias kraken_cmake_r='cd $HOME/dev/build/navitia_docker/release && cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_EXPORT_COMPILE_COMMANDS=1 $HOME/dev/navitia/source && cd -'
+alias kraken_cmake_d='cd $HOME/dev/build/navitia_docker/debug && cmake -DCMAKE_BUILD_TYPE=DEBUG -DCMAKE_EXPORT_COMPILE_COMMANDS=1 $HOME/dev/navitia/source && cd -'
 alias kraken_make_r='cd $HOME/dev/build/navitia_docker/release && make -j6 && cd -'
 alias kraken_make_d='cd $HOME/dev/build/navitia_docker/debug && make -j6 && cd -'
 alias kraken_all_r='kraken_cmake_r && kraken_make_r'

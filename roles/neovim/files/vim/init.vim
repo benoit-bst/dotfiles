@@ -85,12 +85,12 @@ nnoremap <leader>] <C-]>
 map <leader>P :setlocal paste!<cr>
 
 " shortcut
-map <F2> <Esc>:enew<cr>
-map <F3> <Esc>:bd<cr>
-map <F4> <Esc>:bprevious<cr>
-map <F5> <Esc>:bnext<cr>
-noremap <F6> :set invnumber<cr>
-noremap <F7> :set list!<cr>:set list?<cr>
+"map <F2> <Esc>:enew<cr>
+"map <F3> <Esc>:bd<cr>
+"map <F4> <Esc>:bprevious<cr>
+"map <F5> <Esc>:bnext<cr>
+noremap <F2> :set invnumber<cr>
+noremap <F3> :set list!<cr>:set list?<cr>
 set listchars=eol:¤,trail:-
 
 "when you close file

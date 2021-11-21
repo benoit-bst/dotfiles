@@ -30,5 +30,12 @@
     "suggest.autoTrigger": "trigger",
     "jedi.executable.command": "jedi-language-server",
     "clangd.path": "/home/bbrisset/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
-    "clangd.semanticHighlighting": true
+    "clangd.semanticHighlighting": true,
+    "clangd.disableDiagnostics": false,
+    "clangd.disableCompletion": false,
+
+    "pyright.enable": true,
+    "python.formatting.provider": "black",
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs":["--ignore-missing-imports","--follow-imports=silent","--show-column-numbers"] 
 }

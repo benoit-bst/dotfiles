@@ -11,9 +11,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
 " parentheses
-Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 " illuminate same works
-Plug 'RRethy/vim-illuminate'
+"Plug 'RRethy/vim-illuminate'
 " folder bar
 Plug 'scrooloose/nerdtree'
 " comment
@@ -30,7 +30,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 if has('nvim')
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 endif
 
 call plug#end()
@@ -118,5 +118,7 @@ map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Rainbow Parentheses
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufRead,BufNewFile *.cpp,*.cc,*.h,*.hpp,*.c,*.py,*.go,*.rs RainbowParentheses
-let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

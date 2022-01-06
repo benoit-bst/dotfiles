@@ -85,7 +85,7 @@ jormun_test(){
     source $HOME/dev/virtualenv/virtualenv-jor/bin/activate
   fi
   cd $HOME/dev/navitia/source/jormungandr
-  PYTHONPATH=.:../navitiacommon KRAKEN_BUILD_DIR=$HOME/dev/build/navitia/release py.test tests && deactivate && cd -
+  PYTHONPATH=.:../navitiacommon KRAKEN_BUILD_DIR=$HOME/dev/build/navitia_docker/release py.test tests && deactivate && cd -
 }
 jormun_run(){
   if ! [[ $(pip -V) == *"jor"* ]]; then

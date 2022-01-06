@@ -38,7 +38,9 @@ bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
+bindsym Henkan_Mode exec "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
 bindsym $mod+x exec "rofi -modi window -show window -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
+
 #
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -182,7 +184,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute $(LC_ALL=C pactl info | grep 'Def
 bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
 bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPrevious exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 2 # decrease screen brightness

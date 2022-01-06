@@ -12,6 +12,7 @@ export PATH=$PATH:~/go/bin
 #----------------------
 # DIR 
 #----------------------
+alias c="cd"
 alias cdd="cd $HOME/dev"
 alias cdb="cd $HOME/dev/build"
 

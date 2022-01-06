@@ -42,7 +42,6 @@ interval=4
 color=#01A9DE
 
 [spotify]
-label=  
 command=~/bin/i3/spotify.py
 interval=5
 color=#74DF00

@@ -38,7 +38,7 @@ bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
-bindsym Henkan_Mode exec "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
+#bindsym Henkan_Mode exec "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
 bindsym $mod+x exec "rofi -modi window -show window -sidebar-mode -terminal termite -color-window '#363636, #363636, #363636' -color-normal '#363636, #ebebeb, #363636, #ebebeb, #363636' -color-active '#363636, #b3e774, #363636, #b3e774, #363636' -color-urgent '#363636, #b3e774, #363636, #b3e774, #363636'"
 
 #
@@ -181,7 +181,7 @@ bar {
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(LC_ALL=C pactl info | grep 'Default Sink' | cut -d':' -f2) '+5%' #increase sound volume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(LC_ALL=C pactl info | grep 'Default Sink' | cut -d':' -f2) '-5%' #decrease sound volume
 bindsym XF86AudioMute exec pactl set-sink-mute $(LC_ALL=C pactl info | grep 'Default Sink' | cut -d':' -f2) toggle # mute sound
-bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
+bindsym $mod+m exec amixer set Capture toggle # mute mic
 bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
@@ -206,7 +206,7 @@ workspace 10 output "DP-1"
 
 for_window [class="^.*"] border pixel 3
 
-bindsym $mod+m move workspace to output left
+bindsym $mod+i move workspace to output left
 
 # mode system
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown

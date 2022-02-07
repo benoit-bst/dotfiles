@@ -1,4 +1,43 @@
-# postgreSQL commands
+# postgreSQL
+
+## detect slow queries
+
+1. slow query log
+
+- postgresql.conf : log min duration statement = 5000
+- for one table : postgres=# ALTER DATABASE test SET log_min_duration_statement = 5000;
+- create slow query : SELECT pg_sleep(10);
+
+with this log, we can track only singles slow queries, not a huge burst of little queries
+
+2. checking unstable execution plans
+
+- session_preload_libraries = 'auto_explain'
+
+or
+
+```sh
+test=# LOAD 'auto_explain';
+test=# SET auto_explain.log_analyze TO on;
+test=# SET auto_explain.log_min_duration TO 500;
+```
+
+“explain analyze” will be sent to the logfile.
+
+3. Checking pg_stat_statements
+
+- shared_preload_libraries = 'pg_stat_statements'
+
+and 
+
+```sh
+test=# CREATE EXTENSION pg_stat_statements;
+test=# \d pg_stat_statements
+```
+
+The view will tell us, which kind of query has been executed how often and tell us about the total runtime of this type of query as well as about the distribution of runtimes for those particular queries.
+
+## postgreSQL commands
 
 Command                                           | action
 --------------------------------------------------|-------------------------

@@ -8,9 +8,10 @@ export PATH=$PATH:~/bin/tools
 export PATH=$PATH:~/.cargo/bin              # Rust
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/.dotnet
+export DOTNET_ROOT=$HOME/.dotnet
 
-# dotnet
-export DOTNET_ROOT=/snap/dotnet-sdk/current
+
 
 #----------------------
 # DIR 

@@ -10,6 +10,7 @@ netstat -ant                        | show all TCP connections with no DNS resol
 netstat -i                          | Displays a table of all network interfaces
 netstat -aop | grep <pid>           | display all ports open by a process with id pid
 netstat -anlp | grep <app_name>     | display all ports open by a process with id pid
+less /etc/services                  | internet services list
 
 2. ss
 

@@ -5,12 +5,6 @@ echo "create asgard docker"
 # **************************************
 # cp utils
 # **************************************
-echo "- cp .bash_common"
-cp ../docker-common/.bash_common .
-
-echo "- cp .gitconfig"
-cp ../../../git/files/.gitconfig .
-
 echo "- cp .docker_common"
 cp ../docker-common/.docker_common .
 
@@ -18,10 +12,10 @@ cp ../docker-common/.docker_common .
 # docker
 # **************************************
 echo "- Remove old docker_asgard_dev images"
-docker rmi --force docker_asgard_dev
+docker rmi --force docker_java_11
 
 echo "- Build docker images"
-docker build -t docker_asgard_dev .
+docker build -t docker_java_11 .
 
 echo "Finish Docker"
 docker images
@@ -30,7 +24,4 @@ docker images
 # rm tmp utils
 # **************************************
 echo "- rm tmp .bash_common"
-rm -f .bash_common
-
-echo "- rm tmp .gitconfig"
-rm -f .gitconfig
+rm -f .docker_common

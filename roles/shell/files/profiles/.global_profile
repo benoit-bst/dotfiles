@@ -108,9 +108,19 @@ ar_extractor ()
   fi
 }
 
+# include kisio_profile
+if [ -f $HOME/.kisio_profile ]; then
+    . $HOME/.kisio_profile
+fi
+
 # include navitia_profile
 if [ -f $HOME/.navitia_profile ]; then
     . $HOME/.navitia_profile
+fi
+
+# include java_11_profile
+if [ -f $HOME/.java_11_profile ]; then
+    . $HOME/.java_11_profile
 fi
 
 # detect ssh connection

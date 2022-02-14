@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "run java 11 docker"
+
+if [[ $(docker ps) == *"docker_java_11_dev_1"* ]]; then
+    echo "docker java 11 already run"
+    docker exec -it docker_java_11_dev_1 zsh
+else
+    echo "docker not started"
+    docker-compose up -d
+    docker exec -it docker_java_11_dev_1 zsh
+fi
+

@@ -45,6 +45,4 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-export PS1="DOCKER-NAVITIA: $C\A $R\u$Y-DOCKER@$W\h $G\w$Y $w\$ $NONE"
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

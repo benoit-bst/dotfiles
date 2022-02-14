@@ -31,12 +31,6 @@ navitia_unmount_prod_bina(){
 }
 
 #----------------------
-# bbst docker
-#----------------------
-alias navitia_run_docker='docker run --network="host" -it --rm --user=$(id -u):$(id -g) --cap-add SYS_ADMIN -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.bash_history:/$HOME/.bash_history -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_navitia_dev bash'
-alias navitia_build_docker='cd $HOME/dev/dotfiles/roles/docker/files/docker_navitia_dev && ./make_docker && cd -'
-
-#----------------------
 # asgard docker
 #----------------------
 alias asgard_build_docker='cd $HOME/dev/dotfiles/roles/docker/files/docker_asgard_dev && ./make_docker && cd -'
@@ -75,40 +69,11 @@ alias bragi_run='cd $HOME/dev/mimirsbrunn/target/release && ./bragi --connection
 alias elastic_run='cd $HOME/soft/elasticsearch-2.4.1/bin && ./elasticsearch'
 alias kibana_run='cd $HOME/soft/kibana-4.6.0-linux-x86_64/bin && ./kibana'
 
-#----------------------
-# Jormun
-#----------------------
-alias jormun_config='cd $HOME/dev/run/jormungandr && vim default.json'
-alias jormun_virt='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate'
-jormun_test(){
-  if ! [[ $(pip -V) == *"jor"* ]]; then
-    source $HOME/dev/virtualenv/virtualenv-jor/bin/activate
-  fi
-  cd $HOME/dev/navitia/source/jormungandr
-  PYTHONPATH=.:../navitiacommon KRAKEN_BUILD_DIR=$HOME/dev/build/navitia_docker/release py.test tests && deactivate && cd -
-}
-jormun_run(){
-  if ! [[ $(pip -V) == *"jor"* ]]; then
-    source $HOME/dev/virtualenv/virtualenv-jor/bin/activate
-  fi
-  cd $HOME/dev/navitia/source/jormungandr
-  PYTHONPATH=.:../navitiacommon JORMUNGANDR_CONFIG_FILE=$HOME/dev/navitia/source/jormungandr/jormungandr/dev_settings.py JORMUNGANDR_INSTANCES_DIR=$HOME/dev/run/jormungandr JORMUNGANDR_USE_SERPY=True FLASK_APP=jormungandr:app flask run
-}
 
 #----------------------
 # Eitry
 #----------------------
 alias eitri_virt='source $HOME/dev/virtualenv/virtualenv-eitri/bin/activate'
-
-eitri_run(){
-  if ! [[ $(pip -V) == *"eitri"* ]]; then
-    source $HOME/dev/virtualenv/virtualenv-eitri/bin/activate
-  fi
-  cd $HOME/dev/navitia/source/eitri
-  PYTHONPATH=.:../navitiacommon python2.7 eitri.py -d $1 -e $HOME/dev/build/navitia/release/ed
-  deactivate
-  cd -
-}
 
 #----------------------
 # Tyr
@@ -122,27 +87,9 @@ alias tyr_tests_r='source $HOME/dev/virtualenv/virtualenv-tyr/bin/activate && cd
 alias tyr_tests_d='source $HOME/dev/virtualenv/virtualenv-tyr/bin/activate && cd $HOME/dev/build/navitia/debug && make docker_test && deactivate && cd -'
 
 #----------------------
-# Kraken
-#----------------------
-alias kraken_cmake_r='cd $HOME/dev/build/navitia/release && cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../../../navitia/source && cd -'
-alias kraken_cmake_r_clang='cd $HOME/dev/build/navitia/release && cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_C_COMPILER="/usr/bin/clang-8" -DCMAKE_CXX_COMPILER="/usr/bin/clang++-8" ../../../navitia/source && cd -'
-alias kraken_cmake_d='cd $HOME/dev/build/navitia/debug && cmake -DCMAKE_BUILD_TYPE=DEBUG ../../../navitia/source && cd -'
-alias kraken_make_r='cd $HOME/dev/build/navitia/release && make -j5 && cd -'
-alias kraken_make_d='cd $HOME/dev/build/navitia/debug && make -j5 && cd -'
-alias kraken_all_r='kraken_cmake_r && kraken_make_r'
-alias kraken_all_d='kraken_cmake_d && kraken_make_d'
-alias kraken_run_r='cd $HOME/dev/run/kraken/krakenRelease && ./kraken ../kraken.ini'
-alias kraken_run_d='cd $HOME/dev/run/kraken/krakenDebug && gdb --args ./kraken ../kraken.ini'
-alias kraken_config='cd $HOME/dev/run/kraken && vim kraken.ini'
-
-#----------------------
 # Navitia
 #----------------------
 alias navitia_release_virt='source $HOME/dev/virtualenv/virtualenv-release/bin/activate'
-alias navitia_tests_r='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate && cd $HOME/dev/build/navitia/release && make test && deactivate && cd -'
-alias navitia_tests_d='source $HOME/dev/virtualenv/virtualenv-jor/bin/activate && cd $HOME/dev/build/navitia/debug && make test && deactivate && cd -'
-alias navitia_docker_tests_r='source $HOME/dev/virtualenv/virtualenv-tyr/bin/activate && cd $HOME/dev/build/navitia/release && make docker_test && deactivate && cd -'
-alias navitia_docker_tests_d='source $HOME/dev/virtualenv/virtualenv-tyr/bin/activate && cd $HOME/dev/build/navitia/debug && make docker_test && deactivate && cd -'
 
 navitia_request(){
   curl "$1" -H 'Authorization: fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781' > debug.json

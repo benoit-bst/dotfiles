@@ -6,7 +6,7 @@
     - install
 
 - name: docker | add repo
-  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" 
+  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   tags:
     - install
 
@@ -34,7 +34,27 @@
 - name: docker | restart service
   service:
     name: docker
-    state: restarted    
+    state: restarted
   become: yes
   tags:
     - install
+
+- name: java 11 profile | install
+  file:
+    src: '{{role_path}}/files/docker_java_11/.java_11_profile'
+    path: '{{ansible_env.HOME}}/.java_11_profile'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
+- name: navitia profile | install
+  file:
+    src: '{{role_path}}/files/docker_navitia_dev/.navitia_profile'
+    path: '{{ansible_env.HOME}}/.navitia_profile'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config

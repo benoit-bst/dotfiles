@@ -64,10 +64,10 @@
     - install
     - update-config
 
-- name: navitia profile | install
+- name: kisio profile | install
   file:
-    src: '{{role_path}}/files/profiles/.navitia_profile'
-    path: '{{ansible_env.HOME}}/.navitia_profile'
+    src: '{{role_path}}/files/profiles/.kisio_profile'
+    path: '{{ansible_env.HOME}}/.kisio_profile'
     force: yes
     state: link
   tags:

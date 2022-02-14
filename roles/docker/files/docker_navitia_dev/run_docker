@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "run navitia dev docker"
+
+if [[ $(docker ps) == *"docker_navitia_dev_dev_1"* ]]; then
+    echo "docker navitia dev already run"
+    docker exec -it docker_navitia_dev_dev_1 zsh
+else
+    echo "docker not started"
+    docker-compose up -d
+    docker exec -it docker_navitia_dev_dev_1 zsh
+fi

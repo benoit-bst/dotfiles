@@ -1,0 +1,63 @@
+version: "3"
+
+volumes:
+  pgdata_ed:
+  pgdata_jormun:
+  pgdata_chaos:
+
+services:
+  dev:
+    image: docker_navitia_dev
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /home:/home
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE
+    network_mode: host
+    #ports:
+      #- 5000:5000 # JORMUN
+      #- 30000:30000 # LOKI - KRAKEN
+      #- 6000:6000 # ASGARD
+    environment:
+      - DISPLAY=:1
+      - KRAKEN_RABBITMQ_HOST=rabbitmq
+      - JORMUNGANDR_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
+      - TYR_CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
+      - TYR_REDIS_HOST=redis
+      - ASGARD_VALHALLA_CONF=/home/hicham/dev/data/asgard/valhalla.json
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  #db_ed:
+     #image: postgis/postgis
+     #ports:
+      #- 5433:5432
+     #volumes:
+      #- pgdata_ed:/var/lib/postgresql/data
+     #environment:
+      #- POSTGRES_USER=ed
+      #- POSTGRES_PASSWORD=ed
+      #- POSTGRES_DB=ed
+
+  #db_jormun:
+     #image: postgis/postgis
+     #ports:
+      #- 5432:5432
+     #volumes:
+      #- pgdata_jormun:/var/lib/postgresql/data
+     #environment:
+      #- POSTGRES_USER=jormungandr
+      #- POSTGRES_PASSWORD=jormungandr
+      #- POSTGRES_DB=jormungandr
+
+  #redis:
+    #image: redis:6-alpine
+    #ports:
+      #- 6379:6379

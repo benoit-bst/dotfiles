@@ -11,6 +11,9 @@ cp ../docker-common/.bash_common .
 echo "- cp .gitconfig"
 cp ../../../git/files/.gitconfig .
 
+echo "- cp .docker_common"
+cp ../docker-common/.docker_common .
+
 # **************************************
 # docker
 # **************************************

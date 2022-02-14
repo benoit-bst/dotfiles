@@ -5,12 +5,6 @@ echo "create navitia docker"
 # **************************************
 # common
 # **************************************
-echo "- cp .bash_common"
-cp ../docker-common/.bash_common .
-
-echo "- cp .gitconfig"
-cp ../../../git/files/.gitconfig .
-
 echo "- cp .docker_common"
 cp ../docker-common/.docker_common .
 
@@ -43,12 +37,6 @@ docker images
 # **************************************
 # clean common
 # **************************************
-echo "- rm tmp .bash_common"
-rm -f .bash_common
-
-echo "- rm tmp .gitconfig"
-rm -f .gitconfig
-
 echo "- rm tmp .docker_common"
 rm -f .docker_common
 

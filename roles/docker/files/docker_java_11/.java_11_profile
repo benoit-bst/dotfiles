@@ -1,0 +1,5 @@
+
+alias java_docker_run='cd $HOME/dev/dotfiles/roles/docker/files/docker_java_11 && ./run_docker && cd -'
+alias java_docker_stop='cd $HOME/dev/dotfiles/roles/docker/files/docker_java_11 && docker-compose down && cd -'
+alias java_build_docker='cd $HOME/dev/dotfiles/roles/docker/files/docker_java_11 && ./make_docker && cd -'
+#alias java_run_11='docker run --network="host" -it --rm --user=$(id -u):$(id -g) --cap-add SYS_ADMIN -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.bash_history:/$HOME/.bash_history -v $HOME/dev:/$HOME/dev -v /tmp/:/tmp_ipc -w $HOME docker_java_11 bash'

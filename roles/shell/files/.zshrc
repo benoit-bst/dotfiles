@@ -91,6 +91,10 @@ export FZF_DEFAULT_OPTS='
 --color fg:252,bg:235,hl:67,fg+:252,bg+:235,hl+:81
 --color info:144,prompt:161,spinner:135,pointer:135,marker:118
 '
-
+# if inside docker
+if [ -f /tmp/docker_type ]; then
+    setopt PROMPT_SUBST
+    PROMPT='$fg[red]$(cat /tmp/docker_type)$fg[white]:$(pwd):$(git_prompt_info) $fg[blue]>> '
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

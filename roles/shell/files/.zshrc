@@ -93,8 +93,12 @@ export FZF_DEFAULT_OPTS='
 '
 # if inside docker
 if [ -f /tmp/docker_type ]; then
+    alias v='nvim'
+    alias vi='nvim'
+    alias vim='nvim'
     setopt PROMPT_SUBST
-    PROMPT='$fg[red]$(cat /tmp/docker_type)$fg[white]:$(pwd):$(git_prompt_info) $fg[blue]>> '
+    PROMPT='%{$fg[red]$(cat /tmp/docker_type)$fg[white]:%~$:$(git_prompt_info)$(hg_prompt_info)$fg[blue] >>%} '
+    RPROMPT=''
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

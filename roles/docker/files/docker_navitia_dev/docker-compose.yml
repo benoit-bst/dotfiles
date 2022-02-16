@@ -1,16 +1,16 @@
 version: "3"
 
-volumes:
-  pgdata_ed:
-  pgdata_jormun:
-  pgdata_chaos:
+#volumes:
+  #pgdata_ed:
+  #pgdata_jormun:
+  #pgdata_chaos:
 
 services:
   dev:
     image: docker_navitia_dev
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /tmp/.X11-unix:/tmp/.X11-unix
+      #- /tmp/.X11-unix:/tmp/.X11-unix
       - /home:/home
     security_opt:
       - seccomp:unconfined

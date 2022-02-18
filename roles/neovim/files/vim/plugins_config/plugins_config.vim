@@ -10,12 +10,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
-" highlight
+" highlight and syntax
 Plug 'sheerun/vim-polyglot'
 " parentheses
 Plug 'kien/rainbow_parentheses.vim'
-" illuminate same works
-"Plug 'RRethy/vim-illuminate'
 " folder bar
 Plug 'scrooloose/nerdtree'
 " comment
@@ -68,18 +66,6 @@ highlight DiffDelete  cterm=bold ctermbg=160 ctermfg=15
 highlight DiffChange  cterm=bold ctermbg=172 ctermfg=15
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-lsp-cxx-highlight
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" add extra colors (syntax files)
-let g:cpp_member_variable_highlight = 1
-let g:cpp_no_function_highlight = 1
-let g:cpp_simple_highlight = 1
-let g:cpp_named_requirements_highlight = 1
-let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:python_highlight_all=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>j :FZF<cr>
@@ -115,7 +101,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " switch header/source
 map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 
-let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-omnisharp', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint']
+let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-omnisharp', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight']
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Rainbow Parentheses

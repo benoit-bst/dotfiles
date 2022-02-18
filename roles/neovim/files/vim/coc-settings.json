@@ -37,5 +37,7 @@
     "pyright.enable": true,
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
-    "python.linting.mypyArgs":["--ignore-missing-imports","--follow-imports=silent","--show-column-numbers"] 
+    "python.linting.mypyArgs":["--ignore-missing-imports","--follow-imports=silent","--show-column-numbers"], 
+
+    "java.home": "/usr/lib/jvm/java-11-openjdk-amd64"
 }

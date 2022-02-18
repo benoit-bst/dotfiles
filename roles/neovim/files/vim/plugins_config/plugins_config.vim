@@ -10,6 +10,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
+" highlight
+Plug 'sheerun/vim-polyglot'
 " parentheses
 Plug 'kien/rainbow_parentheses.vim'
 " illuminate same works
@@ -24,10 +26,8 @@ Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
 " zoom
 Plug 'junegunn/goyo.vim'
-" terraform
-Plug 'hashivim/vim-terraform'
-" c++ hightlight
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+" debug
+"Plug 'puremourning/vimspector'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
@@ -114,6 +114,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " switch header/source
 map <leader>A :CocCommand clangd.switchSourceHeader<cr>
+
+let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-omnisharp', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Rainbow Parentheses

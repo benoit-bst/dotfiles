@@ -10,7 +10,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
-" highlight and syntax
+" highlight syntax
 Plug 'sheerun/vim-polyglot'
 " parentheses
 Plug 'kien/rainbow_parentheses.vim'
@@ -24,6 +24,10 @@ Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
 " zoom
 Plug 'junegunn/goyo.vim'
+" C-Sharp
+Plug 'OmniSharp/omnisharp-vim'
+" syntax checker for c sharp
+Plug 'vim-syntastic/syntastic'
 " debug
 "Plug 'puremourning/vimspector'
 
@@ -101,7 +105,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " switch header/source
 map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 
-let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-omnisharp', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight']
+let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight']
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -112,3 +116,17 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => C Sharp
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:OmniSharp_selector_ui = 'fzf'    " Use fzf
+let g:OmniSharp_selector_findusages = 'fzf'
+let g:OmniSharp_highlighting = 0
+let g:OmniSharp_diagnostic_showid = 1
+
+inoremap <expr> <Tab> pumvisible() ? '<C-n>' :
+\ getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'
+
+let g:syntastic_cs_checkers = ['code_checker']
+

@@ -91,6 +91,7 @@ map <leader>P :setlocal paste!<cr>
 "map <F5> <Esc>:bnext<cr>
 noremap <F2> :set invnumber<cr>
 noremap <F3> :set list!<cr>:set list?<cr>
+nmap <F5> :CocCommand java.debug.vimspector.start<CR>
 set listchars=eol:¤,trail:-
 
 "when you close file

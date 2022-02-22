@@ -97,7 +97,7 @@ if [ -f /tmp/docker_type ]; then
     alias vi='nvim'
     alias vim='nvim'
     setopt PROMPT_SUBST
-    PROMPT='%{$fg[red]$(cat /tmp/docker_type)$fg[white]:%~$:$(git_prompt_info)$(hg_prompt_info)$fg[blue] >>%} '
+    PROMPT=$PROMPT'%{$fg[red]$(cat /tmp/docker_type) >>%} '
     RPROMPT=''
 fi
 

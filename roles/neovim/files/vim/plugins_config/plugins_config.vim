@@ -29,7 +29,7 @@ Plug 'OmniSharp/omnisharp-vim'
 " syntax checker for c sharp
 Plug 'vim-syntastic/syntastic'
 " debug
-"Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
@@ -107,6 +107,7 @@ map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 
 let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight']
 
+" highlight current word bellow cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -125,8 +126,12 @@ let g:OmniSharp_selector_findusages = 'fzf'
 let g:OmniSharp_highlighting = 0
 let g:OmniSharp_diagnostic_showid = 1
 
-inoremap <expr> <Tab> pumvisible() ? '<C-n>' :
-\ getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'
+"inoremap <expr> <Tab> pumvisible() ? '<C-n>' :
+"\ getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'
 
+" only for c-sharp...
 let g:syntastic_cs_checkers = ['code_checker']
+let g:syntastic_java_checkers = ['']
+let g:syntastic_c_checkers = ['']
+let g:syntastic_go_checkers = ['']
 

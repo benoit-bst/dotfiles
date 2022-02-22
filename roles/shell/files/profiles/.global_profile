@@ -5,13 +5,16 @@ export TERM=xterm-256color
 # path
 export PATH=$PATH:~/bin/i3
 export PATH=$PATH:~/bin/tools
-export PATH=$PATH:~/.cargo/bin              # Rust
+# rust
+export PATH=$PATH:~/.cargo/bin
+# go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
+# c sharp
 export PATH=$PATH:~/.dotnet
 export DOTNET_ROOT=$HOME/.dotnet
-
-
+# java
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 #----------------------
 # DIR 

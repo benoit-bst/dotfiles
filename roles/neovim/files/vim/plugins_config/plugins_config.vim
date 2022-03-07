@@ -105,7 +105,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " switch header/source
 map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 
-let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight']
+let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight', 'coc-solargraph']
 
 " highlight current word bellow cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -134,4 +134,5 @@ let g:syntastic_cs_checkers = ['code_checker']
 let g:syntastic_java_checkers = ['']
 let g:syntastic_c_checkers = ['']
 let g:syntastic_go_checkers = ['']
+let g:syntastic_ruby_checkers = ['']
 

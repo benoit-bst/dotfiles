@@ -7,25 +7,23 @@ on:
             - master
 
 jobs:
-    
+
     test_deploy:
         strategy:
             matrix:
-                os: [ubuntu-18.04, ubuntu-20.04]
+                os: [ubuntu-20.04]
         runs-on: ${{ matrix.os }}
         steps:
         - uses: actions/checkout@v2
-        - if: matrix.os == 'ubuntu-18.04'
-          name: install ansible
+        - name: install ansible
           run: |
             sudo apt update
             sudo apt install -y software-properties-common
             sudo apt-add-repository --yes ppa:ansible/ansible
-            sudo apt install -y ansible 
-        - if: matrix.os == 'ubuntu-20.04'
-          name: install ansible
+            sudo apt install -y ansible
+        - name: install ansible
           run: |
-            sudo apt install -y ansible 
+            sudo apt install -y ansible
         - name: ansible version
           run: ansible --version
         - name: ansible | install collection community.general

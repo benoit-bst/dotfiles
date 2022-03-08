@@ -30,7 +30,7 @@
   register: openconnect_folder
   tags: install
 
-- name: tmux | create .openconnect dir
+- name: openconnect | create .openconnect dir
   file:
     path: '{{ansible_env.HOME}}/.openconnect'
     state: directory

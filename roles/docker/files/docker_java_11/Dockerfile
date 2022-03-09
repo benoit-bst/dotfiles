@@ -16,8 +16,8 @@ RUN echo 'ping localhost &' >  /bootstrap.sh
 RUN echo 'sleep infinity' >>  /bootstrap.sh
 RUN chmod +x /bootstrap.sh
 
-USER bbrisset
-WORKDIR /home/bbrisset
+USER bbst
+WORKDIR /home/bbst
 
 RUN echo 'DOCKER-JAVA-11' > /tmp/docker_type
 

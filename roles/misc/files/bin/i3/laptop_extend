@@ -36,6 +36,12 @@ then
     echo "Extend on DP-2-3"
     exit 0
 fi
+if [ "$(xrandr | grep 'HDMI-1 connected' | wc -l)" = "1" ];
+then
+    xrandr --output HDMI-1 --auto --right-of eDP-1
+    echo "Extend on HDMI-1"
+    exit 0
+fi
 
 echo "no screen found"
 

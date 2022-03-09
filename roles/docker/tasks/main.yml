@@ -25,6 +25,16 @@
   when: ansible_os_family == "Debian"
   tags: install
 
+- name: docker | install docker-ce
+  apt:
+    name: docker-compose
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags: install
+
 - name: docker | usermod
   shell: usermod -aG docker $USER
   become: yes

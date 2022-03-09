@@ -42,9 +42,9 @@ chsh -s $(which zsh)
 # **************************************
 # user
 # **************************************
-adduser --disabled-password --gecos '' bbrisset
-usermod -aG sudo bbrisset
-usermod -aG docker bbrisset
+adduser --disabled-password --gecos '' bbst
+usermod -aG sudo bbst
+usermod -aG docker bbst
 
-echo "bbrisset:root" | chpasswd
+echo "bbst:root" | chpasswd
 echo "root:root" | chpasswd

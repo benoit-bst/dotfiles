@@ -7,7 +7,23 @@
 # -------------------------------------
 - name: misc | install packages
   apt:
-    name: [build-essential, g++, cmake, curl, httpie, python3-pip, htop, xdotool, clang, xautolock, mc, libtool, autoconf, jq]
+    name: [build-essential, g++, cmake, curl, httpie, python3-pip, htop, dstat, xdotool, clang, xautolock, mc, libtool, autoconf, jq, python]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - install
+
+# -------------------------------------
+#
+# virtualbox, vagrant
+#
+# -------------------------------------
+- name: virtualbox vagrant | install packages
+  apt:
+    name: [virtualbox, vagrant]
     state: present
     update_cache: yes
     cache_valid_time: 3600

@@ -96,9 +96,15 @@ if [ -f /tmp/docker_type ]; then
     alias v='nvim'
     alias vi='nvim'
     alias vim='nvim'
-    setopt PROMPT_SUBST
-    PROMPT=$PROMPT'%{$fg[red]$(cat /tmp/docker_type) >>%} '
-    RPROMPT=''
+
+    PS1="${FG[032]}%~\$(git_prompt_info)\$(hg_prompt_info) $fg[red]$(cat /tmp/docker_type) >> "
+    PS2="%{$fg[red]%}\ %{$reset_color%}"
+
+    RPS1=""
+    if (( $+functions[virtualenv_prompt_info] )); then
+      RPS1+='$(virtualenv_prompt_info)'
+    fi
+    #RPS1+=" ${FG[237]}%n%{$reset_color%}"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

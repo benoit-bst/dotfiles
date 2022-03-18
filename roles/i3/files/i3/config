@@ -245,7 +245,7 @@ bindsym $mod+Shift+o mode "$screen_system"
 # google chrome
 bindsym $mod+g exec --no-startup-id google-chrome
 # files
-bindsym $mod+f exec caja --no-desktop
+bindsym $mod+f exec nautilus --no-desktop
 # gnome config
 bindsym $mod+c exec --no-startup-id XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 

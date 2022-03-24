@@ -22,7 +22,7 @@
 # -------------------------------------
 - name: neovim | install packages
   apt:
-    name: [fonts-powerline, exuberant-ctags, ack-grep]
+    name: [fonts-powerline, exuberant-ctags, ack-grep, rip-grep]
     state: present
     update_cache: yes
     cache_valid_time: 3600

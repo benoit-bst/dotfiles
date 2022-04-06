@@ -19,4 +19,5 @@
     - { role: openconnect, tags: openconnect}
     - { role: ssh, tags: ssh}
     - { role: hardening, tags: hardening}
+    - { role: asdf, tags: asdf}
 

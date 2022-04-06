@@ -1,0 +1,24 @@
+---
+
+- name: asdf | clone
+  git:
+    repo: 'https://github.com/asdf-vm/asdf.git'
+    dest: '{{ansible_env.HOME}}/.asdf'
+    remote: 'v0.9.0'
+    force: yes
+  tags: install
+
+- name: asdf | reload zsh
+  shell: sh -c "zsh"
+  tags:
+    - install
+
+- name: asdf | plugin python
+  shell: sh -c "asdf plugin add python"
+  tags:
+    - install
+
+#- name: asdf | add python latest:3
+  #shell: sh -c "asdf install python latest:3"
+  #tags:
+    #- install

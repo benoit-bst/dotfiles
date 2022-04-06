@@ -8,10 +8,10 @@
     force: yes
   tags: install
 
-- name: asdf | reload zsh
-  shell: sh -c "zsh && asdf plugin add python"
-  tags:
-    - install
+#- name: asdf | reload zsh
+  #shell: sh -c "zsh && asdf plugin add python"
+  #tags:
+    #- install
 
 #- name: asdf | add python latest:3
   #shell: sh -c "asdf install python latest:3"

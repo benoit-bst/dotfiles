@@ -29,7 +29,7 @@ Plug 'OmniSharp/omnisharp-vim'
 " syntax checker for c sharp
 Plug 'vim-syntastic/syntastic'
 " debug
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}

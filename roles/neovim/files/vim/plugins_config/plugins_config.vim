@@ -30,6 +30,8 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'vim-syntastic/syntastic'
 " debug
 "Plug 'puremourning/vimspector'
+" snippets
+Plug 'honza/vim-snippets'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
@@ -94,18 +96,22 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
- "use <c-space>for trigger completion
+let g:coc_snippet_next = '<tab>'
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+" Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " switch header/source
 map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 
-let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight', 'coc-solargraph', 'coc-metals']
+let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight', 'coc-solargraph', 'coc-metals', 'coc-snippets']
 
 " highlight current word bellow cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')

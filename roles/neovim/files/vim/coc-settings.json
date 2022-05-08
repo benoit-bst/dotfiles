@@ -28,17 +28,21 @@
         }
     },
     "suggest.autoTrigger": "trigger",
-    "jedi.executable.command": "jedi-language-server",
-    "clangd.path": "/home/bbrisset/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
+    
+    "clangd.path": "/home/bbst/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
     "clangd.semanticHighlighting": true,
     "clangd.disableDiagnostics": false,
     "clangd.disableCompletion": false,
 
+    "jedi.executable.command": "/home/bbst/.asdf/installs/python/3.10.4/bin/jedi-language-server",
     "pyright.enable": true,
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
     "python.linting.mypyArgs":["--ignore-missing-imports","--follow-imports=silent","--show-column-numbers"], 
 
     "java.home": "/usr/lib/jvm/java-11-openjdk-amd64",
-    "omnisharp.path": "/home/bbrisset/.cache/omnisharp-vim/omnisharp-roslyn/run"
+
+    "omnisharp.path": "/home/bbst/.cache/omnisharp-vim/omnisharp-roslyn/run",
+
+    "snippets.ultisnips.enable": false
 }

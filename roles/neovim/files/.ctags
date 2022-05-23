@@ -1,3 +1,5 @@
+--recurse=yes
+--tag-relative=yes
 --exclude=*.cvs*
 --exclude=*build_image*
 --exclude=*.svn*
@@ -8,6 +10,7 @@
 --exclude=*fixtures*
 --exclude=*gatling*
 --exclude=*documentation*
+--exclude=tags
 
 --langdef=Go
 --langmap=Go:.go

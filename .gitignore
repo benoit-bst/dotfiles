@@ -4,3 +4,4 @@ roles/neovim/files/vim/temps_dirs
 roles/misc/files/bin/PathPicker
 vault_passwd
 update_*
+.metals

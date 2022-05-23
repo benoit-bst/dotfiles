@@ -14,7 +14,8 @@ export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.dotnet
 export DOTNET_ROOT=$HOME/.dotnet
 # java
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/default-java
+export JDK_HOME=/usr/lib/jvm/default-java
 
 #----------------------
 # DIR 

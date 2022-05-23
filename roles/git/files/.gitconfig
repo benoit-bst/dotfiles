@@ -34,7 +34,7 @@
 
 [core]
   editor=vim
-  excludesfile=/home/bbrisset/.gitignore
+	excludesfile = /home/bbst/.gitignore_global
   pager = less
 
 [merge]

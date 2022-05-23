@@ -23,9 +23,9 @@
 #
 # -------------------------------------
 - name: git | install gitignore
-  file: 
-    src: '{{role_path}}/files/.gitignore'
-    path: '{{ansible_env.HOME}}/.gitignore'
+  file:
+    src: '{{role_path}}/files/.gitignore_global'
+    path: '{{ansible_env.HOME}}/.gitignore_global'
     force: yes
     state: link
   tags:
@@ -33,7 +33,7 @@
     - update-config
 
 - name: git | install gitconfig
-  file: 
+  file:
     src: '{{role_path}}/files/.gitconfig'
     path: '{{ansible_env.HOME}}/.gitconfig'
     force: yes

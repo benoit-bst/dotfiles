@@ -121,34 +121,8 @@ au BufNewFile,BufRead *.go set ft=go
 au BufNewFile,BufRead *.rs set ft=rust
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
-" When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+nnoremap gv :Rg <c-r><c-w>
 nnoremap <leader>r :%s/\<<c-r><c-w>\>//g<left><left>
-
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Rg " . l:pattern . "" )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '//g<left><left>')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
 
 " plugins config
 source ~/.config/nvim/plugins_config/plugins_config.vim

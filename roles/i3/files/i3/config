@@ -206,7 +206,19 @@ workspace 10 output "DP-1"
 
 for_window [class="^.*"] border pixel 3
 
-bindsym $mod+i move workspace to output left
+# i3 move a workspace to another monitor (multi monitor setup)
+set $move_workspace Use arrow to select the screen place
+mode "move_workspace" {
+    bindsym Up move workspace to output down
+    bindsym Down move workspace to output up
+    bindsym Left move workspace to output right
+    bindsym Right move workspace to output left
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+i mode "move_workspace"
 
 # mode system
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -249,5 +261,4 @@ bindsym $mod+f exec nautilus --no-desktop
 # gnome config
 bindsym $mod+c exec --no-startup-id XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 
-exec --no-startup-id setxkbmap fr
-
+exec --no-startup-id setxkbmap us -variant altgr-intl

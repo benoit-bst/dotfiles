@@ -8,14 +8,15 @@ export PATH=$PATH:~/bin/tools
 # rust
 #export PATH=$PATH:~/.cargo/bin
 # go
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:~/go/bin
+#export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:~/go/bin
 # c sharp
-export PATH=$PATH:~/.dotnet
-export DOTNET_ROOT=$HOME/.dotnet
+#export PATH=$PATH:~/.dotnet
+#export DOTNET_ROOT=$HOME/.dotnet
 # java
-export JAVA_HOME=/usr/lib/jvm/default-java
-export JDK_HOME=/usr/lib/jvm/default-java
+#export JAVA_HOME=/usr/lib/jvm/default-java
+#eport JDK_HOME=/usr/lib/jvm/default-java
+#export PATH=$PATH:$HOME/.dotnet
 
 #----------------------
 # DIR 
@@ -27,7 +28,6 @@ alias cdb="cd $HOME/dev/build"
 #----------------------
 # OTHERS 
 #----------------------
-alias howToKraken="cat $HOME/dev/dotfiles/notes/navitia.md"
 alias cat='cat'
 alias g='git'
 alias v='nvim.appimage'

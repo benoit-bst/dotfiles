@@ -33,9 +33,9 @@ Plug 'vim-syntastic/syntastic'
 " snippets
 Plug 'honza/vim-snippets'
 
-if has('nvim')
-    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-endif
+"if has('nvim')
+    "Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+"endif
 
 call plug#end()
 
@@ -96,25 +96,36 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? coc#_select_confirm() :
+      "\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 let g:coc_snippet_next = '<tab>'
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" Use <CR> to confirm completion, use:
+
+"inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
+
 
 " switch header/source
 map <leader>A :CocCommand clangd.switchSourceHeader<cr>
 
 let g:coc_global_extensions=['coc-html', 'coc-css', 'coc-java', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh', 'coc-yaml', 'coc-tsserver', 'coc-jedi', 'coc-markdownlint', 'coc-sql', 'coc-highlight', 'coc-solargraph', 'coc-metals', 'coc-snippets']
+let g:coc_node_path = '/home/bbrisset/.asdf/shims/node'
 
 " highlight current word bellow cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Rainbow Parentheses
@@ -131,6 +142,8 @@ let g:OmniSharp_selector_ui = 'fzf'    " Use fzf
 let g:OmniSharp_selector_findusages = 'fzf'
 let g:OmniSharp_highlighting = 0
 let g:OmniSharp_diagnostic_showid = 1
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_server_use_net6 = 1
 
 "inoremap <expr> <Tab> pumvisible() ? '<C-n>' :
 "\ getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'

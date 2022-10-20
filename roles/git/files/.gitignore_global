@@ -1,6 +1,7 @@
 .vscode
 .ackrc
 tags
+.idea
 .clangd
 gatling_jormun.ini
 jormungandr.ini
@@ -14,3 +15,4 @@ dev_artemis_settings.py
 compile_commands.json
 *.bak
 .metals
+.tool-versions

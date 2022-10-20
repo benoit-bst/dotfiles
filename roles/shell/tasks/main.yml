@@ -64,6 +64,16 @@
     - install
     - update-config
 
+- name: criteo profile | install
+  file:
+    src: '{{role_path}}/files/profiles/.criteo_profile'
+    path: '{{ansible_env.HOME}}/.criteo_profile'
+    force: yes
+    state: link
+  tags:
+    - install
+    - update-config
+
 - name: kisio profile | install
   file:
     src: '{{role_path}}/files/profiles/.kisio_profile'

@@ -79,10 +79,16 @@ export HISTFILE="$HOME/.zsh_history"
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
-# include navitia_profile
+# include global_profile
 if [ -f $HOME/.global_profile ]; then
     . $HOME/.global_profile
 fi
+
+# include criteo_profile
+if [ -f $HOME/.criteo_profile ]; then
+    . $HOME/.criteo_profile
+fi
+
 
 # Completion
 [ -f ~/bin/tmuxinator.zsh ] && source ~/bin/tmuxinator.zsh
@@ -118,3 +124,5 @@ if [ -f ~/.asdf/asdf.sh ]; then
     # initialise completions with ZSH's compinit
     autoload -Uz compinit && compinit
 fi
+
+export PATH=$PATH:$HOME/sqlpackage

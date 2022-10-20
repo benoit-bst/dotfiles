@@ -18,6 +18,12 @@ then
     echo "Extend on DP-2"
     exit 0
 fi
+if [ "$(xrandr | grep 'DP-3 connected' | wc -l)" = "1" ];
+then
+    xrandr --output DP-2 --auto --right-of eDP-1
+    echo "Extend on DP-3"
+    exit 0
+fi
 if [ "$(xrandr | grep 'DP-2-1 connected' | wc -l)" = "1" ];
 then
     xrandr --output DP-2-1 --auto --right-of eDP-1

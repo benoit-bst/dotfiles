@@ -1,0 +1,119 @@
+#-----------------------------
+# export
+#-----------------------------
+#
+# devtools
+export DEVTOOL_DIR=$HOME/devtools
+export DISTRIB_NAME="$(cat /etc/*-release | grep -oP '^ID=\K.*$' | tr -d '"')"
+export DISTRIB_VERSION="$(cat /etc/*-release | grep -oP '^VERSION_ID=\K.*$' | tr -d '"')"
+export DISTRIB_ID="$DISTRIB_NAME-$DISTRIB_VERSION"
+export DEVTOOL_BIN=$DEVTOOL_DIR/bin
+export INSTALLER_DIR=$DEVTOOL_DIR/installers
+export TMP_DIR=$DEVTOOL_DIR/tmp
+export PATH=$DEVTOOL_BIN:$PATH
+export CRITEOROOT=$DEVTOOL_DIR/criteoroot 
+export M2_REPO=$DEVTOOL_DIR/.m2
+# dotnet
+export DOTNET2_VERSION=2.1.818
+export DOTNET3_VERSION=3.1.300
+export DOTNET5_VERSION=5.0.403
+export DOTNET6_VERSION=6.0.201
+export DOTNET_DIR=$HOME/.dotnet2
+export PATH=$DOTNET_DIR:$PATH
+# nuget
+export NUGET_HTTP_CACHE_PATH=$DEVTOOL_DIR/.nuget/http-cache 
+export NUGET_PACKAGES=$DEVTOOL_DIR/.nuget/packages 
+export NUGET_PLUGINS_CACHE_PATH=$DEVTOOL_DIR/.nuget/plugin-cache 
+# gradle
+export GRADLE_USER_HOME=$DEVTOOL_DIR/.gradle_home 
+export GRADLE_HOME=$GRADLE_USER_HOME 
+export GRADLE_VERSION=7.1.1
+export PATH=$PATH:$HOME/devtools/sdkman/candidates/gradle/current/bin
+# pyenv
+export PYENV_ROOT=$DEVTOOL_DIR/pyenv
+export PYENV_BIN=$PYENV_ROOT/bin
+export PATH=$PYENV_BIN:$PATH
+export PYENV_SHIMS=$PYENV_ROOT/shims
+export PYENV_HOME=$PYENV_ROOT
+export PYENV=$PYENV_ROOT
+export PATH=$PYENV_SHIMS:$PATH
+# sdkman
+export SDKMAN_DIR=$DEVTOOL_DIR/sdkman
+export PATH=$PATH:$HOME/devtools/sdkman/bin
+# java
+export JDK_VERSION=8.0.292.hs-adpt
+export GROOVY_VERSION=2.5.9
+export JAVA_HOME=$HOME/devtools/sdkman/candidates/java/current
+export PATH=$PATH:$HOME/devtools/sdkman/candidates/java/current/bin
+export PATH=$PATH:$HOME/devtools/sdkman/candidates/groovy/current/bin
+# node
+export NVM_DIR=$DEVTOOL_DIR/nvm
+export NODE_VERSION=10.13.0
+export NVM_HOME=$NVM_DIR
+export NVM_SYMLINK=$NVM_HOME/nodejs
+export PATH="$NVM_HOME:$PATH"
+export PATH="$NVM_SYMLINK:$PATH"
+export NVM_DIR="$HOME/devtools/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export REPO_DIR=$(dirname $DEVTOOL_DIR)/repos
+export RUBY_VERSION=2.5
+export PYTHON_VERSION=3.6.8
+
+
+#-----------------------------
+# gw
+#-----------------------------
+export GW_AUTO_COMPELE_FILE=$DEVTOOL_DIR/.gw_autocomplete
+
+RELOAD_GW_AUTOCOMPLETE=0
+if [[ ! -f $GW_AUTO_COMPELE_FILE ]]; then
+  RELOAD_GW_AUTOCOMPLETE=1
+else
+  ONE_DAY_AGO=$(($(date +%s) - 86400))
+  FILE_DATE=$(date -r $GW_AUTO_COMPELE_FILE +%s)
+  if [[ $FILE_DATE -gt $ONE_DAY_AGO ]]; then
+    RELOAD_GW_AUTOCOMPLETE=0
+  else
+    RELOAD_GW_AUTOCOMPLETE=1
+  fi
+fi
+
+if [[ $RELOAD_GW_AUTOCOMPLETE == "1" ]]; then
+  curl --silent -o /dev/null "https://moab-filer.preprod.crto.in" && curl -sSL "https://moab-filer.preprod.crto.in/tmp/install/gw_autocomplete.sh" > $GW_AUTO_COMPELE_FILE
+fi
+
+
+#-----------------------------
+# alias
+#-----------------------------
+alias cdf="cd $HOME/dev/fleet-management-service/paas/fleet-management-service"
+alias cdp="cd $HOME/dev/perpetuo"
+alias cdj="cd $HOME/dev/jmoab-configuration/gradle/buildsrc"
+alias cdm="cd $HOME/dev/mesos-services-configuration/marathon_config"
+
+#-----------------------------
+# fleet management service
+#-----------------------------
+alias fleet_all='cd $HOME/dev/fleet-management-service && gw build && cd -'
+alias fleet_build='cd $HOME/dev/fleet-management-service && gw msbuildBuild && cd -'
+alias fleet_clean='cd $HOME/dev/fleet-management-service && gw clean && cd -'
+alias fleet_test='cd $HOME/dev/fleet-management-service && gw msbuildTest && cd -'
+alias fleet_build_UI='cd $HOME/dev/fleet-management-service && gw npmBuild && cd -'
+alias fleet_UI_test='cd $HOME/dev/fleet-management-service && gw npmBuild && gw npmTest && cd -'
+
+#-----------------------------
+# jmoab configuration
+#-----------------------------
+alias jmoab_conf_build='cd $HOME/dev/jmoab-configuration/gradle/buildsrc && gw build && cd -'
+alias jmoab_conf_clean='cd $HOME/dev/jmoab-configuration/gradle/buildsrc && gw clean && cd -'
+alias jmoab_conf_test='cd $HOME/dev/jmoab-configuration/gradle/buildsrc && gw test && cd -'
+alias jmoab_conf_paas_build='cd $HOME/dev/jmoab-configuration/gradle/buildsrc && ./gradlew :paas-plugin:build && cd -'
+
+#-----------------------------
+# perpetuo
+#-----------------------------
+alias perpetuo_build='cd $HOME/dev/perpetuo && gw build && cd -'
+alias perpetuo_clean='cd $HOME/dev/perpetuo && gw clean && cd -'
+alias perpetuo_test='cd $HOME/dev/perpetuo && gw test && cd -'

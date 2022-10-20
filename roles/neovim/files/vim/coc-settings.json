@@ -29,6 +29,8 @@
     },
     "suggest.autoTrigger": "trigger",
     
+    "npm.binPath": "/home/bbrisset/.asdf/shims",
+
     "clangd.path": "/home/bbst/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
     "clangd.semanticHighlighting": true,
     "clangd.disableDiagnostics": false,
@@ -42,7 +44,7 @@
 
     "java.home": "/usr/lib/jvm/default-java",
 
-    "omnisharp.path": "/home/bbst/.cache/omnisharp-vim/omnisharp-roslyn/run",
+    "omnisharp.path": "/home/bbrisset/.cache/omnisharp-vim/omnisharp-roslyn/run",
 
     "snippets.ultisnips.enable": false
 }

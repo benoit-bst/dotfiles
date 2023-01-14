@@ -5,3 +5,4 @@ roles/misc/files/bin/PathPicker
 vault_passwd
 update_*
 .metals
+cs

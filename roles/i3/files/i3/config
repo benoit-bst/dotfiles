@@ -198,11 +198,11 @@ workspace 2 output "eDP-1"
 workspace 3 output "eDP-1"
 workspace 4 output "eDP-1"
 workspace 5 output "eDP-1"
-workspace 6 output "DP-1"
-workspace 7 output "DP-1"
-workspace 8 output "DP-1"
-workspace 9 output "DP-1"
-workspace 10 output "DP-1"
+workspace 6 output "DP-2"
+workspace 7 output "DP-2"
+workspace 8 output "DP-2"
+workspace 9 output "DP-2"
+workspace 10 output "DP-2"
 
 for_window [class="^.*"] border pixel 3
 
@@ -239,9 +239,10 @@ bindsym $mod+o mode "$mode_system"
 exec --no-startup-id xautolock -time 40 -locker 'i3lock -d -c 111111'
 
 # mode system
-set $screen_system Screen (e) extend, (v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
+set $screen_system Screen (e) extend, (c) home,(v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
 mode "$screen_system" {
     bindsym e exec --no-startup-id ${HOME}/bin/i3/laptop_extend, mode "default"
+    bindsym c exec --no-startup-id ${HOME}/bin/i3/laptop_extend_criteo, mode "default"
     bindsym v exec --no-startup-id ${HOME}/bin/i3/laptop_extend_v, mode "default"
     bindsym d exec --no-startup-id ${HOME}/bin/i3/laptop_dock, mode "default"
     bindsym u exec --no-startup-id ${HOME}/bin/i3/laptop_undock, mode "default"

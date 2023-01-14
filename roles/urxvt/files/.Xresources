@@ -46,10 +46,10 @@
 *.color21: #f5f4f1
 
 !! URxvt Appearance
-URxvt.font: xft:Monospace:style=Regular:size=9
-URxvt.boldFont: xft:Monospace:style=Regular:size=9
-URxvt.italicFont: xft:Monospace:style=Italic:size=9
-URxvt.boldItalicFont: xft:Monospace:style=Bold Italic:size=9
+URxvt.font: xft:UbuntuMono Nerd Font Mono:style=Regular:size=11
+URxvt.boldFont: xft:UbuntuMono Nerd Font Mono:style=Regular:size=11
+URxvt.italicFont: xft:UbuntuMono Nerd Font Mono:style=Italic:size=11
+URxvt.boldItalicFont: xft:UbuntuMono Nerd Font Mono:style=Bold Italic:size=11
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 !URxvt.geometry: 92x24

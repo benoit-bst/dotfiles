@@ -33,6 +33,8 @@ Plug 'vim-syntastic/syntastic'
 " snippets
 Plug 'honza/vim-snippets'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 "if has('nvim')
     "Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 "endif

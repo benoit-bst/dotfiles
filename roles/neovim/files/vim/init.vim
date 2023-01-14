@@ -125,7 +125,7 @@ nnoremap gv :Rg <c-r><c-w>
 nnoremap <leader>r :%s/\<<c-r><c-w>\>//g<left><left>
 
 " plugins config
-source ~/.config/nvim/plugins_config/plugins_config.vim
+"source ~/.config/nvim/plugins_config/plugins_config.vim
 
 " adapt tmux with vim
 map <ESC>[5D <C-Left>

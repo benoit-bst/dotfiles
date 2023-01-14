@@ -18,8 +18,10 @@ export DOTNET2_VERSION=2.1.818
 export DOTNET3_VERSION=3.1.300
 export DOTNET5_VERSION=5.0.403
 export DOTNET6_VERSION=6.0.201
-export DOTNET_DIR=$HOME/.dotnet2
+export DOTNET_DIR=$HOME/.dotnet
+export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$DOTNET_DIR:$PATH
+export PATH=$PATH:$HOME/.dotnet/tools
 # nuget
 export NUGET_HTTP_CACHE_PATH=$DEVTOOL_DIR/.nuget/http-cache 
 export NUGET_PACKAGES=$DEVTOOL_DIR/.nuget/packages 
@@ -46,6 +48,7 @@ export GROOVY_VERSION=2.5.9
 export JAVA_HOME=$HOME/devtools/sdkman/candidates/java/current
 export PATH=$PATH:$HOME/devtools/sdkman/candidates/java/current/bin
 export PATH=$PATH:$HOME/devtools/sdkman/candidates/groovy/current/bin
+export PATH="$PATH:/home/bbrisset/.local/share/coursier/bin"
 # node
 export NVM_DIR=$DEVTOOL_DIR/nvm
 export NODE_VERSION=10.13.0
@@ -67,22 +70,22 @@ export PYTHON_VERSION=3.6.8
 #-----------------------------
 export GW_AUTO_COMPELE_FILE=$DEVTOOL_DIR/.gw_autocomplete
 
-RELOAD_GW_AUTOCOMPLETE=0
-if [[ ! -f $GW_AUTO_COMPELE_FILE ]]; then
-  RELOAD_GW_AUTOCOMPLETE=1
-else
-  ONE_DAY_AGO=$(($(date +%s) - 86400))
-  FILE_DATE=$(date -r $GW_AUTO_COMPELE_FILE +%s)
-  if [[ $FILE_DATE -gt $ONE_DAY_AGO ]]; then
-    RELOAD_GW_AUTOCOMPLETE=0
-  else
-    RELOAD_GW_AUTOCOMPLETE=1
-  fi
-fi
-
-if [[ $RELOAD_GW_AUTOCOMPLETE == "1" ]]; then
-  curl --silent -o /dev/null "https://moab-filer.preprod.crto.in" && curl -sSL "https://moab-filer.preprod.crto.in/tmp/install/gw_autocomplete.sh" > $GW_AUTO_COMPELE_FILE
-fi
+# RELOAD_GW_AUTOCOMPLETE=0
+# if [[ ! -f $GW_AUTO_COMPELE_FILE ]]; then
+#   RELOAD_GW_AUTOCOMPLETE=1
+# else
+#   ONE_DAY_AGO=$(($(date +%s) - 86400))
+#   FILE_DATE=$(date -r $GW_AUTO_COMPELE_FILE +%s)
+#   if [[ $FILE_DATE -gt $ONE_DAY_AGO ]]; then
+#     RELOAD_GW_AUTOCOMPLETE=0
+#   else
+#     RELOAD_GW_AUTOCOMPLETE=1
+#   fi
+# fi
+#
+# if [[ $RELOAD_GW_AUTOCOMPLETE == "1" ]]; then
+#   curl --silent -o /dev/null "https://moab-filer.preprod.crto.in" && curl -sSL "https://moab-filer.preprod.crto.in/tmp/install/gw_autocomplete.sh" > $GW_AUTO_COMPELE_FILE
+# fi
 
 
 #-----------------------------
@@ -91,7 +94,7 @@ fi
 alias cdf="cd $HOME/dev/fleet-management-service/paas/fleet-management-service"
 alias cdp="cd $HOME/dev/perpetuo"
 alias cdj="cd $HOME/dev/jmoab-configuration/gradle/buildsrc"
-alias cdm="cd $HOME/dev/mesos-services-configuration/marathon_config"
+alias cdm="cd $HOME/dev/mesos-services-configuration"
 
 #-----------------------------
 # fleet management service
@@ -101,7 +104,31 @@ alias fleet_build='cd $HOME/dev/fleet-management-service && gw msbuildBuild && c
 alias fleet_clean='cd $HOME/dev/fleet-management-service && gw clean && cd -'
 alias fleet_test='cd $HOME/dev/fleet-management-service && gw msbuildTest && cd -'
 alias fleet_build_UI='cd $HOME/dev/fleet-management-service && gw npmBuild && cd -'
-alias fleet_UI_test='cd $HOME/dev/fleet-management-service && gw npmBuild && gw npmTest && cd -'
+
+#-----------------------------
+# FMS UI
+#-----------------------------
+alias fms_ui_build='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmBuild && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+alias fms_ui_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+alias fms_ui_advanced_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmAdvancedTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+
+switch_fleet_ui_asdf_tools_revert(){
+  echo "kikou"
+  _FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/_.tool-versions
+  FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/.tool-versions
+  echo "$_FILE"
+  if test -f "$_FILE"; then
+    mv "$_FILE" "$FILE" 
+  fi
+}
+switch_fleet_ui_asdf_tools(){
+  _FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/_.tool-versions
+  FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/.tool-versions
+  if test -f "$FILE"; then
+    mv "$FILE" "$_FILE" 
+  fi
+}
+
 
 #-----------------------------
 # jmoab configuration
@@ -117,3 +144,5 @@ alias jmoab_conf_paas_build='cd $HOME/dev/jmoab-configuration/gradle/buildsrc &&
 alias perpetuo_build='cd $HOME/dev/perpetuo && gw build && cd -'
 alias perpetuo_clean='cd $HOME/dev/perpetuo && gw clean && cd -'
 alias perpetuo_test='cd $HOME/dev/perpetuo && gw test && cd -'
+
+

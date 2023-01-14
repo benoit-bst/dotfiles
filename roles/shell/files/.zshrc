@@ -126,3 +126,4 @@ if [ -f ~/.asdf/asdf.sh ]; then
 fi
 
 export PATH=$PATH:$HOME/sqlpackage
+

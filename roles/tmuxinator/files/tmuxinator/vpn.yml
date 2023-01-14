@@ -1,6 +1,0 @@
-# /home/bbrisset/.config/tmuxinator/bbst.yml
-
-name: vpn
-root: ~/
-windows:
-  - vpn:

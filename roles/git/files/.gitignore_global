@@ -16,3 +16,4 @@ compile_commands.json
 *.bak
 .metals
 .tool-versions
+_.tool-versions

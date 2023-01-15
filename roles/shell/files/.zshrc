@@ -72,6 +72,7 @@ ZSH_THEME="af-magic"
 plugins=(git ssh-agent fzf pip docker zsh-syntax-highlighting httpie web-search tmuxinator virtualenv colored-man-pages zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/bin/tools/fzf-git.sh
 
 # Hist
 export HISTSIZE=90000

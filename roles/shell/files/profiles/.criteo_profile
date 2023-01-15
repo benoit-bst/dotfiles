@@ -92,9 +92,11 @@ export GW_AUTO_COMPELE_FILE=$DEVTOOL_DIR/.gw_autocomplete
 # alias
 #-----------------------------
 alias cdf="cd $HOME/dev/fleet-management-service/paas/fleet-management-service"
+alias cdfui="cd $HOME/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager"
+alias cdm="cd $HOME/dev/mesos-services-configuration"
+alias cdr="cd $HOME/dev/criteo-rundeck-resources"
 alias cdp="cd $HOME/dev/perpetuo"
 alias cdj="cd $HOME/dev/jmoab-configuration/gradle/buildsrc"
-alias cdm="cd $HOME/dev/mesos-services-configuration"
 
 #-----------------------------
 # fleet management service
@@ -108,12 +110,7 @@ alias fleet_build_UI='cd $HOME/dev/fleet-management-service && gw npmBuild && cd
 #-----------------------------
 # FMS UI
 #-----------------------------
-alias fms_ui_build='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmBuild && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
-alias fms_ui_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
-alias fms_ui_advanced_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmAdvancedTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
-
 switch_fleet_ui_asdf_tools_revert(){
-  echo "kikou"
   _FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/_.tool-versions
   FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/.tool-versions
   echo "$_FILE"
@@ -128,7 +125,13 @@ switch_fleet_ui_asdf_tools(){
     mv "$FILE" "$_FILE" 
   fi
 }
-
+alias fms_ui_build='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmBuild && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+alias fms_ui_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+alias fms_ui_advanced_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmAdvancedTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+alias fms_ui_active_npm='switch_fleet_ui_asdf_tools_revert'
+alias fms_ui_run_cypress='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager && npm run cypress:open'
+alias fms_ui_run='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager && npm run start'
+alias fms_ui_run_local='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager && npm run start:local'
 
 #-----------------------------
 # jmoab configuration

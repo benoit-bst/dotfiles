@@ -8,7 +8,7 @@
   chm = checkout master
   s = status
   l = log --decorate --branches --remotes --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  d = diff --histogram
+  d = "!f() { git diff | batcat --pager='less -FR'; }; f"
   b = branch
   a = add
   ai = add -i
@@ -51,6 +51,9 @@
 
 [merge]
   tool = vimdiff
+
+[diff]
+  tool = batcat
 
 [grep]
 	extendRegexp = true

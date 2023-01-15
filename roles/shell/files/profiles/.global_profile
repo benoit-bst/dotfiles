@@ -28,7 +28,7 @@ alias cdb="cd $HOME/dev/build"
 #----------------------
 # OTHERS 
 #----------------------
-alias cat='cat'
+alias cat='batcat --pager="less -FR"'
 alias g='git'
 alias v='nvim.appimage'
 alias vi='nvim.appimage'
@@ -57,6 +57,17 @@ alias prometheus_docker='docker run -d --network="host" -v $HOME/dev/config/prom
 #----------------------
 alias perf_report_fluffy='perf report --stdio --sort comm,dso'
 alias flamegraph='perf script | $HOME/dev/FlameGraph/stackcollapse-perf.pl > out.perf-folded && $HOME/dev/FlameGraph/flamegraph.pl out.perf-folded > flamegraph.svg'
+
+#----------------------
+# Git grep
+#----------------------
+git-grep(){
+    git grep -i $1 $(git rev-list --all)
+}
+git-log-file(){
+    git log -p -- $1
+}
+
 
 #----------------------
 # Replace

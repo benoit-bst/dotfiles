@@ -26,7 +26,7 @@
   lll = log -u
   black = "!f() { pre-commit run black --all; }; f"
   clang = "!f() { pre-commit run clang-format-6.0 --all; }; f"
-  review = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/publish/master ; }; f"
+  review = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/for/master ; }; f"
   draft = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/drafts/master ; }; f"
   dreview = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/publish/develop ; }; f"
   rtsreview = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/publish/master ; ssh -p 29418 review.crto.in gerrit review --ready-to-submit 1 `git rev-parse $ref` ; }; f"

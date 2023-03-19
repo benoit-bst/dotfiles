@@ -239,7 +239,7 @@ bindsym $mod+o mode "$mode_system"
 exec --no-startup-id xautolock -time 40 -locker 'i3lock -d -c 111111'
 
 # mode system
-set $screen_system Screen (e) extend, (c) home,(v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
+set $screen_system Screen (e) extend, (c) criteo,(v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
 mode "$screen_system" {
     bindsym e exec --no-startup-id ${HOME}/bin/i3/laptop_extend, mode "default"
     bindsym c exec --no-startup-id ${HOME}/bin/i3/laptop_extend_criteo, mode "default"

@@ -99,16 +99,7 @@ alias cdp="cd $HOME/dev/perpetuo"
 alias cdj="cd $HOME/dev/jmoab-configuration/gradle/buildsrc"
 
 #-----------------------------
-# fleet management service
-#-----------------------------
-alias fleet_all='cd $HOME/dev/fleet-management-service && gw build && cd -'
-alias fleet_build='cd $HOME/dev/fleet-management-service && gw msbuildBuild && cd -'
-alias fleet_clean='cd $HOME/dev/fleet-management-service && gw clean && cd -'
-alias fleet_test='cd $HOME/dev/fleet-management-service && gw msbuildTest && cd -'
-alias fleet_build_UI='cd $HOME/dev/fleet-management-service && gw npmBuild && cd -'
-
-#-----------------------------
-# FMS UI
+# FMS
 #-----------------------------
 switch_fleet_ui_asdf_tools_revert(){
   _FILE=/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.FleetManager/_.tool-versions
@@ -125,6 +116,10 @@ switch_fleet_ui_asdf_tools(){
     mv "$FILE" "$_FILE" 
   fi
 }
+alias fms_build_all='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw build && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
+alias fms_build='cd $HOME/dev/fleet-management-service && gw msbuildBuild && cd - || cd -'
+alias fms_tests='cd $HOME/dev/fleet-management-service/paas/fleet-management-service && dotnet test Criteo.PaaS.Cli.UTest && dotnet test Criteo.PaaS.ConfigurationGenerator.UTest && dotnet test Criteo.PaaS.FleetManagementService.UTest && dotnet test Criteo.PaaS.Validator.UTest && dotnet test Criteo.PaaS.FleetManagementService.ITest && cd - || cd -'
+
 alias fms_ui_build='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmBuild && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
 alias fms_ui_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'
 alias fms_ui_advanced_tests='switch_fleet_ui_asdf_tools && cd $HOME/dev/fleet-management-service && gw npmAdvancedTest && cd - && switch_fleet_ui_asdf_tools_revert || cd - && switch_fleet_ui_asdf_tools_revert'

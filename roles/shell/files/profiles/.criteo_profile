@@ -75,24 +75,9 @@ export PATH="$PATH:/usr/local/go/bin"
 # gw
 #-----------------------------
 export GW_AUTO_COMPELE_FILE=$DEVTOOL_DIR/.gw_autocomplete
+export PATH=$PATH:$HOME/sqlpackage
 
-# RELOAD_GW_AUTOCOMPLETE=0
-# if [[ ! -f $GW_AUTO_COMPELE_FILE ]]; then
-#   RELOAD_GW_AUTOCOMPLETE=1
-# else
-#   ONE_DAY_AGO=$(($(date +%s) - 86400))
-#   FILE_DATE=$(date -r $GW_AUTO_COMPELE_FILE +%s)
-#   if [[ $FILE_DATE -gt $ONE_DAY_AGO ]]; then
-#     RELOAD_GW_AUTOCOMPLETE=0
-#   else
-#     RELOAD_GW_AUTOCOMPLETE=1
-#   fi
-# fi
-#
-# if [[ $RELOAD_GW_AUTOCOMPLETE == "1" ]]; then
-#   curl --silent -o /dev/null "https://moab-filer.preprod.crto.in" && curl -sSL "https://moab-filer.preprod.crto.in/tmp/install/gw_autocomplete.sh" > $GW_AUTO_COMPELE_FILE
-# fi
-
+export CDT_REMOTE_CONFIG_URL=https://moab-filer.crto.in/.filer/cdt/remote-config.json
 
 #-----------------------------
 # alias

@@ -17,3 +17,5 @@ compile_commands.json
 .metals
 .tool-versions
 _.tool-versions
+app_stats.xls
+.pre-commit-config.yaml

@@ -190,7 +190,7 @@ bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 2 # decrease screen brightness
 
 # background
-exec --no-startup-id feh --bg-center ${HOME}/.wallpaper/wallpaper_black_mage.png
+exec --no-startup-id feh --no-fehbg --bg-fill ${HOME}/.wallpaper/wallpaper_black_mage.png
 
 # workspace with screen
 workspace 1 output "eDP-1"
@@ -239,12 +239,12 @@ bindsym $mod+o mode "$mode_system"
 exec --no-startup-id xautolock -time 40 -locker 'i3lock -d -c 111111'
 
 # mode system
-set $screen_system Screen (e) extend, (c) criteo,(v) extend vertical, (d) dock, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
+set $screen_system Screen (e) extend, (c) criteo,(v) extend vertical, (h) home, (u) undock, (x) dock XL, (k) swith keyboard(fr/us)
 mode "$screen_system" {
     bindsym e exec --no-startup-id ${HOME}/bin/i3/laptop_extend, mode "default"
     bindsym c exec --no-startup-id ${HOME}/bin/i3/laptop_extend_criteo, mode "default"
     bindsym v exec --no-startup-id ${HOME}/bin/i3/laptop_extend_v, mode "default"
-    bindsym d exec --no-startup-id ${HOME}/bin/i3/laptop_dock, mode "default"
+    bindsym h exec --no-startup-id ${HOME}/bin/i3/laptop_home, mode "default"
     bindsym u exec --no-startup-id ${HOME}/bin/i3/laptop_undock, mode "default"
     bindsym x exec --no-startup-id ${HOME}/bin/i3/laptop_dock_xl, mode "default"
     bindsym k exec --no-startup-id ${HOME}/bin/i3/switch_keyboard, mode "default"
@@ -256,7 +256,7 @@ mode "$screen_system" {
 bindsym $mod+Shift+o mode "$screen_system"
 
 # google chrome
-bindsym $mod+g exec --no-startup-id google-chrome
+bindsym $mod+g exec --no-startup-id firefox
 # files
 bindsym $mod+f exec nautilus --no-desktop
 # gnome config

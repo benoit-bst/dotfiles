@@ -46,11 +46,11 @@ command=python3 ~/bin/i3/spotify.py
 interval=5
 color=#74DF00
 
-[nordvpn]
-label=Nord-Vpn
-command=~/bin/i3/nordvpn
-interval=40
-color=#FFFF00
+# [nordvpn]
+# label=Nord-Vpn
+# command=~/bin/i3/nordvpn
+# interval=40
+# color=#FFFF00
 
 #[openconnect]
 #label=KD-Vpn
@@ -59,7 +59,7 @@ color=#FFFF00
 #color=#FFFF00
 
 [weather]
-label=🔆
+label=🌍
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
 color=#F5A9F2
@@ -82,19 +82,19 @@ interval=10
 color=#F7BE81
 
 [cpu]
-label=🔶
+label=🌀
 command=~/bin/i3/cpu_usage
 color=#F781F3
 interval=3
 
 [ram]
-label=◻️
+label=⚙️
 command=~/bin/i3/memory
 color=#F781F3
 interval=3
 
 [disk]
-label=🔴
+label=💽
 command=~/bin/i3/disk
 color=#F781F3
 interval=3
@@ -111,7 +111,7 @@ interval=10
 color=#FFFF00
 
 [time]
-label=🕐
+label=🧙
 command=date '+%d %b %R'
 color=#74DF00
 interval=5

@@ -90,6 +90,9 @@ if [ -f $HOME/.criteo_profile ]; then
     . $HOME/.criteo_profile
 fi
 
+eval "$(zoxide init zsh)"
+# eval "$(starship init bash)"
+
 
 # Completion
 [ -f ~/bin/tmuxinator.zsh ] && source ~/bin/tmuxinator.zsh
@@ -128,3 +131,4 @@ fi
 
 export PATH=$PATH:$HOME/sqlpackage
 
+export CDT_REMOTE_CONFIG_URL=https://moab-filer.crto.in/.filer/cdt/remote-config.json

@@ -64,6 +64,12 @@ export REPO_DIR=$(dirname $DEVTOOL_DIR)/repos
 export RUBY_VERSION=2.5
 export PYTHON_VERSION=3.6.8
 
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/bbrisset/dev/fleet-management-service/paas/fleet-management-service/Criteo.PaaS.MigrationTool/bin/Debug/netcoreapp2.1/lib/linux/x86_64/libgit2-ssh-baa87df.so"
+
+#kube
+export PATH="$PATH:/home/bbrisset/.kube/bin"
+export PATH="$PATH:/home/bbrisset/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 #-----------------------------
 # gw

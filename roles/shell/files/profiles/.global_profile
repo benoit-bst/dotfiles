@@ -34,6 +34,7 @@ alias l="ls -lah"
 alias cd="z"
 alias cat='batcat --pager="less -FR"'
 alias g='git'
+alias fd='fdfind'
 alias fzf='fzf --preview "batcat --style=numbers --color=always --line-range :500 {}"'
 alias v='nvim.appimage'
 alias vi='nvim.appimage'

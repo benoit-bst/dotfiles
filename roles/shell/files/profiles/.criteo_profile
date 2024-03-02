@@ -18,10 +18,10 @@ export DOTNET2_VERSION=2.1.818
 export DOTNET3_VERSION=3.1.300
 export DOTNET5_VERSION=5.0.403
 export DOTNET6_VERSION=6.0.201
-export DOTNET_DIR=$HOME/.dotnet
-export DOTNET_ROOT=$HOME/.dotnet
+export DOTNET_DIR=$HOME/devtools/dotnet
+export DOTNET_ROOT=$HOME/devtools/dotnet
 export PATH=$DOTNET_DIR:$PATH
-export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:$HOME/devtools/dotnet/tools
 # nuget
 export NUGET_HTTP_CACHE_PATH=$DEVTOOL_DIR/.nuget/http-cache 
 export NUGET_PACKAGES=$DEVTOOL_DIR/.nuget/packages 
@@ -42,6 +42,11 @@ export PATH=$PYENV_SHIMS:$PATH
 # sdkman
 export SDKMAN_DIR=$DEVTOOL_DIR/sdkman
 export PATH=$PATH:$HOME/devtools/sdkman/bin
+#GEM
+# export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+export PATH="$GEM_HOME/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
 # java
 export JDK_VERSION=8.0.292.hs-adpt
 export GROOVY_VERSION=2.5.9

@@ -7,7 +7,7 @@
 All the configuration is installed with
  [Red Hat Ansible](https://github.com/ansible/ansible) tool.
 
-The main configuration is composed of : I3 + Tmux + Zsh + Nvim<br>
+The main configuration is composed of : I3 + alacrity + Tmux + Zsh + Nvim (lazyvim)<br>
 Available for debian/ubuntu
 
 ![config_screenshot](config_screenshot.png)
@@ -30,10 +30,6 @@ Only update config file
 ``` bash
 ./install update
 ```
-
-## Doc
-
-[Key binding](https://github.com/benoit-bst/dotfiles/blob/master/keybinding.md)
 
 ## Changelog
 

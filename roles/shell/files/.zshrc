@@ -57,3 +57,5 @@ fi
 export PATH=$PATH:$HOME/sqlpackage
 
 export CDT_REMOTE_CONFIG_URL=https://moab-filer.crto.in/.filer/cdt/remote-config.json
+. /usr/share/autojump/autojump.zsh
+export PATH=$HOME/.local/bin:$PATH

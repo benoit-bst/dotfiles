@@ -139,4 +139,14 @@ alias perpetuo_build='cd $HOME/dev/perpetuo && gw build && cd -'
 alias perpetuo_clean='cd $HOME/dev/perpetuo && gw clean && cd -'
 alias perpetuo_test='cd $HOME/dev/perpetuo && gw test && cd -'
 
+#-----------------------------
+# Bearer
+#-----------------------------
+export CRITEO_USER_PASSWORD=GR5z,zk3737=hZ
 
+create_bearer_preprod(){
+  export CRITEO_BEARER_PREPROD=$(curl -d '{"login": "b.brisset","password": "'$CRITEO_USER_PASSWORD'"}' -X POST https://jtc-jtc-app.preprod.crto.in/login -H 'Content-Type: application/json')
+}
+create_bearer_prod(){
+  export CRITEO_BEARER_PROD=$(curl -d '{"login": "b.brisset","password": "'$CRITEO_USER_PASSWORD'"}' -X POST https://jtc-jtc-app.prod.crto.in/login -H 'Content-Type: application/json')
+}

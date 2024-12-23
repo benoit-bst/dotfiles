@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [[ $(pgrep openconnect) ]]; then
-  echo "Up";
-else
-  echo "Down";
-fi

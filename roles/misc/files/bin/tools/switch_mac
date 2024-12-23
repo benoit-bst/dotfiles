@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-sudo ifconfig wlp2s0 down
-sudo macchanger -e wlp2s0
-sudo ifconfig wlp2s0 up
-dhclient wlp2s0
-rfkill block all
-rfkill unblock all

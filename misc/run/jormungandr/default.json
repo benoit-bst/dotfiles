@@ -1,0 +1,25 @@
+{
+    "key": "fr-idf",
+    "zmq_socket": "ipc:///tmp/default_kraken",
+    "equipment_details_providers": [ "sytral", "sytral_custo" ],
+    "realtime_proxies": [{
+
+       "class": "jormungandr.scenarios.ridesharing.instant_system.InstantSystem",
+
+          "args":{
+             "service_url": "https://dev-api.instant-system.com/core/v1/networks/33/journeys",
+             "api_key": "EiN2Zaemiekau6oo",
+             "network": "STAR Covoiturage",
+             "rating_scale_min": 0,
+             "rating_scale_max": 5,
+             "crowfly_radius": 500,
+             "feed_publisher" : {
+               "id": "fr-nw-rennes",
+               "name": "Keolis Rennes - STAR",
+               "license": "Private",
+               "url": "https://instant-system.com/disclaimers/disclaimer_33.html"
+             }
+          }
+     }]
+
+}

@@ -1,0 +1,78 @@
+[user]
+	name = Benoît Brisset
+	email = 32099204+benoit-bst@users.noreply.github.com
+
+[alias]
+  c = commit
+	ch = checkout
+  chm = checkout master
+  s = status
+	l = log --pretty=format:\"%C(yellow)%h\\\\ %ad%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --date=short
+  d = "!f() { git diff | bat --pager='less -FR'; }; f"
+  b = branch
+  a = add
+  ai = add -i
+  aip = add -ip
+  f = fetch
+  r = rebase
+  fo = fetch origin
+  ro = rebase origin/master
+  p = push
+  su = submodule
+  suu = submodule update --init --recursive
+#  ll = log --decorate --branches --graph --remotes --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lp = "!f() { git log --decorate --oneline | fzf --multi --preview 'git show --color $(echo {}| cut -c -6)'; }; f"
+	ll = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat
+	lll = log -u
+  black = "!f() { pre-commit run black --all; }; f"
+  clang = "!f() { pre-commit run clang-format-6.0 --all; }; f"
+	review = !git push origin HEAD:refs/for/master$1
+	draft = !git push origin HEAD:refs/for/master%wip$1
+  dreview = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/publish/develop ; }; f"
+  rtsreview = "!f() { ref=${1:-HEAD} ; git push origin $ref:refs/publish/master ; ssh -p 29418 review.crto.in gerrit review --ready-to-submit 1 `git rev-parse $ref` ; }; f"
+  greview = "!f() { ref=${1:-HEAD} ; git push gerrit $ref:refs/publish/master ; }; f"
+  refresh = ![[ -z $(git status --porcelain -uno) ]] && git pull --rebase || git stash && git pull --rebase && git stash pop
+  gerritclone = "!f() { git clone ssh://b.brisset@review.crto.in:29418/${1?missing_repo_name} && scp -p -P 29418 b.brisset@review.crto.in:hooks/commit-msg ${1##*/}/.git/hooks/ ; }; f"
+	diffc = diff --cached HEAD^
+	ca = commit --amend --no-edit --reset-author
+	amend-blind = "!git add -u ; git ca ; git review"
+	st = status
+	hard = reset --hard origin/master
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+    conflictstyle = zdiff3
+
+[log]
+  decorate=full
+
+[color]
+  branch=auto
+  diff=auto
+  interactive=auto
+  status=auto
+  grep=auto
+
+[core]
+  editor=/Users/b.brisset/bin/nvim
+  excludesfile = /Users/b.brisset/.gitignore_global
+  pager = delta
+
+[diff]
+  tool = delta
+
+[grep]
+	extendRegexp = true
+	lineNumber = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

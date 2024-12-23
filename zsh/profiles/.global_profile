@@ -1,0 +1,149 @@
+export PAGER=most
+export EDITOR="/usr/bin/nvim"
+export TERM=xterm-256color
+
+# path
+export PATH=$PATH:~/bin/i3
+export PATH=$PATH:~/bin/tools
+export PATH=$PATH:/opt/cisco/anyconnect/bin/
+export PATH=$PATH:~/.nix-profile/bin
+# rust
+export PATH=$PATH:~/.cargo/bin
+# go
+#export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:~/go/bin
+# c sharp
+#export PATH=$PATH:~/.dotnet
+#export DOTNET_ROOT=$HOME/.dotnet
+# java
+#export JAVA_HOME=/usr/lib/jvm/default-java
+#eport JDK_HOME=/usr/lib/jvm/default-java
+#export PATH=$PATH:$HOME/.dotnet
+
+#----------------------
+# DIR 
+#----------------------
+alias c="cd"
+alias cdd="cd $HOME/dev"
+alias cdb="cd $HOME/dev/build"
+
+#----------------------
+# OTHERS 
+#----------------------
+#alias l="eza -la --icons"
+#alias ls="eza --icons"
+alias l="ls -lah"
+alias ll="ls -lah"
+alias cat='bat --pager="less -FR"'
+alias g='git'
+#alias fd='fdfind'
+alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias cl="clear"
+alias cll="clear && tmux clear-history"
+alias showConnexion='cat $HOME/.kwatch'
+alias sk="~/bin/switch_keyboard"
+#alias wf="nmtui"
+alias gnome-cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+alias mux="tmuxinator"
+
+#----------------------
+# Rabbit-mq docker
+#----------------------
+alias rabbitmq_up='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose up &>/dev/null &'
+alias rabbitmq_down='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose down -v &>/dev/null &'
+
+#----------------------
+# Grafana docker
+#----------------------
+alias grafana_docker='docker run -d --network="host" grafana/grafana'
+alias prometheus_docker='docker run -d --network="host" -v $HOME/dev/config/prometheus:/etc/prometheus prom/prometheus'
+
+#----------------------
+# Perf & flame graph
+#----------------------
+alias perf_report_fluffy='perf report --stdio --sort comm,dso'
+alias flamegraph='perf script | $HOME/dev/FlameGraph/stackcollapse-perf.pl > out.perf-folded && $HOME/dev/FlameGraph/flamegraph.pl out.perf-folded > flamegraph.svg'
+
+#----------------------
+# Git grep
+#----------------------
+git-grep(){
+    git grep -i $1 $(git rev-list --all)
+}
+git-log-file(){
+    git log -p -- $1
+}
+
+
+#----------------------
+# Replace
+#----------------------
+replace(){
+    find $1 -type f -exec sed -i "s/$2/$3/g" {} \;
+}
+
+#----------------------
+# Nmap
+#----------------------
+hard_nmap(){
+    sudo nmap -v -A -T4 -Pn -p- $1
+}
+soft_nmap(){
+    sudo nmap -v -sS -sU $1
+}
+
+#----------------------
+# GPG
+#----------------------
+gpg_encryt ()
+{
+    gpg --output $1.data --symmetric --cipher-algo AES256 $1
+}
+
+gpg_decrypt ()
+{
+    output_name="$(echo $1 | cut --delimiter='.' -f1)"
+    gpg --output $output_name --decrypt $1
+}
+
+# archive extractor
+ar_extractor ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# detect ssh connection
+SESSION_TYPE='local'
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  SESSION_TYPE='remote/ssh'
+else
+  case $(ps -o comm= -p $PPID) in
+    sshd|*/sshd) SESSION_TYPE='remote/ssh';;
+  esac
+fi
+if [ "$SESSION_TYPE" = "remote/ssh" ]
+then
+  session_message="$(date -u) : ssh session detected - user : $USER  ssh tty : $SSH_TTY - ssh client : $SSH_CLIENT"
+  echo $session_message >> .ssh_session_detected
+  notify-send 'SECURITY ALERT' $session_message
+fi

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -e
+VIEW=$(xrandr)
+
+# laptop
+xrandr --output eDP-1 --auto
+
+if [ "$(xrandr | grep 'DP-1 connected' | wc -l)" = "2" ];
+then
+    xrandr --output DP-1 --auto --right-of eDP-1
+    echo "Extend on DP-1"
+    exit 0
+fi
+if [ "$(xrandr | grep 'DP-2 connected' | wc -l)" = "1" ];
+then
+    xrandr --output DP-2 --auto --right-of eDP-1
+    echo "Extend on DP-2"
+    exit 0
+fi
+if [ "$(xrandr | grep 'DP-3 connected' | wc -l)" = "1" ];
+then
+    xrandr --output DP-2 --auto --right-of eDP-1
+    echo "Extend on DP-3"
+    exit 0
+fi
+if [ "$(xrandr | grep 'DP-2-1 connected' | wc -l)" = "1" ];
+then
+    xrandr --output DP-2-1 --auto --right-of eDP-1
+    echo "Extend on DP-2-1"
+    exit 0
+fi
+if [ "$(xrandr | grep 'DP-2-2 connected' | wc -l)" = "1" ];
+then
+    xrandr --output DP-2-2 --auto --right-of eDP-1
+    echo "Extend on DP-2-2"
+    exit 0
+fi
+if [ "$(xrandr | grep 'DP-2-3 connected' | wc -l)" = "1" ];
+then
+    xrandr --output DP-2-3 --auto --right-of eDP-1
+    echo "Extend on DP-2-3"
+    exit 0
+fi
+if [ "$(xrandr | grep 'HDMI-1 connected' | wc -l)" = "1" ];
+then
+    xrandr --output HDMI-1 --auto --right-of eDP-1
+    echo "Extend on HDMI-1"
+    exit 0
+fi
+
+echo "no screen found"
+
+exit 0

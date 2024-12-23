@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+current="$(macchanger --show wlp2s0 | sed -n 1p | cut -c16-32)"
+permanent="$(macchanger --show wlp2s0 | sed -n 2p | cut -c16-32)"
+
+if [ "$current" = "$permanent" ]; then
+    echo "Off "
+else
+    echo "On"
+fi

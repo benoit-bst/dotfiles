@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+(setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap fr || setxkbmap us -variant altgr-intl
+lang=$(setxkbmap -query | grep layout | tr -s ' ' | cut -d ' ' -f2)
+echo $lang

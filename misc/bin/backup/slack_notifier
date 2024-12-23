@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Fetch messages and mentions from Slack API
+curl -s -o ~/.slack_notifier/api-response.json -d "token=TOKEN" https://slack.com/api/users.counts
+
+# Check for unread messages and mentions
+UNREAD_DIRECT_MESSAGES=$(cat ~/.slack_notifier/api-response.json | jq -j '[.ims[] .dm_count] | add')
+UNREAD_CHANNELS_MENTIONS=$(cat ~/.slack_notifier/api-response.json | jq -j '[.channels[] | select(.is_archived == false)] | [.[] .mention_count_display] | add')
+UNREAD_GROUPS_MENTIONS=$(cat ~/.slack_notifier/api-response.json | jq -j '[.groups[] | select(.is_archived == false)] | [.[] .mention_count_display] | add')
+UNREAD_CHANNELS_MESSAGES=$(cat ~/.slack_notifier/api-response.json | jq -j '[.channels[] | select(.is_archived == false)] | [.[] .unread_count_display] | add')
+UNREAD_GROUPS_MESSAGES=$(cat ~/.slack_notifier/api-response.json | jq -j '[.groups[] | select(.is_archived == false)] | [.[] .unread_count_display] | add')
+
+# Add messsages and mentions from channels and groups
+UNREAD_MENTIONS_TOTAL=$(($UNREAD_CHANNELS_MENTIONS + $UNREAD_GROUPS_MENTIONS))
+UNREAD_MESSAGES_TOTAL=$(($UNREAD_CHANNELS_MESSAGES + $UNREAD_GROUPS_MESSAGES))
+
+# Print the result
+printf "%dD %d@ %dM" $UNREAD_DIRECT_MESSAGES $UNREAD_MENTIONS_TOTAL $UNREAD_MESSAGES_TOTAL

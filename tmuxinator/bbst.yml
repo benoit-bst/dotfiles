@@ -1,0 +1,10 @@
+# /home/bbrisset/.config/tmuxinator/bbst.yml
+
+name: bbst
+root: ~/
+windows:
+  - main:
+      root: ~
+      panes:
+        - pane_with_multiple_commands:
+            - clear

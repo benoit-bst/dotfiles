@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ $(nordvpn status) == *"Status"* ]]; then
+    status="$(nordvpn status | sed -n 1p | cut --delimiter=':' -f2 | cut -c2-)"
+    city="$(nordvpn status | sed -n 4p |  cut --delimiter=" " -f 2)"
+    protocol="$(nordvpn status | sed -n 7p |  cut --delimiter=" " -f 3)"
+    echo "${status} ${city} ${protocol}"
+else
+    echo "No information"
+fi
+

@@ -1,0 +1,118 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[volume]
+command=~/bin/i3/volume
+label=🔉 
+interval=4
+color=#01A9DB
+
+[microphone]
+command=~/bin/i3/microphone
+label=🎤 
+interval=4
+color=#01A9DE
+
+#[spotify]
+#command=python3 ~/bin/i3/spotify.py
+#interval=5
+#color=#74DF00
+
+# [nordvpn]
+# label=Nord-Vpn
+# command=~/bin/i3/nordvpn
+# interval=40
+# color=#FFFF00
+
+#[openconnect]
+#label=KD-Vpn
+#command=~/bin/i3/openconnect 
+#interval=40
+#color=#FFFF00
+
+# [weather]
+# label=🌍
+# command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+# interval=3600
+# color=#F5A9F2
+
+[wifi]
+label=📡
+command=~/bin/i3/wifi_script
+color=#F7BE81
+interval=5
+
+#[iface]
+#command=~/bin/i3/iface
+#color=#F7BE81
+#interval=5
+
+##[fakemac]
+#label=Fake MAC
+#command=~/bin/i3/fakemac 
+#interval=10
+#color=#F7BE81
+
+[cpu]
+label=🌀
+command=~/bin/i3/cpu_usage
+color=#F781F3
+interval=3
+
+[ram]
+label=⚙️
+command=~/bin/i3/memory
+color=#F781F3
+interval=3
+
+[disk]
+label=💽
+command=~/bin/i3/disk
+color=#F781F3
+interval=3
+
+[key_layout]
+command=~/bin/i3/show_language
+color=#01A9DB
+interval=3
+
+[battery]
+command=~/bin/i3/battery
+label=⚡
+interval=10
+color=#FFFF00
+
+[time]
+label=🧙
+command=date '+%d %b %R'
+color=#74DF00
+interval=5
+

@@ -1,5 +1,5 @@
 # open terminal
-alt - return : open -n -a "Iterm"
+alt - t : open -n -a "Iterm"
 
 # open firefox
 alt - f : open -n -a "Firefox"
@@ -20,6 +20,10 @@ alt - left : yabai -m window --focus west
 alt - right : yabai -m window --focus east
 alt - down : yabai -m window --focus south
 
+# stack mode
+shift + alt - up : yabai -m window --focus stack.next
+shift + alt - down : yabai -m window --focus stack.prev
+
 # send window to a space 
 shift + alt - 1 : yabai -m window --space 1
 shift + alt - 2 : yabai -m window --space 2
@@ -38,9 +42,6 @@ shift + alt - q : skhd -k "cmd - q "
 # open spotlight
 alt - space : skhd -k "cmd - space "
 
-# toggle window split type
-alt - e : yabai -m window --toggle split
-
 # close window
 alt - q : yabai -m window --close
 
@@ -55,7 +56,7 @@ alt - z : yabai -m window --focus mouse && \
 alt - r : yabai -m space --rotate 90
 
 # change layout of desktop
-ctrl + alt - a : yabai -m space --layout bsp
-ctrl + alt - f : yabai -m space --layout float
-ctrl + alt - s : yabai -m space --layout stack
+shift + alt - a : yabai -m space --layout bsp
+shift + alt - f : yabai -m space --layout float
+shift + alt - s : yabai -m space --layout stack
 

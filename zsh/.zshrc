@@ -144,3 +144,5 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME"/bin:$PATH
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"

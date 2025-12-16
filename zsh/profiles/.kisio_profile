@@ -92,7 +92,7 @@ alias tyr_tests_d='source $HOME/dev/virtualenv/virtualenv-tyr/bin/activate && cd
 alias navitia_release_virt='source $HOME/dev/virtualenv/virtualenv-release/bin/activate'
 
 navitia_request(){
-  curl "$1" -H 'Authorization: fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781' > debug.json
+  curl "$1" -H 'Authorization: ' > debug.json
   cat debug.json | python -m json.tool > navitia_response.json
   rm -f debug.json
 }

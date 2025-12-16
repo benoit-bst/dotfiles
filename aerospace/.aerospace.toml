@@ -64,7 +64,7 @@ automatically-unhide-macos-hidden-apps = false
     outer.top =        10
     outer.right =      10
 
-# Each monitor has 3 workspaces 
+# Each monitor has 3 workspaces
 [workspace-to-monitor-force-assignment]
     1 = 1
     2 = 1
@@ -75,6 +75,7 @@ automatically-unhide-macos-hidden-apps = false
     7 = 2
     8 = 2
     9 = 2
+    0 = 2
 
 
 # 'main' binding mode declaration
@@ -132,7 +133,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-z = 'fullscreen'
     alt-q = 'close'
     alt-shift-f = 'layout floating tiling' # 'floating toggle' in i3
-    alt-enter = 'exec-and-forget open -n /Applications/iTerm.app'
+    alt-t = 'exec-and-forget open -n /Applications/iTerm.app'
     alt-f = 'exec-and-forget open -n /Applications/Firefox.app'
     alt-c = 'exec-and-forget open -n /System/Applications/System\ Settings.app'
     alt-d = 'exec-and-forget open -n ~'
@@ -147,6 +148,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-7 = 'workspace 7'
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
+    alt-0 = 'workspace 0'
     # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
     # alt-b = 'workspace B'
     # alt-c = 'workspace C'
@@ -180,6 +182,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-7 = 'move-node-to-workspace 7'
     alt-shift-8 = 'move-node-to-workspace 8'
     alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-0 = 'move-node-to-workspace 0'
     # alt-shift-a = 'move-node-to-workspace A'
     # alt-shift-b = 'move-node-to-workspace B'
     # alt-shift-c = 'move-node-to-workspace C'
@@ -229,16 +232,16 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
 if.app-id = 'com.cisco.secureclient.gui'
-run = 'move-node-to-workspace 9'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.facebook.archon'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 6'

@@ -1,0 +1,94 @@
+_copilot_run_with_logging() {
+  local logfile="$1"
+  local prompt="$2"
+  shift 2
+
+  local log_dir="$HOME/investigation"
+  mkdir -p "$log_dir"
+  
+  local -a cmd=(copilot -p "$prompt" --allow-all-tools "$@")
+
+  {
+    printf 'Command:'
+    printf ' %q' "${cmd[@]}"
+    printf '\n\n'
+  } > "$logfile"
+
+  "${cmd[@]}" |& tee -a "$logfile"
+  return "${PIPESTATUS[0]}"
+}
+
+copilot_pods_failure() {
+  local cluster="$1"
+  local namespace="$2"
+  shift 2 || true
+
+  if [[ -z "$cluster" || -z "$namespace" ]]; then
+    echo "Usage: copilot_pods_failure <cluster> <namespace> [extra copilot args]" >&2
+    echo "Example: copilot_pods_failure kubes10-da1.preprod langfuse" >&2
+    return 1
+  fi
+
+  local prompt="for context, not action to change the cluster behavior are authorized, during all the process, we are in readonly mode. In cluster ${cluster}, inspect the pods in ${namespace} namespace in failure, and check if there is failure. If there is failure investigate why. If kubectl doesn't work put a error message to say: Network isNetwork."
+  local ts="$(date +%Y%m%d-%H%M%S)"
+  local logfile="$HOME/investigation/copilot_pods_failure-${cluster}-${namespace}-${ts}.log"
+
+  _copilot_run_with_logging "$logfile" "$prompt" "$@"
+}
+
+copilot_nodes_failure() {
+  local cluster="$1"
+  shift 1 || true
+
+  if [[ -z "$cluster" ]]; then
+    echo "Usage: copilot_nodes_failure <cluster> [extra copilot args]" >&2
+    echo "Example: copilot_nodes_failure kubes10-da1.preprod" >&2
+    return 1
+  fi
+
+  local prompt="for context, not action to change the cluster behavior are authorized, during all the process, we are in readonly mode. In cluster ${cluster}, check if there is any Kubernetes node in failure or NotReady state, identify which ones, and investigate why (conditions, taints, events, kubelet status, disk/memory pressure, network, CNI). If kubectl doesn't work, put an error message: Network isNetwork."
+  local ts="$(date +%Y%m%d-%H%M%S)"
+  local logfile="$HOME/investigation/copilot_nodes_failure-${cluster}-${ts}.log"
+
+  _copilot_run_with_logging "$logfile" "$prompt" "$@"
+}
+
+copilot_control_planes_failure() {
+  local cluster="$1"
+  shift 1 || true
+
+  if [[ -z "$cluster" ]]; then
+    echo "Usage: copilot_control_planes_failure <cluster> [extra copilot args]" >&2
+    echo "Example: copilot_control_planes_failure kubes10-da1.preprod" >&2
+    return 1
+  fi
+
+  local prompt="for context, not action to change the cluster behavior are authorized, during all the process, we are in readonly mode. In cluster ${cluster}, check if there is any Kubernetes control-plane node in failure or NotReady state, identify which ones, and investigate why (conditions, taints, events, api status, scheduler status, control-manager status, disk/memory pressure, network, CNI). If kubectl doesn't work, put an error message: Network isNetwork."
+  local ts="$(date +%Y%m%d-%H%M%S)"
+  local logfile="$HOME/investigation/copilot_nodes_failure-${cluster}-${ts}.log"
+
+  _copilot_run_with_logging "$logfile" "$prompt" "$@"
+}
+
+copilot_nodes_failure_all() {
+  echo "Usage: copilot_nodes_failure_all [extra copilot args]" >&2
+  echo "Example: copilot_nodes_failure_all" >&2
+
+  local prompt="for context, not action to change the cluster behavior are authorized, during all the process, we are in readonly mode. In cluster all cluster defined in ~/.kube/config, check if there is any Kubernetes node in failure or NotReady state, identify which ones, and investigate why (conditions, taints, events, kubelet status, disk/memory pressure, network, CNI). If kubectl doesn't work, put an error message: Network isNetwork."
+  local ts="$(date +%Y%m%d-%H%M%S)"
+  local logfile="$HOME/investigation/copilot_nodes_failure_all-${ts}.log"
+
+  _copilot_run_with_logging "$logfile" "$prompt" "$@"
+}
+
+copilot_control_planes_failure_all() {
+  echo "Usage: copilot_control_planes_failure_all [extra copilot args]" >&2
+  echo "Example: copilot_control_planes_failure_all" >&2
+
+  local prompt="for context, not action to change the cluster behavior are authorized, during all the process, we are in readonly mode. In cluster all cluster defined in ~/.kube/config, check if there is any Kubernetes control-plane node in failure or NotReady state, identify which ones, and investigate why (conditions, taints, events, api status, scheduler status, control-manager status, disk/memory pressure, network, CNI). If kubectl doesn't work, put an error message: Network isNetwork."
+  local ts="$(date +%Y%m%d-%H%M%S)"
+  local logfile="$HOME/investigation/copilot_control_planes_failure_all-${ts}.log"
+
+  _copilot_run_with_logging "$logfile" "$prompt" "$@"
+}
+

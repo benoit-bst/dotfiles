@@ -10,15 +10,20 @@ export PATH=$PATH:~/.nix-profile/bin
 # rust
 export PATH=$PATH:~/.cargo/bin
 # go
-#export PATH=$PATH:/usr/local/go/bin
-#export PATH=$PATH:~/go/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 # c sharp
-#export PATH=$PATH:~/.dotnet
+export PATH=$PATH:~/.dotnet/tools
 #export DOTNET_ROOT=$HOME/.dotnet
 # java
 #export JAVA_HOME=/usr/lib/jvm/default-java
 #eport JDK_HOME=/usr/lib/jvm/default-java
 #export PATH=$PATH:$HOME/.dotnet
+#
+export KUBE_EDITOR="nvim"
+
+# AI
+export GEMINI_API_KEY=
 
 #----------------------
 # DIR 
@@ -36,6 +41,7 @@ alias l="ls -lah"
 alias ll="ls -lah"
 alias cat='bat --pager="less -FR"'
 alias g='git'
+alias k="kubecolor"
 #alias fd='fdfind'
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias v='nvim'
@@ -45,21 +51,8 @@ alias cl="clear"
 alias cll="clear && tmux clear-history"
 alias showConnexion='cat $HOME/.kwatch'
 alias sk="~/bin/switch_keyboard"
-#alias wf="nmtui"
 alias gnome-cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias mux="tmuxinator"
-
-#----------------------
-# Rabbit-mq docker
-#----------------------
-alias rabbitmq_up='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose up &>/dev/null &'
-alias rabbitmq_down='cd $HOME/dev/dotfiles/roles/docker/files/rabbit-mq && docker-compose down -v &>/dev/null &'
-
-#----------------------
-# Grafana docker
-#----------------------
-alias grafana_docker='docker run -d --network="host" grafana/grafana'
-alias prometheus_docker='docker run -d --network="host" -v $HOME/dev/config/prometheus:/etc/prometheus prom/prometheus'
 
 #----------------------
 # Perf & flame graph

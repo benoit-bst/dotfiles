@@ -22,6 +22,18 @@ setopt hist_ignore_space
 if [ -f $HOME/.global_profile ]; then
     . $HOME/.global_profile
 fi
+# include criteo_profile
+if [ -f $HOME/.criteo_profile ]; then
+    . $HOME/.criteo_profile
+fi
+# include kube_profile
+if [ -f $HOME/.kube_profile ]; then
+    . $HOME/.kube_profile
+fi
+# include kube_prompt_profile
+if [ -f $HOME/.kube_prompt_profile ]; then
+    . $HOME/.kube_prompt_profile
+fi
 
 # Completion
 [ -f ~/bin/tmuxinator.zsh ] && source ~/bin/tmuxinator.zsh
@@ -146,3 +158,13 @@ export PATH="$HOME"/bin:$PATH
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+source <(kubectl completion zsh)
+compdef kubecolor=kubectl
+source <(kubectl completion zsh)
+
+. "$HOME/.local/bin/env"
+
+. "$HOME/.atuin/bin/env"
+if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/omnisharp:$PATH"

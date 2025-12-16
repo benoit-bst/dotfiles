@@ -1,0 +1,21 @@
+name: kube-terminator
+root: ~/
+windows:
+  - KUBE1:
+      root: ~/
+      layout: a2ae,273x69,0,0{136x69,0,0,2,136x69,137,0,8}
+      panes:
+          - #
+          - #
+  - KUBE2:
+      root: ~/
+      layout: a2ae,273x69,0,0{136x69,0,0,2,136x69,137,0,8}
+      panes:
+          - #
+          - #
+  - KUBE3:
+      root: ~/
+      layout: a2ae,273x69,0,0{136x69,0,0,2,136x69,137,0,8}
+      panes:
+          - #
+          - #

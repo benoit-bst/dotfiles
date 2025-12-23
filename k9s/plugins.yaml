@@ -1,0 +1,145 @@
+plugins:
+  # kubectl-blame by knight42
+  # Annotate each line in the given resource's YAML with information from the managedFields to show who last modified the field.
+  # Source: https://github.com/knight42/kubectl-blame
+  # Install via:
+  #   krew: `kubectl krew install blame`
+  #   go: `go install github.com/knight42/kubectl-blame@latest`
+  blame:
+    shortCut: b
+    confirm: false
+    description: "Blame"
+    scopes:
+      - all
+    command: sh
+    background: false
+    args:
+      - -c
+      - "kubectl-blame $RESOURCE_NAME $NAME -n $NAMESPACE --context $CONTEXT | less"
+  dive:
+    shortCut: d
+    confirm: false
+    description: "Dive image"
+    scopes:
+      - containers
+    command: dive
+    background: false
+    args:
+      - $COL-IMAGE
+
+
+  #---------------------------
+  #get all resources in a namespace using the krew get-all plugin
+  #---------------------------
+  # get-all-namespace:
+  #   shortCut: Shift-T
+  #   confirm: false
+  #   description: get-all
+  #   scopes:
+  #     - namespaces
+  #   command: sh
+  #   background: false
+  #   args:
+  #     - -c
+  #     - "kubectl get-all --context $CONTEXT -n $NAME | less -K"
+  get-all-other:
+    shortCut: Shift-T
+    confirm: false
+    description: get-all
+    scopes:
+      - all
+    command: sh
+    background: false
+    args:
+      - -c
+      - "kubectl get-all --context $CONTEXT -n $NAMESPACE | less -K"
+
+  #---------------------------
+  # Helm
+  #---------------------------
+  helm-diff-previous:
+    shortCut: Shift-D
+    confirm: false
+    description: Diff with Previous Revision
+    scopes:
+      - helm
+    command: bash
+    background: false
+    args:
+      - -c
+      - >-
+        LAST_REVISION=$(($COL-REVISION-1));
+        helm diff revision $COL-NAME $COL-REVISION $LAST_REVISION --kube-context $CONTEXT --namespace $NAMESPACE --color | less -RK
+  helm-diff-current:
+    shortCut: Shift-Q
+    confirm: false
+    description: Diff with Current Revision
+    scopes:
+      - history
+    command: bash
+    background: false
+    args:
+      - -c
+      - >-
+        RELEASE_NAME=$(echo $NAME | cut -d':' -f1);
+        LATEST_REVISION=$(helm history -n $NAMESPACE --kube-context $CONTEXT $RELEASE_NAME | grep deployed | cut -d$'\t' -f1 | tr -d ' \t');
+        helm diff revision $RELEASE_NAME $LATEST_REVISION $COL-REVISION --kube-context $CONTEXT --namespace $NAMESPACE --color | less -RK
+  helm-default-values:
+    shortCut: Shift-V
+    confirm: false
+    description: Chart Default Values
+    scopes:
+      - helm
+    command: sh
+    background: false
+    args:
+      - -c
+      - >-
+        revision=$(helm history -n $NAMESPACE --kube-context $CONTEXT $COL-NAME | grep deployed | cut -d$'\t' -f1 | tr -d ' \t');
+        kubectl
+        get secrets
+        --context $CONTEXT
+        -n $NAMESPACE
+        sh.helm.release.v1.$COL-NAME.v$revision -o yaml
+        | yq e '.data.release' -
+        | base64 -d
+        | base64 -d
+        | gunzip
+        | jq -r '.chart.values'
+        | yq -P
+        | less -K
+
+
+  #---------------------------
+  # watch events on selected resources
+  # requires linux "watch" command
+  # change '-n' to adjust refresh time in seconds
+  #---------------------------
+  watch-events:
+    shortCut: Shift-E
+    confirm: false
+    description: Get Events
+    scopes:
+      - all
+    command: sh
+    background: false
+    args:
+      - -c
+      - "kubectl events --context $CONTEXT --namespace $NAMESPACE | nvim -"
+
+  #---------------------------
+  # ssh into node
+  #---------------------------
+  ssh-node:
+    shortCut: s
+    confirm: false
+    description: SSH into the node
+    scopes:
+      - nodes
+    command: sh
+    background: false
+    args:
+      - -c
+      - |
+        ssh $COL-NAME
+

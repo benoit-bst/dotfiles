@@ -3,9 +3,13 @@ _copilot_run_with_logging() {
   local prompt="$2"
   shift 2
 
+  export SLACK_BOT_TOKEN=
+
+  echo starting the automation...
+
   local log_dir="$HOME/investigation"
   mkdir -p "$log_dir"
-  
+
   local -a cmd=(copilot -p "$prompt" --allow-all-tools "$@")
 
   {
@@ -15,7 +19,18 @@ _copilot_run_with_logging() {
   } > "$logfile"
 
   "${cmd[@]}" |& tee -a "$logfile"
-  return "${PIPESTATUS[0]}"
+  local exit_code="${PIPESTATUS[0]}"
+
+  echo result in $log_dir / $logfile
+  echo sending message to slack
+
+  # Send the log file content to Slack
+  if [[ -f "$logfile" && -f "$HOME/bin/send_slack_message.py" ]]; then
+    python "$HOME/bin/send_slack_message.py" D05723QN4KC "$(cat "$logfile")" 2>/dev/null || true
+  fi
+  echo message to slack is sent
+
+  return "$exit_code"
 }
 
 copilot_pods_failure() {
